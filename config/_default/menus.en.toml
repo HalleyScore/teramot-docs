@@ -1,79 +1,78 @@
-# -- Main Menu --
-# The main menu is displayed in the header at the top of the page.
-# Acceptable parameters are name, pageRef, page, url, title, weight.
-# 
-# The simplest menu configuration is to provide:
-#   name = The name to be displayed for this menu link
-#   pageRef = The identifier of the page or section to link to
-#
-# By default the menu is ordered alphabetically. This can be
-# overridden by providing a weight value. The menu will then be
-# ordered by weight from lowest to highest.
+# -- Navigation --
+# Docs sections first, then the blogs. Each docs section has its own sidebar,
+# built from the files under content/<section>/ (ordered by `weight`).
 
 [[main]]
-  name = "Articles"
-  pageRef = "posts"
-  weight = 10
+  identifier = "architecture"
+  name = "Architecture"
+  pageRef = "/architecture"
+  weight = 20
+
+[[main]]
+  identifier = "api"
+  name = "API"
+  pageRef = "/api"
+  weight = 30
+
+[[main]]
+  identifier = "compliance"
+  name = "Compliance"
+  pageRef = "/compliance"
+  weight = 40
+
+[[main]]
+  identifier = "updates"
+  name = "Updates"
+  pageRef = "/updates"
+  weight = 50
+
+[[main]]
+  identifier = "blog"
+  name = "Blog"
+  pageRef = "/blog"
+  weight = 60
+  [main.params]
+    type = "link"
+    icon = "pencil"
+
+[[main]]
+  name = "Search"
+  weight = 70
+  [main.params]
+    type = "search"
 
 [[main]]
   name = "Teramot.com"
   url = "https://teramot.com/"
-  weight = 20
+  weight = 80
+  [main.params]
+    icon = "globe-alt"
 
 [[main]]
   name = "GitHub"
-  url = "https://github.com/HalleyScore/teramot-engineering-blog"
+  url = "https://github.com/HalleyScore/teramot-docs"
+  weight = 90
+  [main.params]
+    icon = "github"
+
+# Extra links at the bottom of every docs sidebar.
+[[sidebar]]
+  name = "More"
+  weight = 10
+  [sidebar.params]
+    type = "separator"
+
+[[sidebar]]
+  name = "System Status"
+  url = "https://status.teramot.com/"
+  weight = 20
+
+[[sidebar]]
+  name = "Help Center"
+  pageRef = "/help"
   weight = 30
 
-#[[main]]
-#  name = "Parent"
-#  weight = 20
-
-#[[main]]
-#  name = "example sub-menu 1"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
-
-#[[main]]
-#  name = "example sub-menu 2"
-#  parent = "Parent"
-#  pageRef = "posts"
-#  weight = 20
-
-#[[subnavigation]]
-#  name = "An interesting topic"
-#  pageRef = "tags/interesting-topic"
-#  weight = 10
-
-#[[subnavigation]]
-#  name = "My Awesome Category"
-#  pre = "github"
-#  pageRef = "categories/awesome"
-#  weight = 20
-
-#[[main]]
-#  name = "Categories"
-#  pageRef = "categories"
-#  weight = 20
-
-#[[main]]
-#  name = "Tags"
-#  pageRef = "tags"
-#  weight = 30
-
-
-# -- Footer Menu --
-# The footer menu is displayed at the bottom of the page, just before
-# the copyright notice. Configure as per the main menu above.
-
-
-[[footer]]
-  name = "Teramot.com"
-  url = "https://teramot.com/"
-  weight = 10
-
-[[footer]]
-  name = "RSS"
-  url = "/index.xml"
-  weight = 20
+[[sidebar]]
+  name = "Engineering Blog"
+  pageRef = "/blog"
+  weight = 40

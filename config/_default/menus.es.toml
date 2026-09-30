@@ -1,0 +1,77 @@
+# -- Navigation (Spanish) --
+# Same structure as menus.en.toml. The engineering blog is English-only, so
+# its entries point at the English blog.
+
+[[main]]
+  identifier = "architecture"
+  name = "Arquitectura"
+  pageRef = "/architecture"
+  weight = 20
+
+[[main]]
+  identifier = "api"
+  name = "API"
+  pageRef = "/api"
+  weight = 30
+
+[[main]]
+  identifier = "compliance"
+  name = "Compliance"
+  pageRef = "/compliance"
+  weight = 40
+
+[[main]]
+  identifier = "updates"
+  name = "Novedades"
+  pageRef = "/updates"
+  weight = 50
+
+[[main]]
+  identifier = "blog"
+  name = "Blog"
+  url = "/blog/"
+  weight = 60
+  [main.params]
+    type = "link"
+    icon = "pencil"
+
+[[main]]
+  name = "Buscar"
+  weight = 70
+  [main.params]
+    type = "search"
+
+[[main]]
+  name = "Teramot.com"
+  url = "https://teramot.com/"
+  weight = 80
+  [main.params]
+    icon = "globe-alt"
+
+[[main]]
+  name = "GitHub"
+  url = "https://github.com/HalleyScore/teramot-docs"
+  weight = 90
+  [main.params]
+    icon = "github"
+
+[[sidebar]]
+  name = "Más"
+  weight = 10
+  [sidebar.params]
+    type = "separator"
+
+[[sidebar]]
+  name = "Estado del sistema"
+  url = "https://status.teramot.com/"
+  weight = 20
+
+[[sidebar]]
+  name = "Centro de ayuda"
+  pageRef = "/help"
+  weight = 30
+
+[[sidebar]]
+  name = "Blog de ingeniería (EN)"
+  url = "/blog/"
+  weight = 40

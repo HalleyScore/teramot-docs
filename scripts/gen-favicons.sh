@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Generate the raster icon set in static/ from static/brand/teramot-favicon.svg.
 #
-# Why this exists: Blowfish ships its own blowfish-branded favicon.ico,
-# apple-touch-icon.png, android-chrome-*.png and site.webmanifest in the
-# theme's static/. Hugo publishes those to the site root, so overriding only
-# the <link> tags in layouts/partials/favicons.html left the theme's icons
+# Why this exists: the theme (Hextra) ships its own favicon.ico, favicon.svg,
+# apple-touch-icon.png, android-chrome-*.png and site.webmanifest in its
+# static/. Hugo publishes those to the site root, so overriding only the
+# <link> tags in layouts/_partials/favicons.html would leave the theme's icons
 # being served at the well-known paths -- which is what Slack, iMessage and
 # other unfurlers fall back to, because none of them render an SVG favicon.
 # Files here shadow the theme's, because project static/ wins over theme
@@ -58,6 +58,7 @@ square "$WORK/favicon-48.png"  48 0.92 none
 cp "$WORK/favicon-16.png" "$OUT/favicon-16x16.png"
 cp "$WORK/favicon-32.png" "$OUT/favicon-32x32.png"
 magick "$WORK/favicon-16.png" "$WORK/favicon-32.png" "$WORK/favicon-48.png" "$OUT/favicon.ico"
+cp "$SRC" "$OUT/favicon.svg"
 
 # App and unfurl icons: opaque. iOS composites a transparent apple-touch-icon
 # onto black, and the mark's own blues would disappear into it.

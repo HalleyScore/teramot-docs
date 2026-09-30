@@ -1,0 +1,26 @@
+{{- /*
+  Blog list as cards: the newest post featured, the rest in a grid.
+  Also used by Product Updates (content/updates/, type blog).
+*/ -}}
+{{ define "main" }}
+  <main id="content" class="tm-blog">
+    {{ partial "custom/page-begin.html" . }}
+    <header class="tm-blog-head">
+      <span class="tm-kind tm-kind-blog">{{ cond (eq .Section "blog") "Blog" (T "tmUpdatesKicker" | default "Updates") }}</span>
+      <h1>{{ .Title }}</h1>
+      <div class="content tm-blog-intro">{{ .Content }}</div>
+    </header>
+    {{- $pages := partial "utils/sort-pages" (dict "page" . "by" "date" "order" "desc") -}}
+    {{- $paginator := .Paginate $pages (site.Params.blog.list.pagerSize | default 12) -}}
+    {{- $featured := and (eq $paginator.PageNumber 1) (gt (len $paginator.Pages) 1) -}}
+    <div class="tm-bcard-grid">
+      {{- range $i, $p := $paginator.Pages }}
+        {{ partial "teramot/post-card.html" (dict "page" $p "featured" (and $featured (eq $i 0))) }}
+      {{- end }}
+    </div>
+    {{- if gt $paginator.TotalPages 1 -}}
+      {{ partial "components/blog-pager.html" $paginator }}
+    {{- end -}}
+    {{ partial "custom/page-end.html" . }}
+  </main>
+{{- end -}}

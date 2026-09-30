@@ -1,5 +1,4 @@
 # -- Markup --
-# These settings are required for the theme to function.
 
 [goldmark]
   [goldmark.parser]
@@ -9,6 +8,7 @@
       block = true
 
   [goldmark.renderer]
+    # Docs pages embed raw HTML (PDF iframes, forms, logo grids).
     unsafe = true
 
   [goldmark.extensions]
@@ -33,32 +33,22 @@
 
 [asciidocExt]
   # Resolve include:: and image:: relative to the .adoc file, so page bundles
-  # (content/posts/<slug>/index.adoc) can reference their own assets.
+  # (content/blog/<slug>/index.adoc) can reference their own assets.
   workingFolderCurrent = true
-  # Let Blowfish render the TOC from .TableOfContents instead of embedding
-  # Asciidoctor's own. Keep false to match the Markdown posts.
+  # Let the theme render the TOC from .TableOfContents, as on Markdown pages.
   preserveTOC = false
-  # Fail the build on Asciidoctor warnings (unresolved xrefs, missing includes)
-  # rather than publishing a broken page. Valid values are "fatal" and "warn".
+  # Fail the build on Asciidoctor warnings (unresolved xrefs, missing includes).
   failureLevel = "warn"
 
   [asciidocExt.attributes]
-    # Asciidoctor must be asked to build a TOC before Hugo can lift it into
-    # .TableOfContents; unlike Markdown, Hugo does not derive one itself.
-    # With preserveTOC = false above, Hugo strips it from the body and hands
-    # it to the theme, so Blowfish renders it exactly as on Markdown posts.
+    # Asciidoctor must build a TOC before Hugo can lift it into .TableOfContents.
     toc = "auto"
     # GitHub-style heading anchors (#my-heading), matching Goldmark's output.
-    # Asciidoctor's default would be #_my_heading.
     idprefix = ""
     idseparator = "-"
     # Enable kbd:[], btn:[] and menu:[] macros.
     experimental = ""
-    # Syntax highlighting. Hugo's Chroma never sees AsciiDoc content, so
-    # Asciidoctor highlights it with Rouge (a separate gem -- see the README
-    # and .github/workflows/hugo.yml). Rouge emits the same Pygments token
-    # classes as Chroma; assets/css/custom.css colours them to match.
+    # Chroma never sees AsciiDoc content, so Rouge highlights it. Rouge emits the
+    # same Pygments token classes as Chroma; assets/css/custom.css colours them.
     source-highlighter = "rouge"
-    # Emit token classes rather than inline styles, so light/dark theming
-    # stays in CSS. Inline styles could not follow the appearance switcher.
     rouge-css = "class"

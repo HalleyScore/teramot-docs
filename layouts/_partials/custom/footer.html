@@ -1,0 +1,33 @@
+{{- /* Footer columns above Hextra's copyright line. Labels live in i18n/. */ -}}
+<div class="tm-footer">
+  <div class="tm-footer-brand">
+    <a href="https://teramot.com/" aria-label="Teramot home">
+      <img class="tm-only-light" src="{{ "brand/teramot-logo.svg" | relURL }}" alt="Teramot" width="132" height="32">
+      <img class="tm-only-dark" src="{{ "brand/teramot-logo-on-dark.svg" | relURL }}" alt="" aria-hidden="true" width="132" height="32">
+    </a>
+    <p>{{ T "tmFooterTagline" }}</p>
+  </div>
+  <nav class="tm-footer-columns" aria-label="Footer">
+    <div>
+      <p class="tm-footer-title">{{ T "tmFooterDocs" }}</p>
+      <a href="{{ "/architecture/" | relLangURL }}">{{ T "tmArchitecture" }}</a>
+      <a href="{{ "/api/intro/" | relLangURL }}">{{ T "tmApiReference" }}</a>
+      <a href="{{ "/compliance/about/" | relLangURL }}">{{ T "tmCompliance" }}</a>
+    </div>
+    <div>
+      <p class="tm-footer-title">{{ T "tmFooterResources" }}</p>
+      <a href="{{ "/updates/" | relLangURL }}">{{ T "tmProductUpdates" }}</a>
+      {{- /* The blog is English-only. */}}
+      <a href="{{ "/blog/" | relURL }}">{{ T "tmEngineeringBlog" }}</a>
+      <a href="https://status.teramot.com/">{{ T "tmSystemStatus" }}</a>
+      <a href="{{ "/help/" | relLangURL }}">{{ T "tmHelpCenter" }}</a>
+    </div>
+    <div>
+      <p class="tm-footer-title">Teramot</p>
+      <a href="https://teramot.com/">{{ T "tmAboutUs" }}</a>
+      <a href="{{ "/compliance/transparency/privacy-policy/" | relLangURL }}">{{ T "tmPrivacyPolicy" }}</a>
+      <a href="{{ "/terms/" | relLangURL }}">{{ T "tmTermsOfService" }}</a>
+      <a href="{{ "/index.xml" | relURL }}">RSS</a>
+    </div>
+  </nav>
+</div>

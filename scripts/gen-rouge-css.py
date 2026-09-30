@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Generate assets/css/custom.css: Rouge syntax colors matching Blowfish's Chroma.
+"""Generate the Rouge block of assets/css/custom.css: AsciiDoc code colours matching Hextra's Chroma.
 
 Markdown code blocks are highlighted by Hugo's Chroma; AsciiDoc code blocks are
 highlighted by Asciidoctor's Rouge (see config/_default/markup.toml). Both emit
 the same Pygments token classes (.k, .nf, .s1, ...), so the two differ only in
 the wrapper: Chroma marks it <pre class="chroma">, Rouge <pre class="rouge">.
 
-This script lifts the theme's generated Chroma palettes -- light and dark --
-and re-points them at Rouge's wrapper, so both formats render identically in
-both appearances without a second colour scheme to maintain.
+This script lifts the theme's Chroma palettes -- light and dark -- and
+re-points them at Rouge's wrapper, so both formats render identically in both
+appearances without a second colour scheme to maintain.
 
-Re-run after upgrading the Blowfish submodule:
+Re-run after upgrading the Hextra submodule:
 
     python3 scripts/gen-rouge-css.py
 """
@@ -20,17 +20,15 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SRC = ROOT / "themes/blowfish/assets/css/components/chroma.css"
+CHROMA = ROOT / "themes/hextra/assets/css/chroma"
 OUT = ROOT / "assets/css/custom.css"
 
-# The theme scopes its two palettes with these selectors. Rules are emitted
-# flattened rather than nested: custom.css is concatenated and minified but
-# never run through PostCSS, so native CSS nesting would survive into the
-# bundle and would only work in browsers that support it. The theme's own
-# compiled CSS is flat, so this matches it exactly.
+# (palette file, block that scopes it in the theme, scope emitted here). Rules
+# are emitted flattened: custom.css is concatenated and minified but never run
+# through PostCSS, so native CSS nesting would survive into the bundle.
 SCOPES = (
-    ("html:not(.dark) {", "html:not(.dark)"),
-    ("html.dark {", "html.dark"),
+    (CHROMA / "light.css", ".highlight {", "html:not(.dark)"),
+    (CHROMA / "dark.css", ".dark .highlight {", "html.dark"),
 )
 
 # Chroma-only line-numbering constructs that Rouge never emits.
@@ -60,7 +58,7 @@ HEADER = """/* -- Rouge Highlight (AsciiDoc) -- */
  * Padding, rounding and overflow are not set here: both formats sit inside
  * the same prose styles and inherit them.
  *
- * Source: themes/blowfish/assets/css/components/chroma.css
+ * Source: themes/hextra/assets/css/chroma/{light,dark}.css
  * Regenerate after upgrading the theme: python3 scripts/gen-rouge-css.py
  */
 """
@@ -115,13 +113,11 @@ def add_aliases(rules: list[str], scope: str) -> list[str]:
 
 
 def main() -> int:
-    if not SRC.exists():
-        sys.exit(f"{SRC} not found -- is the Blowfish submodule checked out?")
-    css = SRC.read_text()
-
     out = [HEADER]
-    for opener, scope in SCOPES:
-        rules = add_aliases(convert(extract(css, opener), scope), scope)
+    for src, opener, scope in SCOPES:
+        if not src.exists():
+            sys.exit(f"{src} not found -- is the Hextra submodule checked out?")
+        rules = add_aliases(convert(extract(src.read_text(), opener), scope), scope)
         out.append("\n".join(rules) + "\n")
 
     block = "\n".join([BEGIN, *out, END])

@@ -1,0 +1,16 @@
+{{- /*
+  A Chart.js chart. The inner text is the body of the Chart.js config object
+  (type, data, options), e.g. {{< chart >}}type: 'bar', data: {...}{{< /chart >}}.
+  The library is loaded once per page by layouts/_partials/custom/head-end.html.
+*/ -}}
+{{- $id := printf "chart-%s" (md5 (printf "%s-%d" .Page.RelPermalink .Ordinal)) -}}
+<div class="tm-chart">
+  <canvas id="{{ $id }}"></canvas>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      new Chart(document.getElementById("{{ $id }}"), {
+        {{ .Inner | safeJS }}
+      });
+    });
+  </script>
+</div>

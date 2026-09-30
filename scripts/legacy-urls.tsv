@@ -1,0 +1,54 @@
+# Every URL published by docs.teramot.com (the previous site's sitemap, 2026-09-30),
+# mapped to where it lives now.
+# Format: <old URL><TAB><path in this site>. scripts/check_site.py fails the
+# build if a path stops existing, so published links cannot break silently.
+# A path may be a redirect (`aliases:` in front matter) when its page was
+# removed: /getting-started/* now redirects into /architecture/.
+https://docs.teramot.com/	/
+https://docs.teramot.com/api/authentication	/api/authentication/
+https://docs.teramot.com/api/connect-clients	/api/connect-clients/
+https://docs.teramot.com/api/intro	/api/intro/
+https://docs.teramot.com/api/tools-reference	/api/tools-reference/
+https://docs.teramot.com/compliance/about	/compliance/about/
+https://docs.teramot.com/compliance/Policies/access-control	/compliance/Policies/access-control/
+https://docs.teramot.com/compliance/Policies/asset-management	/compliance/Policies/asset-management/
+https://docs.teramot.com/compliance/Policies/business-continuity	/compliance/Policies/business-continuity/
+https://docs.teramot.com/compliance/Policies/code-of-conduct	/compliance/Policies/code-of-conduct/
+https://docs.teramot.com/compliance/Policies/cryptography	/compliance/Policies/cryptography/
+https://docs.teramot.com/compliance/Policies/data-management	/compliance/Policies/data-management/
+https://docs.teramot.com/compliance/Policies/human-resources	/compliance/Policies/human-resources/
+https://docs.teramot.com/compliance/Policies/incident-response	/compliance/Policies/incident-response/
+https://docs.teramot.com/compliance/Policies/information-security-aup	/compliance/Policies/information-security-aup/
+https://docs.teramot.com/compliance/Policies/information-security-roles	/compliance/Policies/information-security-roles/
+https://docs.teramot.com/compliance/Policies/operations-security	/compliance/Policies/operations-security/
+https://docs.teramot.com/compliance/Policies/physical-security	/compliance/Policies/physical-security/
+https://docs.teramot.com/compliance/Policies/risk-management	/compliance/Policies/risk-management/
+https://docs.teramot.com/compliance/Policies/secure-development	/compliance/Policies/secure-development/
+https://docs.teramot.com/compliance/Policies/third-party-management	/compliance/Policies/third-party-management/
+https://docs.teramot.com/compliance/Provider	/compliance/Provider/
+https://docs.teramot.com/compliance/Transparency/bug-bounty	/compliance/Transparency/bug-bounty/
+https://docs.teramot.com/compliance/Transparency/job-descriptions	/compliance/Transparency/job-descriptions/
+https://docs.teramot.com/compliance/transparency/privacy-policy	/compliance/transparency/privacy-policy/
+https://docs.teramot.com/compliance/Transparency/security-commitments	/compliance/Transparency/security-commitments/
+https://docs.teramot.com/compliance/Transparency/system-description	/compliance/Transparency/system-description/
+https://docs.teramot.com/compliance/Transparency/terms-of-service	/compliance/Transparency/terms-of-service/
+https://docs.teramot.com/compliance/Transparency/whistleblower-channel	/compliance/Transparency/whistleblower-channel/
+https://docs.teramot.com/getting-started/aws-bucket-setup	/getting-started/aws-bucket-setup/
+https://docs.teramot.com/getting-started/connect-your-data	/getting-started/connect-your-data/
+https://docs.teramot.com/getting-started/faq	/getting-started/faq/
+https://docs.teramot.com/getting-started/getting-started	/getting-started/getting-started/
+https://docs.teramot.com/getting-started/model-deployment	/getting-started/model-deployment/
+https://docs.teramot.com/getting-started/multi-tenant-deployment	/getting-started/multi-tenant-deployment/
+https://docs.teramot.com/getting-started/poc-guide	/getting-started/poc-guide/
+https://docs.teramot.com/help	/help/
+https://docs.teramot.com/privacy	/privacy/
+https://docs.teramot.com/status/intro	/status/intro/
+https://docs.teramot.com/terms	/terms/
+https://docs.teramot.com/updates	/updates/
+https://docs.teramot.com/updates/archive	/updates/archive/
+https://docs.teramot.com/updates/authors	/updates/authors/
+https://docs.teramot.com/updates/tags	/updates/tags/
+https://docs.teramot.com/updates/tags/product	/updates/tags/product/
+https://docs.teramot.com/updates/tags/roadmap	/updates/tags/roadmap/
+https://docs.teramot.com/updates/tags/updates	/updates/tags/updates/
+https://docs.teramot.com/updates/welcome	/updates/welcome/

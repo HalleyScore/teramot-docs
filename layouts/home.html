@@ -1,0 +1,60 @@
+{{- /* Landing page. Hero, docs cards and blog teaser come from the front matter
+       of content/_index.md (and _index.es.md); posts from content/blog/. */ -}}
+{{ define "main" }}
+  <main id="content" class="tm-home">
+    <section class="tm-hero">
+      {{- with .Params.hero.eyebrow }}<p class="tm-eyebrow">{{ . }}</p>{{ end }}
+      <h1>{{ .Params.hero.title | default .Title }}</h1>
+      {{- with .Params.hero.lead }}<p class="tm-lead">{{ . | markdownify }}</p>{{ end }}
+      <div class="tm-hero-actions">
+        {{- range .Params.hero.buttons }}
+          {{- /* `lang` pins a link to a language other than the page's own. */ -}}
+          {{- $url := cond (isset . "lang") (.url | relURL) (.url | relLangURL) }}
+          <a class="tm-button{{ if .secondary }} tm-button-secondary{{ end }}" href="{{ $url }}"{{ with .lang }} hreflang="{{ . }}"{{ end }}>{{ .label }}</a>
+        {{- end }}
+      </div>
+    </section>
+
+    {{- with .Params.docs }}
+      <section class="tm-home-section" aria-labelledby="tm-docs-heading">
+        <div class="tm-home-section-head">
+          <span class="tm-kind tm-kind-docs">{{ .kicker }}</span>
+          <h2 id="tm-docs-heading">{{ .title }}</h2>
+          {{- with .lead }}<p>{{ . | markdownify }}</p>{{ end }}
+        </div>
+        <div class="tm-card-grid">
+          {{- range .cards }}
+            <a class="tm-card" href="{{ .url | relLangURL }}">
+              <span class="tm-card-icon">{{ partial "utils/icon.html" (dict "name" (.icon | default "book-open") "attributes" "height=22") }}</span>
+              <span class="tm-card-title">{{ .title }}</span>
+              <span class="tm-card-text">{{ .text }}</span>
+            </a>
+          {{- end }}
+        </div>
+      </section>
+    {{- end }}
+
+    {{- with .Params.blog }}
+      {{- /* The blog is English-only: every language's home shows the English posts. */ -}}
+      {{- $en := index (where hugo.Sites "Language.Lang" "en") 0 -}}
+      {{- $posts := where $en.RegularPages "Section" "blog" -}}
+      <section class="tm-home-section" aria-labelledby="tm-blog-heading">
+        <div class="tm-home-section-head">
+          <span class="tm-kind tm-kind-blog">{{ .kicker }}</span>
+          <h2 id="tm-blog-heading">{{ .title }}</h2>
+          {{- with .lead }}<p>{{ . | markdownify }}</p>{{ end }}
+        </div>
+        {{- if $posts }}
+          <div class="tm-bcard-grid tm-bcard-grid-home">
+            {{- range first (.count | default 3) $posts.ByDate.Reverse }}
+              {{ partial "teramot/post-card.html" (dict "page" .) }}
+            {{- end }}
+          </div>
+        {{- end }}
+        {{- with .link }}<p class="tm-more"><a href="{{ .url | relURL }}">{{ .label }}</a></p>{{ end }}
+      </section>
+    {{- end }}
+
+    {{- with .Content }}<section class="tm-home-note content">{{ . }}</section>{{ end }}
+  </main>
+{{ end }}

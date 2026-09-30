@@ -1,0 +1,17 @@
+{{/*
+  Teramot icons, replacing Hextra's (layouts/_partials/favicons.html in the theme).
+
+  Slack, iMessage, WhatsApp and most crawlers do not support SVG favicons and
+  fall back to /favicon.ico at the site root, so the raster set must exist as
+  real files. They are generated into static/ by scripts/gen-favicons.sh and
+  shadow the theme's own icons at the same paths.
+
+  Bump $v when the mark changes, to push past browser and unfurler caches.
+*/}}
+{{- $v := "teramot-2" -}}
+<link rel="icon" type="image/svg+xml" href="{{ "brand/teramot-favicon.svg" | relURL }}?v={{ $v }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}?v={{ $v }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}?v={{ $v }}">
+<link rel="shortcut icon" href="{{ "favicon.ico" | relURL }}?v={{ $v }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}?v={{ $v }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}?v={{ $v }}">

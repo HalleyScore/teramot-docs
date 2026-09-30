@@ -1,0 +1,18 @@
+{{- /* One timeline entry: icon (Hextra icon name), header, badge, subheader; md=true renders the body as Markdown. */ -}}
+{{- $icon := .Get "icon" | default "check" -}}
+{{- /* Accept `lock` for Hextra's `lock-closed`. */ -}}
+{{- $icon = index (dict "lock" "lock-closed") $icon | default $icon -}}
+{{- $md := .Get "md" | default false -}}
+<li class="tm-timeline-item">
+  <span class="tm-timeline-icon">{{ partial "utils/icon.html" (dict "name" $icon "attributes" "height=16") }}</span>
+  <div class="tm-timeline-card">
+    <div class="tm-timeline-head">
+      {{- with .Get "header" }}<p class="tm-timeline-title">{{ . }}</p>{{ end -}}
+      {{- with .Get "badge" }}<span class="tm-badge">{{ . }}</span>{{ end -}}
+    </div>
+    {{- with .Get "subheader" }}<p class="tm-timeline-subtitle">{{ . }}</p>{{ end -}}
+    <div class="tm-timeline-body">
+      {{- if $md }}{{ .Inner | markdownify }}{{ else }}{{ .Inner }}{{ end -}}
+    </div>
+  </div>
+</li>

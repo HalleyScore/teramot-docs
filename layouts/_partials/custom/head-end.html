@@ -1,0 +1,26 @@
+{{/* GoatCounter (cookieless, no personal data) on blog pages only; see params.toml. */}}
+{{ if eq .Type "blog" }}
+  {{ with site.Params.goatcounter.code }}
+    {{ if hugo.IsProduction }}
+      <script
+        data-goatcounter="https://{{ . }}.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js"></script>
+    {{ end }}
+  {{ end }}
+  <script id="engagement-config" type="application/json">
+    {{ dict "goatcounterCode" (site.Params.goatcounter.code | default "") | jsonify | safeJS }}
+  </script>
+  {{ with resources.Get "js/engagement.js" }}
+    {{ $js := . | resources.Minify | resources.Fingerprint "sha512" }}
+    <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+  {{ end }}
+{{ end }}
+
+{{/* Chart.js, only on pages that use the {{< chart >}} shortcode. */}}
+{{ if .HasShortcode "chart" }}
+  {{ $lib := resources.Get "lib/chart/chart.min.js" }}
+  {{ $defaults := resources.Get "js/chart-defaults.js" | resources.Minify }}
+  {{ $bundle := slice $lib $defaults | resources.Concat "js/chart.bundle.js" | resources.Fingerprint "sha512" }}
+  <script src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
+{{ end }}

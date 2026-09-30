@@ -1,3 +1,7 @@
+/* Teramot branding on top of Hextra. Hextra concatenates this file after its
+   own compiled CSS; it is minified but not run through PostCSS, so keep it
+   plain, flat CSS (no nesting, no @apply). */
+
 @font-face {
   font-family: "Manrope";
   src: url("../fonts/Manrope-VariableFont_wght.ttf") format("truetype");
@@ -7,426 +11,822 @@
 }
 
 :root {
+  /* Hextra derives its whole primary palette from these. #253de5 = Teramot blue. */
+  --primary-hue: 233deg;
+  --primary-saturation: 79%;
+  --primary-lightness: 52%;
+
   --tm-blue: #253de5;
   --tm-blue-soft: #5a6df3;
   --tm-mint: #91dfc8;
   --tm-ink: #0b0f14;
-  --tm-paper: #fafaf7;
   --tm-surface: #ffffff;
   --tm-muted: #536071;
   --tm-rule: rgba(11, 15, 20, 0.1);
   --tm-rule-strong: rgba(11, 15, 20, 0.17);
-
-  --color-neutral: 250, 250, 247;
-  --color-neutral-50: 255, 255, 255;
-  --color-neutral-100: 247, 248, 250;
-  --color-neutral-200: 229, 231, 235;
-  --color-neutral-300: 209, 213, 219;
-  --color-neutral-400: 156, 163, 175;
-  --color-neutral-500: 107, 114, 128;
-  --color-neutral-600: 75, 85, 99;
-  --color-neutral-700: 55, 65, 81;
-  --color-neutral-800: 28, 37, 54;
-  --color-neutral-900: 11, 15, 20;
-
-  --color-primary-50: 239, 241, 255;
-  --color-primary-100: 222, 226, 255;
-  --color-primary-200: 193, 199, 255;
-  --color-primary-300: 151, 162, 255;
-  --color-primary-400: 90, 109, 243;
-  --color-primary-500: 37, 61, 229;
-  --color-primary-600: 37, 61, 229;
-  --color-primary-700: 29, 47, 176;
-  --color-primary-800: 30, 47, 143;
-  --color-primary-900: 25, 36, 101;
-
-  --color-secondary-50: 240, 253, 249;
-  --color-secondary-100: 218, 247, 238;
-  --color-secondary-200: 190, 239, 223;
-  --color-secondary-300: 145, 223, 200;
-  --color-secondary-400: 94, 197, 168;
-  --color-secondary-500: 50, 175, 145;
-  --color-secondary-600: 36, 146, 119;
-  --color-secondary-700: 28, 116, 96;
-  --color-secondary-800: 24, 91, 77;
-  --color-secondary-900: 20, 67, 58;
+  --tm-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 html.dark {
+  --primary-hue: 233deg;
+  --primary-saturation: 90%;
+  --primary-lightness: 68%;
+
   --tm-ink: #f8fafc;
-  --tm-paper: #0b0f14;
   --tm-surface: #111827;
   --tm-muted: #a5afbf;
   --tm-rule: rgba(248, 250, 252, 0.12);
   --tm-rule-strong: rgba(248, 250, 252, 0.2);
 }
 
-html,
-body {
-  background-color: var(--tm-paper);
+h1,
+h2,
+h3,
+.content h1,
+.content h2,
+.content h3 {
+  font-family: var(--tm-display);
 }
 
-body {
-  color: var(--tm-ink);
-  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  line-height: 1.65;
+/* Theme-aware images: <img class="tm-only-light"> / <img class="tm-only-dark">. */
+html.dark .tm-only-light,
+html:not(.dark) .tm-only-dark {
+  display: none !important;
 }
 
-body > header {
-  position: relative;
-  z-index: 10;
+/* Tailwind's preflight (img { height: auto; max-width: 100% }) overrides HTML
+   width/height attributes. Honour the sizes the logo rows in
+   compliance/about use. */
+.content img[height="70"] {
+  height: 70px;
+  width: auto;
 }
 
-.main-menu {
-  min-height: 4.75rem;
-  border-bottom: 1px solid var(--tm-rule);
+.content img[height="90"] {
+  height: 90px;
+  width: auto;
 }
 
-.main-menu .logo {
-  display: block;
-  width: 2.75rem;
+.content img[width="200"] {
+  width: 200px;
   height: auto;
 }
 
-.main-menu .logo svg {
-  width: 100% !important;
-  height: auto !important;
+.content img[height],
+.content img[width] {
+  display: inline-block;
+  margin: 0;
 }
 
-html.dark .main-menu .logo svg path[fill="#0B0F14"] {
-  fill: #ffffff;
+/* -- Home -- */
+
+.tm-home {
+  width: 100%;
+  max-width: var(--hextra-max-page-width);
+  margin: 0 auto;
+  padding: 3rem max(env(safe-area-inset-left), 1.5rem) 4rem max(env(safe-area-inset-right), 1.5rem);
 }
 
-.main-menu .text-sm.font-medium,
-.main-menu button {
-  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease;
-}
-
-.main-menu .text-sm.font-medium:hover,
-.main-menu .text-base.font-medium:hover,
-.main-menu button:hover {
-  color: var(--tm-blue);
-}
-
-#search-button {
-  border-color: var(--tm-rule-strong);
-  background: color-mix(in srgb, var(--tm-surface) 80%, transparent);
-  border-radius: 999px;
-}
-
-#search-button:hover {
-  border-color: var(--tm-blue-soft);
-  background: color-mix(in srgb, var(--tm-blue) 7%, var(--tm-surface));
-}
-
-#main-content {
-  min-width: 0;
-  padding-top: 1.5rem;
-}
-
-/* The built-in Blowfish landing layout gives us a semantic hero without
-   replacing the theme's templates. The background and type are Teramot's. */
-main > article.relative.isolate.overflow-hidden {
-  position: relative;
-  margin-top: 1rem;
-  overflow: hidden;
+.tm-hero {
+  padding: 3.5rem 1.5rem;
   border: 1px solid color-mix(in srgb, var(--tm-blue) 15%, var(--tm-rule));
   border-radius: 1.5rem;
   background:
     radial-gradient(circle at 85% 15%, rgba(145, 223, 200, 0.4), transparent 28%),
     radial-gradient(circle at 10% 90%, rgba(90, 109, 243, 0.12), transparent 35%),
-    linear-gradient(135deg, #f2f3ff 0%, var(--tm-paper) 54%, #effaf6 100%);
-  box-shadow: 0 24px 70px -48px rgba(37, 61, 229, 0.45);
+    linear-gradient(135deg, #f2f3ff 0%, #fafaf7 54%, #effaf6 100%);
+  text-align: center;
 }
 
-html.dark main > article.relative.isolate.overflow-hidden {
-  border-color: rgba(145, 223, 200, 0.2);
+html.dark .tm-hero {
   background:
-    radial-gradient(circle at 85% 15%, rgba(37, 61, 229, 0.3), transparent 28%),
-    radial-gradient(circle at 10% 90%, rgba(145, 223, 200, 0.12), transparent 35%),
-    linear-gradient(135deg, #111b46 0%, #0b0f14 58%, #102b29 100%);
-  box-shadow: 0 24px 70px -48px rgba(0, 0, 0, 0.9);
+    radial-gradient(circle at 85% 15%, rgba(145, 223, 200, 0.12), transparent 30%),
+    radial-gradient(circle at 10% 90%, rgba(90, 109, 243, 0.2), transparent 38%),
+    linear-gradient(135deg, #121833 0%, #0b0f14 60%, #0d1f1b 100%);
 }
 
-main > article.relative.isolate.overflow-hidden > section {
-  position: relative;
-  z-index: 1;
-  padding-top: clamp(4.5rem, 9vw, 8rem);
-  padding-bottom: clamp(4rem, 8vw, 7rem);
-}
-
-main > article.relative.isolate.overflow-hidden h1 {
-  max-width: 12ch;
-  margin-inline: auto;
-  color: var(--tm-ink);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.065em;
-}
-
-main > article.relative.isolate.overflow-hidden .landing-rise:first-child {
+.tm-eyebrow {
+  margin: 0 0 1rem;
   color: var(--tm-blue);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: 0.2em;
+  font-family: var(--tm-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-html.dark main > article.relative.isolate.overflow-hidden .landing-rise:first-child {
+html.dark .tm-eyebrow {
   color: var(--tm-mint);
 }
 
-main > article.relative.isolate.overflow-hidden h1 + p {
-  color: var(--tm-muted);
+.tm-hero h1 {
+  max-width: 22ch;
+  margin: 0 auto;
+  color: var(--tm-ink);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-main > article.relative.isolate.overflow-hidden .landing-rise-4 {
+.tm-lead {
+  max-width: 60ch;
+  margin: 1.25rem auto 0;
   color: var(--tm-muted);
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
-main > article.relative.isolate.overflow-hidden .landing-rise-4 ul {
+.tm-hero-actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.65rem;
-  margin-top: 1.75rem;
-  padding: 0;
-  list-style: none;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
-main > article.relative.isolate.overflow-hidden .landing-rise-4 li {
-  margin: 0;
-  padding: 0.55rem 0.9rem;
-  border: 1px solid var(--tm-rule-strong);
+.tm-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--tm-blue);
   border-radius: 999px;
-  background: color-mix(in srgb, var(--tm-surface) 72%, transparent);
-  font-size: 0.9rem;
-}
-
-main > article.relative.isolate.overflow-hidden .landing-rise-4 li::before {
-  content: "";
-}
-
-main > article.relative.isolate.overflow-hidden .landing-rise-3 a {
-  min-height: 3rem;
-  border-radius: 999px;
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.95rem;
-}
-
-main > article.relative.isolate.overflow-hidden .landing-rise-3 a:not([class*="border"]) {
   background: var(--tm-blue);
+  color: #fff;
+  font-family: var(--tm-display);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
-main > article.relative.isolate.overflow-hidden .landing-rise-3 a[class*="border"] {
+.tm-button:hover {
+  background: #1d2fb0;
+  border-color: #1d2fb0;
+}
+
+.tm-button-secondary {
   border-color: var(--tm-rule-strong);
   background: color-mix(in srgb, var(--tm-surface) 76%, transparent);
   color: var(--tm-ink);
 }
 
-main > article.relative.isolate.overflow-hidden .landing-rise-3 a[class*="border"]:hover {
+.tm-button-secondary:hover {
   border-color: var(--tm-blue);
+  background: color-mix(in srgb, var(--tm-surface) 76%, transparent);
   color: var(--tm-blue);
 }
 
-main > section {
-  margin-top: clamp(3rem, 7vw, 6rem);
+.tm-home-section {
+  margin-top: 4rem;
 }
 
-main > section > h2 {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  color: var(--tm-muted);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.75rem;
+.tm-home-section-head {
+  margin-bottom: 1.5rem;
+}
+
+.tm-home-section-head h2 {
+  margin: 0.5rem 0 0;
+  color: var(--tm-ink);
+  font-size: 1.75rem;
   font-weight: 800;
-  letter-spacing: 0.18em;
-  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.tm-home-section-head p {
+  margin: 0.5rem 0 0;
+  color: var(--tm-muted);
+}
+
+/* Docs and Blog get their own label colour so the two halves read apart. */
+.tm-kind {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-family: var(--tm-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-main > section > h2::after {
-  height: 1px;
-  flex: 1;
-  background: var(--tm-rule);
-  content: "";
-}
-
-.article-link--card,
-.article-link--simple.showCards {
-  border-color: var(--tm-rule-strong);
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--tm-surface) 86%, transparent);
-  box-shadow: 0 8px 24px -22px rgba(11, 15, 20, 0.65);
-  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-}
-
-.article-link--card {
-  border-top: 3px solid var(--tm-blue-soft);
-}
-
-.article-link--card:hover,
-.article-link--simple.showCards:hover {
-  border-color: var(--tm-blue-soft);
-  box-shadow: 0 22px 42px -28px rgba(37, 61, 229, 0.5);
-  transform: translateY(-0.25rem);
-}
-
-.article-link--card > .p-4 {
-  padding: 1.5rem;
-}
-
-.article-link--card h2,
-.article-link--simple h2 {
-  color: var(--tm-ink);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.03em;
-}
-
-.article-link--card h2 a:hover,
-.article-link--simple h2 a:hover,
-.article-link__summary a {
+.tm-kind-docs {
+  background: color-mix(in srgb, var(--tm-blue) 12%, transparent);
   color: var(--tm-blue);
 }
 
-.article-link__summary {
+.tm-kind-blog {
+  background: color-mix(in srgb, var(--tm-mint) 35%, transparent);
+  color: #1c7460;
+}
+
+html.dark .tm-kind-docs {
+  color: var(--tm-blue-soft);
+}
+
+html.dark .tm-kind-blog {
+  color: var(--tm-mint);
+}
+
+.tm-card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+}
+
+.tm-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1rem;
+  background: var(--tm-surface);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.tm-card:hover {
+  border-color: var(--tm-blue-soft);
+  box-shadow: 0 18px 40px -32px rgba(37, 61, 229, 0.6);
+  transform: translateY(-2px);
+}
+
+.tm-card-icon {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--tm-blue) 10%, transparent);
+  color: var(--tm-blue);
+}
+
+html.dark .tm-card-icon {
+  color: var(--tm-blue-soft);
+}
+
+.tm-card-title {
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.tm-card-text {
   color: var(--tm-muted);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-main > section > .mt-10.flex.justify-center a button {
-  border-color: var(--tm-blue);
-  border-radius: 999px;
+.tm-more {
+  margin-top: 1.25rem;
+  font-weight: 600;
+}
+
+.tm-more a,
+.tm-home-note a {
   color: var(--tm-blue);
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+.tm-home-note {
+  margin-top: 4rem;
+  color: var(--tm-muted);
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* -- Blog cards (layouts/_partials/teramot/post-card.html) -- */
+
+.tm-blog {
+  width: 100%;
+  max-width: var(--hextra-max-page-width);
+  margin: 0 auto;
+  padding: 2.5rem max(env(safe-area-inset-left), 1.5rem) 4rem max(env(safe-area-inset-right), 1.5rem);
+}
+
+.tm-blog-head {
+  max-width: 48rem;
+  margin-bottom: 2.5rem;
+}
+
+.tm-blog-head h1 {
+  margin: 0.75rem 0 0;
+  color: var(--tm-ink);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.tm-blog-intro {
+  margin-top: 1rem;
+  color: var(--tm-muted);
+}
+
+.tm-bcard-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
+
+.tm-bcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1.25rem;
+  background: var(--tm-surface);
+  transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.tm-bcard:hover {
+  border-color: var(--tm-blue-soft);
+  box-shadow: 0 24px 50px -36px rgba(37, 61, 229, 0.6);
+  transform: translateY(-3px);
+}
+
+/* The whole card is the link; tags sit above it so they stay clickable. */
+.tm-bcard-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.tm-bcard-media {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1.9 / 1;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(145, 223, 200, 0.55), transparent 40%),
+    linear-gradient(135deg, #253de5 0%, #1d2fb0 55%, #0b0f14 100%);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tm-bcard-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tm-cat-security {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(90, 109, 243, 0.6), transparent 42%),
+    linear-gradient(135deg, #0b0f14 0%, #1c2536 50%, #253de5 100%);
+}
+
+.tm-cat-data {
+  background:
+    radial-gradient(circle at 20% 80%, rgba(37, 61, 229, 0.55), transparent 45%),
+    linear-gradient(135deg, #1c7460 0%, #32af91 55%, #91dfc8 100%);
+}
+
+.tm-cat-announcements {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(135deg, #5a6df3 0%, #97a2ff 60%, #c1c7ff 100%);
+}
+
+.tm-bcard-glyph {
+  display: inline-flex;
+  padding: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+}
+
+.tm-bcard-category {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(11, 15, 20, 0.55);
+  color: #fff;
+  font-family: var(--tm-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tm-bcard-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.35rem 1.5rem 1.5rem;
+}
+
+.tm-bcard-title {
+  margin: 0;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.tm-bcard:hover .tm-bcard-title {
+  color: var(--tm-blue);
+}
+
+html.dark .tm-bcard:hover .tm-bcard-title {
+  color: var(--tm-blue-soft);
+}
+
+.tm-bcard-summary {
+  margin: 0;
+  color: var(--tm-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tm-bcard-foot {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.tm-bcard-foot .tm-post-meta {
+  font-size: 0.8rem;
+}
+
+.tm-bcard-tags {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tm-bcard-tags a {
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tm-blue) 8%, transparent);
+  color: var(--tm-muted);
+  font-size: 0.75rem;
+}
+
+.tm-bcard-tags a:hover {
+  color: var(--tm-blue);
+}
+
+/* The newest post spans the row, image beside the text. */
+@media (min-width: 768px) {
+  .tm-bcard-featured {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .tm-bcard-featured .tm-bcard-media {
+    width: 48%;
+    flex-shrink: 0;
+    aspect-ratio: auto;
+    min-height: 20rem;
+  }
+
+  .tm-bcard-featured .tm-bcard-body {
+    justify-content: center;
+    padding: 2.25rem 2.5rem;
+  }
+
+  .tm-bcard-featured .tm-bcard-title {
+    font-size: 1.85rem;
+  }
+
+  .tm-bcard-featured .tm-bcard-summary {
+    font-size: 1.05rem;
+  }
+
+  .tm-bcard-featured .tm-bcard-foot {
+    margin-top: 0.5rem;
+  }
+}
+
+/* -- Blog post meta -- */
+
+.tm-post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0;
+  color: var(--tm-muted);
+  font-size: 0.875rem;
+}
+
+.tm-post-meta > span + span::before {
+  content: "·";
+  margin: 0 0.5rem;
+}
+
+.tm-post-meta > span[hidden] {
+  display: none;
+}
+
+.tm-post-authors {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tm-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tm-author:hover span {
+  color: var(--tm-blue);
+  text-decoration: underline;
+}
+
+.tm-author img {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.tm-sep {
+  margin-right: 0.35rem;
+}
+
+/* -- Author pages -- */
+
+.tm-author-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+.tm-author-card img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.tm-author-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
   font-size: 0.9rem;
 }
 
-main > section > .mt-10.flex.justify-center a button:hover {
-  background: var(--tm-blue);
-  color: #ffffff;
-}
-
-#single_header {
-  max-width: 48rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--tm-rule);
-}
-
-#single_header h1,
-.article-content h2,
-.article-content h3,
-.article-content h4 {
-  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: -0.04em;
-}
-
-#single_header h1 {
-  font-weight: 800;
-}
-
-.article-content {
-  font-size: 1.08rem;
-  line-height: 1.85;
-}
-
-.article-content a {
+.tm-author-links a {
   color: var(--tm-blue);
-  text-decoration-color: color-mix(in srgb, var(--tm-blue) 36%, transparent);
-  text-underline-offset: 0.2em;
 }
 
-.article-content blockquote {
-  border-inline-start-color: var(--tm-blue-soft);
-  background: color-mix(in srgb, var(--tm-blue) 5%, var(--tm-paper));
+/* -- Shortcodes (layouts/_shortcodes) -- */
+
+.tm-intro {
+  margin-bottom: 2.25rem;
+  color: var(--tm-muted);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.7;
 }
 
-.article-content pre {
-  border: 1px solid rgba(145, 223, 200, 0.2);
+.tm-figure {
+  width: 100%;
+  margin: 2.5rem auto;
+}
+
+.tm-figure-body {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tm-figure-body svg {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.tm-figure figcaption {
+  margin-top: 0.75rem;
+  color: var(--tm-muted);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.tm-stats {
+  display: grid;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .tm-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .tm-stats-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tm-stats-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tm-stat {
+  padding: 1.5rem;
+  border: 1px solid var(--tm-rule);
   border-radius: 1rem;
-  box-shadow: 0 18px 40px -30px rgba(11, 15, 20, 0.8);
+  background: var(--tm-surface);
+  text-align: center;
 }
 
-#site-footer {
+.content .tm-stat p {
+  margin: 0;
+}
+
+.content .tm-stat .tm-stat-value {
+  color: var(--tm-blue);
+  font-family: var(--tm-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+html.dark .content .tm-stat .tm-stat-value {
+  color: var(--tm-blue-soft);
+}
+
+.content .tm-stat .tm-stat-label {
+  margin-top: 0.5rem;
+  color: var(--tm-ink);
+  font-weight: 700;
+}
+
+.tm-stat-note {
+  margin-top: 0.5rem;
+  color: var(--tm-muted);
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+}
+
+.tm-chart {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.content ol.tm-timeline {
+  margin: 2rem 0 2rem 1rem;
+  padding: 0;
+  border-inline-start: 2px solid var(--tm-blue-soft);
+  list-style: none;
+}
+
+.content ol.tm-timeline > li {
+  margin: 0;
+}
+
+.tm-timeline-item {
+  position: relative;
+  padding: 0 0 1.5rem 2rem;
+}
+
+.tm-timeline-icon {
+  position: absolute;
+  top: 1.1rem;
+  left: -1rem;
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--tm-blue);
+  color: #fff;
+}
+
+.tm-timeline-card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1rem;
+  background: var(--tm-surface);
+}
+
+.tm-timeline-head {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 5rem;
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;
-  border-top: 1px solid var(--tm-rule);
-}
-
-#site-footer nav {
-  order: 1;
-}
-
-#site-footer > .flex.items-center.justify-between {
-  order: 2;
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--tm-rule);
-}
-
-#site-footer .tm-footer-brand {
-  display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
-  order: 0;
-  padding-bottom: 1.25rem;
+  gap: 0.5rem;
 }
 
-#site-footer .tm-footer-brand a {
-  display: block;
-  flex: 0 0 auto;
-  width: 8.5rem;
+.content .tm-timeline-title {
+  margin: 0;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
-#site-footer .tm-footer-brand img {
-  width: 100%;
+.content .tm-timeline-subtitle {
+  margin: 0.25rem 0 0;
+  color: var(--tm-muted);
+}
+
+.tm-timeline-body {
+  margin-top: 0.5rem;
+}
+
+.tm-badge {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tm-blue) 12%, transparent);
+  color: var(--tm-blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+html.dark .tm-badge {
+  color: var(--tm-blue-soft);
+}
+
+/* -- Footer (layouts/_partials/custom/footer.html) -- */
+
+.tm-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem 0 0;
+}
+
+.tm-footer-brand {
+  max-width: 22rem;
+}
+
+.tm-footer-brand img {
+  width: 132px;
   height: auto;
 }
 
-#site-footer .tm-footer-logo-dark {
-  display: none;
+.tm-footer-brand p {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
 }
 
-html.dark #site-footer .tm-footer-logo-light {
-  display: none;
+.tm-footer-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
 }
 
-html.dark #site-footer .tm-footer-logo-dark {
-  display: block;
+.tm-footer-columns div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
 }
 
-#site-footer .tm-footer-brand p {
-  margin: 0;
-  color: var(--tm-muted);
-  font-size: 0.85rem;
-  text-align: right;
+.tm-footer-columns a:hover {
+  color: var(--tm-blue);
 }
 
-#site-footer p {
-  color: var(--tm-muted);
+.tm-footer-title {
+  margin-bottom: 0.25rem;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-weight: 700;
 }
 
-@media (max-width: 639px) {
-  #site-footer .tm-footer-brand {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+/* -- AsciiDoc code blocks: same chrome as Hextra's Markdown code blocks -- */
 
-  #site-footer .tm-footer-brand p {
-    text-align: left;
-  }
+.content .listingblock pre.rouge {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background: hsl(var(--primary-hue) var(--primary-saturation) var(--primary-lightness) / 0.05);
+  font-size: 0.9em;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .article-link--card,
-  .article-link--simple.showCards {
-    transition: none;
-  }
+html.dark .content .listingblock pre.rouge {
+  background: hsl(var(--primary-hue) var(--primary-saturation) var(--primary-lightness) / 0.1);
 }
 
 
@@ -443,146 +843,166 @@ html.dark #site-footer .tm-footer-logo-dark {
  * Padding, rounding and overflow are not set here: both formats sit inside
  * the same prose styles and inherit them.
  *
- * Source: themes/blowfish/assets/css/components/chroma.css
+ * Source: themes/hextra/assets/css/chroma/{light,dark}.css
  * Regenerate after upgrading the theme: python3 scripts/gen-rouge-css.py
  */
 
-/* Generated using: hugo gen chromastyles --style=github */
-/* PreWrapper */ html:not(.dark) pre.rouge { background-color:#fff; }
-/* Error */ html:not(.dark) pre.rouge .err { color:#f6f8fa;background-color:#82071e }
-/* Keyword */ html:not(.dark) pre.rouge .k { color:#cf222e }
-/* KeywordConstant */ html:not(.dark) pre.rouge .kc { color:#cf222e }
-/* KeywordDeclaration */ html:not(.dark) pre.rouge .kd { color:#cf222e }
-/* KeywordNamespace */ html:not(.dark) pre.rouge .kn { color:#cf222e }
-/* KeywordPseudo */ html:not(.dark) pre.rouge .kp { color:#cf222e }
-/* KeywordReserved */ html:not(.dark) pre.rouge .kr { color:#cf222e }
-/* KeywordType */ html:not(.dark) pre.rouge .kt { color:#cf222e }
-/* NameAttribute */ html:not(.dark) pre.rouge .na { color:#1f2328 }
-/* NameClass */ html:not(.dark) pre.rouge .nc { color:#1f2328 }
-/* NameConstant */ html:not(.dark) pre.rouge .no { color:#0550ae }
-/* NameDecorator */ html:not(.dark) pre.rouge .nd { color:#0550ae }
-/* NameEntity */ html:not(.dark) pre.rouge .ni { color:#6639ba }
-/* NameLabel */ html:not(.dark) pre.rouge .nl { color:#900;font-weight:bold }
-/* NameNamespace */ html:not(.dark) pre.rouge .nn { color:#24292e }
-/* NameOther */ html:not(.dark) pre.rouge .nx { color:#1f2328 }
-/* NameTag */ html:not(.dark) pre.rouge .nt { color:#0550ae }
-/* NameBuiltin */ html:not(.dark) pre.rouge .nb { color:#6639ba }
-/* NameBuiltinPseudo */ html:not(.dark) pre.rouge .bp { color:#6a737d }
-/* NameVariable */ html:not(.dark) pre.rouge .nv { color:#953800 }
-/* NameVariableClass */ html:not(.dark) pre.rouge .vc { color:#953800 }
-/* NameVariableGlobal */ html:not(.dark) pre.rouge .vg { color:#953800 }
-/* NameVariableInstance */ html:not(.dark) pre.rouge .vi { color:#953800 }
-/* NameVariableMagic */ html:not(.dark) pre.rouge .vm { color:#953800 }
-/* NameFunction */ html:not(.dark) pre.rouge .nf { color:#6639ba }
-/* NameFunctionMagic */ html:not(.dark) pre.rouge .fm { color:#6639ba }
-/* LiteralString */ html:not(.dark) pre.rouge .s { color:#0a3069 }
-/* LiteralStringAffix */ html:not(.dark) pre.rouge .sa { color:#0a3069 }
-/* LiteralStringBacktick */ html:not(.dark) pre.rouge .sb { color:#0a3069 }
-/* LiteralStringChar */ html:not(.dark) pre.rouge .sc { color:#0a3069 }
-/* LiteralStringDelimiter */ html:not(.dark) pre.rouge .dl { color:#0a3069 }
-/* LiteralStringDoc */ html:not(.dark) pre.rouge .sd { color:#0a3069 }
-/* LiteralStringDouble */ html:not(.dark) pre.rouge .s2 { color:#0a3069 }
-/* LiteralStringEscape */ html:not(.dark) pre.rouge .se { color:#0a3069 }
-/* LiteralStringHeredoc */ html:not(.dark) pre.rouge .sh { color:#0a3069 }
-/* LiteralStringInterpol */ html:not(.dark) pre.rouge .si { color:#0a3069 }
-/* LiteralStringOther */ html:not(.dark) pre.rouge .sx { color:#0a3069 }
-/* LiteralStringRegex */ html:not(.dark) pre.rouge .sr { color:#0a3069 }
-/* LiteralStringSingle */ html:not(.dark) pre.rouge .s1 { color:#0a3069 }
-/* LiteralStringSymbol */ html:not(.dark) pre.rouge .ss { color:#032f62 }
-/* LiteralNumber */ html:not(.dark) pre.rouge .m { color:#0550ae }
-/* LiteralNumberBin */ html:not(.dark) pre.rouge .mb { color:#0550ae }
-/* LiteralNumberFloat */ html:not(.dark) pre.rouge .mf { color:#0550ae }
-/* LiteralNumberHex */ html:not(.dark) pre.rouge .mh { color:#0550ae }
-/* LiteralNumberInteger */ html:not(.dark) pre.rouge .mi { color:#0550ae }
-/* LiteralNumberIntegerLong */ html:not(.dark) pre.rouge .il { color:#0550ae }
-/* LiteralNumberOct */ html:not(.dark) pre.rouge .mo { color:#0550ae }
-/* Operator */ html:not(.dark) pre.rouge .o { color:#0550ae }
-/* OperatorWord */ html:not(.dark) pre.rouge .ow { color:#0550ae }
-/* Punctuation */ html:not(.dark) pre.rouge .p { color:#1f2328 }
-/* Comment */ html:not(.dark) pre.rouge .c { color:#57606a }
-/* CommentHashbang */ html:not(.dark) pre.rouge .ch { color:#57606a }
-/* CommentMultiline */ html:not(.dark) pre.rouge .cm { color:#57606a }
-/* CommentSingle */ html:not(.dark) pre.rouge .c1 { color:#57606a }
-/* CommentSpecial */ html:not(.dark) pre.rouge .cs { color:#57606a }
-/* CommentPreproc */ html:not(.dark) pre.rouge .cp { color:#57606a }
-/* CommentPreprocFile */ html:not(.dark) pre.rouge .cpf { color:#57606a }
-/* GenericDeleted */ html:not(.dark) pre.rouge .gd { color:#82071e;background-color:#ffebe9 }
-/* GenericEmph */ html:not(.dark) pre.rouge .ge { color:#1f2328 }
-/* GenericInserted */ html:not(.dark) pre.rouge .gi { color:#116329;background-color:#dafbe1 }
-/* GenericOutput */ html:not(.dark) pre.rouge .go { color:#1f2328 }
-/* GenericUnderline */ html:not(.dark) pre.rouge .gl { text-decoration:underline }
-/* TextWhitespace */ html:not(.dark) pre.rouge .w { color:#fff }
-/* Name (Rouge) -> as Chroma's .nx */ html:not(.dark) pre.rouge .n { color:#1f2328 }
+/* PreWrapper  pre.rouge { background-color: #ffffff; } */
+/* Other pre.rouge .x {  } */
+/* Error */ html:not(.dark) pre.rouge .err { color: #a61717; background-color: #e3d2d2 }
+/* CodeLine pre.rouge .cl {  } */
+/* Keyword */ html:not(.dark) pre.rouge .k { color: #000000; font-weight: bold }
+/* KeywordConstant */ html:not(.dark) pre.rouge .kc { color: #000000; font-weight: bold }
+/* KeywordDeclaration */ html:not(.dark) pre.rouge .kd { color: #000000; font-weight: bold }
+/* KeywordNamespace */ html:not(.dark) pre.rouge .kn { color: #000000; font-weight: bold }
+/* KeywordPseudo */ html:not(.dark) pre.rouge .kp { color: #000000; font-weight: bold }
+/* KeywordReserved */ html:not(.dark) pre.rouge .kr { color: #000000; font-weight: bold }
+/* KeywordType */ html:not(.dark) pre.rouge .kt { color: #445588; font-weight: bold }
+/* Name pre.rouge .n {  } */
+/* NameAttribute */ html:not(.dark) pre.rouge .na { color: #008080 }
+/* NameBuiltin */ html:not(.dark) pre.rouge .nb { color: #0086b3 }
+/* NameBuiltinPseudo */ html:not(.dark) pre.rouge .bp { color: #999999 }
+/* NameClass */ html:not(.dark) pre.rouge .nc { color: #445588; font-weight: bold }
+/* NameConstant */ html:not(.dark) pre.rouge .no { color: #008080 }
+/* NameDecorator */ html:not(.dark) pre.rouge .nd { color: #3c5d5d; font-weight: bold }
+/* NameEntity */ html:not(.dark) pre.rouge .ni { color: #800080 }
+/* NameException */ html:not(.dark) pre.rouge .ne { color: #990000; font-weight: bold }
+/* NameFunction */ html:not(.dark) pre.rouge .nf { color: #990000; font-weight: bold }
+/* NameFunctionMagic pre.rouge .fm {  } */
+/* NameLabel */ html:not(.dark) pre.rouge .nl { color: #990000; font-weight: bold }
+/* NameNamespace */ html:not(.dark) pre.rouge .nn { color: #555555 }
+/* NameOther pre.rouge .nx {  } */
+/* NameProperty pre.rouge .py {  } */
+/* NameTag */ html:not(.dark) pre.rouge .nt { color: #000080 }
+/* NameVariable */ html:not(.dark) pre.rouge .nv { color: #008080 }
+/* NameVariableClass */ html:not(.dark) pre.rouge .vc { color: #008080 }
+/* NameVariableGlobal */ html:not(.dark) pre.rouge .vg { color: #008080 }
+/* NameVariableInstance */ html:not(.dark) pre.rouge .vi { color: #008080 }
+/* NameVariableMagic pre.rouge .vm {  } */
+/* Literal pre.rouge .l {  } */
+/* LiteralDate pre.rouge .ld {  } */
+/* LiteralString */ html:not(.dark) pre.rouge .s { color: #dd1144 }
+/* LiteralStringAffix */ html:not(.dark) pre.rouge .sa { color: #dd1144 }
+/* LiteralStringBacktick */ html:not(.dark) pre.rouge .sb { color: #dd1144 }
+/* LiteralStringChar */ html:not(.dark) pre.rouge .sc { color: #dd1144 }
+/* LiteralStringDelimiter */ html:not(.dark) pre.rouge .dl { color: #dd1144 }
+/* LiteralStringDoc */ html:not(.dark) pre.rouge .sd { color: #dd1144 }
+/* LiteralStringDouble */ html:not(.dark) pre.rouge .s2 { color: #dd1144 }
+/* LiteralStringEscape */ html:not(.dark) pre.rouge .se { color: #dd1144 }
+/* LiteralStringHeredoc */ html:not(.dark) pre.rouge .sh { color: #dd1144 }
+/* LiteralStringInterpol */ html:not(.dark) pre.rouge .si { color: #dd1144 }
+/* LiteralStringOther */ html:not(.dark) pre.rouge .sx { color: #dd1144 }
+/* LiteralStringRegex */ html:not(.dark) pre.rouge .sr { color: #009926 }
+/* LiteralStringSingle */ html:not(.dark) pre.rouge .s1 { color: #dd1144 }
+/* LiteralStringSymbol */ html:not(.dark) pre.rouge .ss { color: #990073 }
+/* LiteralNumber */ html:not(.dark) pre.rouge .m { color: #009999 }
+/* LiteralNumberBin */ html:not(.dark) pre.rouge .mb { color: #009999 }
+/* LiteralNumberFloat */ html:not(.dark) pre.rouge .mf { color: #009999 }
+/* LiteralNumberHex */ html:not(.dark) pre.rouge .mh { color: #009999 }
+/* LiteralNumberInteger */ html:not(.dark) pre.rouge .mi { color: #009999 }
+/* LiteralNumberIntegerLong */ html:not(.dark) pre.rouge .il { color: #009999 }
+/* LiteralNumberOct */ html:not(.dark) pre.rouge .mo { color: #009999 }
+/* Operator */ html:not(.dark) pre.rouge .o { color: #000000; font-weight: bold }
+/* OperatorWord */ html:not(.dark) pre.rouge .ow { color: #000000; font-weight: bold }
+/* Punctuation pre.rouge .p {  } */
+/* Comment */ html:not(.dark) pre.rouge .c { color: #999988; font-style: italic }
+/* CommentHashbang */ html:not(.dark) pre.rouge .ch { color: #999988; font-style: italic }
+/* CommentMultiline */ html:not(.dark) pre.rouge .cm { color: #999988; font-style: italic }
+/* CommentSingle */ html:not(.dark) pre.rouge .c1 { color: #999988; font-style: italic }
+/* CommentSpecial */ html:not(.dark) pre.rouge .cs { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreproc */ html:not(.dark) pre.rouge .cp { color: #999999; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ html:not(.dark) pre.rouge .cpf { color: #999999; font-weight: bold; font-style: italic }
+/* Generic pre.rouge .g {  } */
+/* GenericDeleted */ html:not(.dark) pre.rouge .gd { color: #000000; background-color: #ffdddd }
+/* GenericEmph */ html:not(.dark) pre.rouge .ge { color: #000000; font-style: italic }
+/* GenericError */ html:not(.dark) pre.rouge .gr { color: #aa0000 }
+/* GenericHeading */ html:not(.dark) pre.rouge .gh { color: #999999 }
+/* GenericInserted */ html:not(.dark) pre.rouge .gi { color: #000000; background-color: #ddffdd }
+/* GenericOutput */ html:not(.dark) pre.rouge .go { color: #888888 }
+/* GenericPrompt */ html:not(.dark) pre.rouge .gp { color: #555555 }
+/* GenericStrong */ html:not(.dark) pre.rouge .gs { font-weight: bold }
+/* GenericSubheading */ html:not(.dark) pre.rouge .gu { color: #aaaaaa }
+/* GenericTraceback */ html:not(.dark) pre.rouge .gt { color: #aa0000 }
+/* GenericUnderline */ html:not(.dark) pre.rouge .gl { text-decoration: underline }
+/* TextWhitespace */ html:not(.dark) pre.rouge .w { color: #bbbbbb }
 
-/* Generated using: hugo gen chromastyles --style=github-dark */
-/* PreWrapper */ html.dark pre.rouge { color:#e6edf3;background-color:#0d1117; }
-/* Error */ html.dark pre.rouge .err { color:#f85149 }
-/* Keyword */ html.dark pre.rouge .k { color:#ff7b72 }
-/* KeywordConstant */ html.dark pre.rouge .kc { color:#79c0ff }
-/* KeywordDeclaration */ html.dark pre.rouge .kd { color:#ff7b72 }
-/* KeywordNamespace */ html.dark pre.rouge .kn { color:#ff7b72 }
-/* KeywordPseudo */ html.dark pre.rouge .kp { color:#79c0ff }
-/* KeywordReserved */ html.dark pre.rouge .kr { color:#ff7b72 }
-/* KeywordType */ html.dark pre.rouge .kt { color:#ff7b72 }
-/* NameClass */ html.dark pre.rouge .nc { color:#f0883e;font-weight:bold }
-/* NameConstant */ html.dark pre.rouge .no { color:#79c0ff;font-weight:bold }
-/* NameDecorator */ html.dark pre.rouge .nd { color:#d2a8ff;font-weight:bold }
-/* NameEntity */ html.dark pre.rouge .ni { color:#ffa657 }
-/* NameException */ html.dark pre.rouge .ne { color:#f0883e;font-weight:bold }
-/* NameLabel */ html.dark pre.rouge .nl { color:#79c0ff;font-weight:bold }
-/* NameNamespace */ html.dark pre.rouge .nn { color:#ff7b72 }
-/* NameProperty */ html.dark pre.rouge .py { color:#79c0ff }
-/* NameTag */ html.dark pre.rouge .nt { color:#7ee787 }
-/* NameVariable */ html.dark pre.rouge .nv { color:#79c0ff }
-/* NameVariableClass */ html.dark pre.rouge .vc { color:#79c0ff }
-/* NameVariableGlobal */ html.dark pre.rouge .vg { color:#79c0ff }
-/* NameVariableInstance */ html.dark pre.rouge .vi { color:#79c0ff }
-/* NameVariableMagic */ html.dark pre.rouge .vm { color:#79c0ff }
-/* NameFunction */ html.dark pre.rouge .nf { color:#d2a8ff;font-weight:bold }
-/* NameFunctionMagic */ html.dark pre.rouge .fm { color:#d2a8ff;font-weight:bold }
-/* Literal */ html.dark pre.rouge .l { color:#a5d6ff }
-/* LiteralDate */ html.dark pre.rouge .ld { color:#79c0ff }
-/* LiteralString */ html.dark pre.rouge .s { color:#a5d6ff }
-/* LiteralStringAffix */ html.dark pre.rouge .sa { color:#79c0ff }
-/* LiteralStringBacktick */ html.dark pre.rouge .sb { color:#a5d6ff }
-/* LiteralStringChar */ html.dark pre.rouge .sc { color:#a5d6ff }
-/* LiteralStringDelimiter */ html.dark pre.rouge .dl { color:#79c0ff }
-/* LiteralStringDoc */ html.dark pre.rouge .sd { color:#a5d6ff }
-/* LiteralStringDouble */ html.dark pre.rouge .s2 { color:#a5d6ff }
-/* LiteralStringEscape */ html.dark pre.rouge .se { color:#79c0ff }
-/* LiteralStringHeredoc */ html.dark pre.rouge .sh { color:#79c0ff }
-/* LiteralStringInterpol */ html.dark pre.rouge .si { color:#a5d6ff }
-/* LiteralStringOther */ html.dark pre.rouge .sx { color:#a5d6ff }
-/* LiteralStringRegex */ html.dark pre.rouge .sr { color:#79c0ff }
-/* LiteralStringSingle */ html.dark pre.rouge .s1 { color:#a5d6ff }
-/* LiteralStringSymbol */ html.dark pre.rouge .ss { color:#a5d6ff }
-/* LiteralNumber */ html.dark pre.rouge .m { color:#a5d6ff }
-/* LiteralNumberBin */ html.dark pre.rouge .mb { color:#a5d6ff }
-/* LiteralNumberFloat */ html.dark pre.rouge .mf { color:#a5d6ff }
-/* LiteralNumberHex */ html.dark pre.rouge .mh { color:#a5d6ff }
-/* LiteralNumberInteger */ html.dark pre.rouge .mi { color:#a5d6ff }
-/* LiteralNumberIntegerLong */ html.dark pre.rouge .il { color:#a5d6ff }
-/* LiteralNumberOct */ html.dark pre.rouge .mo { color:#a5d6ff }
-/* Operator */ html.dark pre.rouge .o { color:#ff7b72;font-weight:bold }
-/* OperatorWord */ html.dark pre.rouge .ow { color:#ff7b72;font-weight:bold }
-/* Comment */ html.dark pre.rouge .c { color:#8b949e;font-style:italic }
-/* CommentHashbang */ html.dark pre.rouge .ch { color:#8b949e;font-style:italic }
-/* CommentMultiline */ html.dark pre.rouge .cm { color:#8b949e;font-style:italic }
-/* CommentSingle */ html.dark pre.rouge .c1 { color:#8b949e;font-style:italic }
-/* CommentSpecial */ html.dark pre.rouge .cs { color:#8b949e;font-weight:bold;font-style:italic }
-/* CommentPreproc */ html.dark pre.rouge .cp { color:#8b949e;font-weight:bold;font-style:italic }
-/* CommentPreprocFile */ html.dark pre.rouge .cpf { color:#8b949e;font-weight:bold;font-style:italic }
-/* GenericDeleted */ html.dark pre.rouge .gd { color:#ffa198;background-color:#490202 }
-/* GenericEmph */ html.dark pre.rouge .ge { font-style:italic }
-/* GenericError */ html.dark pre.rouge .gr { color:#ffa198 }
-/* GenericHeading */ html.dark pre.rouge .gh { color:#79c0ff;font-weight:bold }
-/* GenericInserted */ html.dark pre.rouge .gi { color:#56d364;background-color:#0f5323 }
-/* GenericOutput */ html.dark pre.rouge .go { color:#8b949e }
-/* GenericPrompt */ html.dark pre.rouge .gp { color:#8b949e }
-/* GenericStrong */ html.dark pre.rouge .gs { font-weight:bold }
-/* GenericSubheading */ html.dark pre.rouge .gu { color:#79c0ff }
-/* GenericTraceback */ html.dark pre.rouge .gt { color:#ff7b72 }
-/* GenericUnderline */ html.dark pre.rouge .gl { text-decoration:underline }
-/* TextWhitespace */ html.dark pre.rouge .w { color:#6e7681 }
+/* PreWrapper pre.rouge { color: #c9d1d9; background-color: #0d1117; } */
+/* Other */ html.dark pre.rouge .x {  }
+/* Error */ html.dark pre.rouge .err { color: #f85149 }
+/* CodeLine */ html.dark pre.rouge .cl {  }
+/* Keyword */ html.dark pre.rouge .k { color: #ff7b72 }
+/* KeywordConstant */ html.dark pre.rouge .kc { color: #79c0ff }
+/* KeywordDeclaration */ html.dark pre.rouge .kd { color: #ff7b72 }
+/* KeywordNamespace */ html.dark pre.rouge .kn { color: #ff7b72 }
+/* KeywordPseudo */ html.dark pre.rouge .kp { color: #79c0ff }
+/* KeywordReserved */ html.dark pre.rouge .kr { color: #ff7b72 }
+/* KeywordType */ html.dark pre.rouge .kt { color: #ff7b72 }
+/* Name */ html.dark pre.rouge .n {  }
+/* NameAttribute */ html.dark pre.rouge .na {  }
+/* NameBuiltin */ html.dark pre.rouge .nb {  }
+/* NameBuiltinPseudo */ html.dark pre.rouge .bp {  }
+/* NameClass */ html.dark pre.rouge .nc { color: #f0883e; font-weight: bold }
+/* NameConstant */ html.dark pre.rouge .no { color: #79c0ff; font-weight: bold }
+/* NameDecorator */ html.dark pre.rouge .nd { color: #d2a8ff; font-weight: bold }
+/* NameEntity */ html.dark pre.rouge .ni { color: #ffa657 }
+/* NameException */ html.dark pre.rouge .ne { color: #f0883e; font-weight: bold }
+/* NameFunction */ html.dark pre.rouge .nf { color: #d2a8ff; font-weight: bold }
+/* NameFunctionMagic */ html.dark pre.rouge .fm {  }
+/* NameLabel */ html.dark pre.rouge .nl { color: #79c0ff; font-weight: bold }
+/* NameNamespace */ html.dark pre.rouge .nn { color: #ff7b72 }
+/* NameOther */ html.dark pre.rouge .nx {  }
+/* NameProperty */ html.dark pre.rouge .py { color: #79c0ff }
+/* NameTag */ html.dark pre.rouge .nt { color: #7ee787 }
+/* NameVariable */ html.dark pre.rouge .nv { color: #79c0ff }
+/* NameVariableClass */ html.dark pre.rouge .vc {  }
+/* NameVariableGlobal */ html.dark pre.rouge .vg {  }
+/* NameVariableInstance */ html.dark pre.rouge .vi {  }
+/* NameVariableMagic */ html.dark pre.rouge .vm {  }
+/* Literal */ html.dark pre.rouge .l { color: #a5d6ff }
+/* LiteralDate */ html.dark pre.rouge .ld { color: #79c0ff }
+/* LiteralString */ html.dark pre.rouge .s { color: #a5d6ff }
+/* LiteralStringAffix */ html.dark pre.rouge .sa { color: #79c0ff }
+/* LiteralStringBacktick */ html.dark pre.rouge .sb { color: #a5d6ff }
+/* LiteralStringChar */ html.dark pre.rouge .sc { color: #a5d6ff }
+/* LiteralStringDelimiter */ html.dark pre.rouge .dl { color: #79c0ff }
+/* LiteralStringDoc */ html.dark pre.rouge .sd { color: #a5d6ff }
+/* LiteralStringDouble */ html.dark pre.rouge .s2 { color: #a5d6ff }
+/* LiteralStringEscape */ html.dark pre.rouge .se { color: #79c0ff }
+/* LiteralStringHeredoc */ html.dark pre.rouge .sh { color: #79c0ff }
+/* LiteralStringInterpol */ html.dark pre.rouge .si { color: #a5d6ff }
+/* LiteralStringOther */ html.dark pre.rouge .sx { color: #a5d6ff }
+/* LiteralStringRegex */ html.dark pre.rouge .sr { color: #79c0ff }
+/* LiteralStringSingle */ html.dark pre.rouge .s1 { color: #a5d6ff }
+/* LiteralStringSymbol */ html.dark pre.rouge .ss { color: #a5d6ff }
+/* LiteralNumber */ html.dark pre.rouge .m { color: #a5d6ff }
+/* LiteralNumberBin */ html.dark pre.rouge .mb { color: #a5d6ff }
+/* LiteralNumberFloat */ html.dark pre.rouge .mf { color: #a5d6ff }
+/* LiteralNumberHex */ html.dark pre.rouge .mh { color: #a5d6ff }
+/* LiteralNumberInteger */ html.dark pre.rouge .mi { color: #a5d6ff }
+/* LiteralNumberIntegerLong */ html.dark pre.rouge .il { color: #a5d6ff }
+/* LiteralNumberOct */ html.dark pre.rouge .mo { color: #a5d6ff }
+/* Operator */ html.dark pre.rouge .o { color: #ff7b72; font-weight: bold }
+/* OperatorWord */ html.dark pre.rouge .ow { color: #ff7b72; font-weight: bold }
+/* Punctuation */ html.dark pre.rouge .p {  }
+/* Comment */ html.dark pre.rouge .c { color: #8b949e; font-style: italic }
+/* CommentHashbang */ html.dark pre.rouge .ch { color: #8b949e; font-style: italic }
+/* CommentMultiline */ html.dark pre.rouge .cm { color: #8b949e; font-style: italic }
+/* CommentSingle */ html.dark pre.rouge .c1 { color: #8b949e; font-style: italic }
+/* CommentSpecial */ html.dark pre.rouge .cs { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreproc */ html.dark pre.rouge .cp { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ html.dark pre.rouge .cpf { color: #8b949e; font-weight: bold; font-style: italic }
+/* Generic */ html.dark pre.rouge .g {  }
+/* GenericDeleted */ html.dark pre.rouge .gd { color: #ffa198; background-color: #490202 }
+/* GenericEmph */ html.dark pre.rouge .ge { color: inherit; font-style: italic }
+/* GenericError */ html.dark pre.rouge .gr { color: #ffa198 }
+/* GenericHeading */ html.dark pre.rouge .gh { color: #79c0ff; font-weight: bold }
+/* GenericInserted */ html.dark pre.rouge .gi { color: #56d364; background-color: #0f5323 }
+/* GenericOutput */ html.dark pre.rouge .go { color: #8b949e }
+/* GenericPrompt */ html.dark pre.rouge .gp { color: #8b949e }
+/* GenericStrong */ html.dark pre.rouge .gs { font-weight: bold }
+/* GenericSubheading */ html.dark pre.rouge .gu { color: #79c0ff }
+/* GenericTraceback */ html.dark pre.rouge .gt { color: #ff7b72 }
+/* GenericUnderline */ html.dark pre.rouge .gl { text-decoration: underline }
+/* TextWhitespace */ html.dark pre.rouge .w { color: #6e7681 }
 
 /* END GENERATED: rouge syntax highlighting */

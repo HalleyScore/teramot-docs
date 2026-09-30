@@ -1,19 +1,52 @@
 ---
-title: "Engineering at Teramot"
-description: "Engineering notes on data, infrastructure, and the systems behind Teramot."
-heroCaption: "Teramot Engineering"
-heroLead: "Ideas, systems, and lessons from building a data platform for the real world."
-heroButtons:
-  - url: "/posts/"
-    label: "Read the latest"
-    style: "primary"
-  - url: "https://teramot.com/"
-    label: "Visit Teramot.com"
-    style: "outline"
+title: "Teramot Docs & Engineering"
+description: "Documentation, integration guides, API reference and engineering notes from Teramot."
+hero:
+  eyebrow: "Teramot Docs & Engineering"
+  title: "Welcome to Teramot Documentation"
+  lead: "Documentation, integration guides and API reference for scaling AI Agents with Teramot."
+  buttons:
+    - label: "Architecture"
+      url: "/architecture/"
+    - label: "API Reference"
+      url: "/api/intro/"
+      secondary: true
+    - label: "Engineering Blog"
+      url: "/blog/"
+      secondary: true
+docs:
+  kicker: "Docs"
+  title: "Documentation"
+  lead: "Guides and reference for using the Teramot platform."
+  cards:
+    - title: "Architecture"
+      text: "How Teramot works under the hood: what the platform does, how data moves through it, which transformations are applied, where data is stored, and who can access it."
+      url: "/architecture/"
+      icon: "cube"
+    - title: "API Reference"
+      text: "Full technical documentation for our AI Agent APIs. Query, operate and automate on the Gold Layer—securely, reliably, and at scale."
+      url: "/api/intro/"
+      icon: "code"
+    - title: "Compliance"
+      text: "Access all compliance documentation: ISO 27001, SOC2, GDPR and more. Security standards, audit details, and best practices."
+      url: "/compliance/about/"
+      icon: "shield-check"
+    - title: "Product Updates"
+      text: "Read the latest changelogs, feature releases, and technical improvements across the Teramot platform."
+      url: "/updates/"
+      icon: "newspaper"
+    - title: "Service Status"
+      text: "Check real-time operational status for Teramot services, APIs and infrastructure."
+      url: "https://status.teramot.com/"
+      icon: "server"
+blog:
+  kicker: "Blog"
+  title: "From the engineering blog"
+  lead: "Ideas, systems, and lessons from building a data platform for the real world."
+  count: 3
+  link:
+    label: "All engineering posts →"
+    url: "/blog/"
 ---
 
-We write about the work behind the product:
-
-- Reliable data pipelines for messy, moving sources.
-- Infrastructure and orchestration that keep systems dependable.
-- The decisions, trade-offs, and incidents that make the next iteration better.
+🛟 Need help? Visit the [Help Center](/help/) · [Terms of Service](/terms/) · [Privacy Policy](/privacy/)

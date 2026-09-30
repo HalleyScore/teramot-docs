@@ -1,69 +1,57 @@
 # -- Site Configuration --
-# Refer to the theme docs for more details about each of these parameters.
-# https://blowfish.page/docs/getting-started/
+# One Hugo site serves both the documentation and the engineering blog.
+# Theme reference: https://imfing.github.io/hextra/docs/guide/configuration/
 
-theme = "blowfish"
-baseURL = "https://engineering.teramot.com/"
-defaultContentLanguage = "en"
+theme = "hextra"
+baseURL = "https://docs.teramot.com/"
+title = "Teramot"
 
-# pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
+# Published docs URLs are mixed-case (/compliance/Policies/...) and must not change.
+disablePathToLower = true
 
 enableRobotsTXT = true
-summaryLength = 0
+enableEmoji = true
+# Last-updated dates on docs pages come from git (CI checks out full history).
+enableGitInfo = true
 
 buildDrafts = false
 buildFuture = false
 
-enableEmoji = true
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
 
-# googleAnalytics = "G-XXXXXXXXX"
+[languages]
+  [languages.en]
+    label = "English"
+    locale = "en"
+    weight = 1
+    title = "Teramot"
+  [languages.es]
+    label = "Español"
+    locale = "es"
+    weight = 2
+    title = "Teramot"
 
 [pagination]
-  pagerSize = 100
-
-[imaging]
-  anchor = 'Center'
+  pagerSize = 20
 
 [taxonomies]
   tag = "tags"
   category = "categories"
   author = "authors"
-  series = "series"
 
-[sitemap]
-  changefreq = 'daily'
-  filename = 'sitemap.xml'
-  priority = 0.5
+[permalinks]
+  [permalinks.taxonomy]
+    authors = "/blog/authors/"
+  [permalinks.term]
+    authors = "/blog/authors/:contentbasename/"
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["html", "rss", "llms"]
+  section = ["html", "rss"]
+  page = ["html"]
 
-[related]
-  threshold = 0
-  toLower = false
-
-    [[related.indices]]
-        name = "tags"
-        weight = 100
-
-    [[related.indices]]
-        name = "categories"
-        weight = 100
-
-    [[related.indices]]
-        name = "series"
-        weight = 50
-
-    [[related.indices]]
-        name = "authors"
-        weight = 20
-
-    [[related.indices]]
-        name = "date"
-        weight = 10
-
-    [[related.indices]]
-      applyFilter = false
-      name = 'fragmentrefs'
-      type = 'fragments'
-      weight = 10
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.5

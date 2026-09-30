@@ -1,0 +1,31 @@
+{{- /*
+  A blog post card. Args: page, featured (bool). Shows the bundle's feature.*,
+  cover.* or thumbnail.* image, else a panel for the post's first category.
+*/ -}}
+{{- $p := .page -}}
+{{- $featured := .featured | default false -}}
+{{- $image := $p.Resources.GetMatch "{feature,cover,thumbnail}*" -}}
+{{- $category := index ($p.Params.categories | default slice) 0 | default "engineering" -}}
+{{- $icons := dict "infrastructure" "server" "security" "shield-check" "data" "chip" "announcements" "sparkles" -}}
+<article class="tm-bcard{{ if $featured }} tm-bcard-featured{{ end }}">
+  <a class="tm-bcard-link" href="{{ $p.RelPermalink }}" aria-label="{{ $p.Title }}"></a>
+  <div class="tm-bcard-media tm-cat-{{ $category | urlize }}">
+    {{- with $image -}}
+      {{- $img := .Fill (cond $featured "1200x630 smart" "720x378 smart") -}}
+      <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="" loading="lazy">
+    {{- else -}}
+      <span class="tm-bcard-glyph">{{ partial "utils/icon.html" (dict "name" (index $icons $category | default "pencil") "attributes" "height=44") }}</span>
+    {{- end -}}
+    <span class="tm-bcard-category">{{ $category | humanize }}</span>
+  </div>
+  <div class="tm-bcard-body">
+    <h2 class="tm-bcard-title">{{ $p.Title }}</h2>
+    {{- with $p.Summary }}<p class="tm-bcard-summary">{{ . | plainify | truncate (cond $featured 320 170) }}</p>{{ end }}
+    <div class="tm-bcard-foot">{{ partial "teramot/post-meta.html" $p }}</div>
+    {{- with $p.Params.tags }}
+      <div class="tm-bcard-tags">
+        {{- range first 4 . }}<a href="{{ with site.GetPage (printf "/tags/%s" (. | urlize)) }}{{ .RelPermalink }}{{ end }}">#{{ . }}</a>{{ end -}}
+      </div>
+    {{- end }}
+  </div>
+</article>

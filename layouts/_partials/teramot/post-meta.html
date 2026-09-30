@@ -1,0 +1,31 @@
+{{- /*
+  Date · authors · reading time · views. `authors` are slugs resolved from
+  data/authors/<slug>.json; views are filled in by assets/js/engagement.js.
+*/ -}}
+{{- $page := . -}}
+<div class="tm-post-meta">
+  {{- with .Date }}<span>{{ partial "utils/format-date" . }}</span>{{ end -}}
+  {{- with .Params.authors -}}
+    <span class="tm-post-authors">
+      {{- range $i, $slug := . -}}
+        {{- $data := index hugo.Data.authors $slug | default dict -}}
+        {{- $term := site.GetPage (printf "/authors/%s" ($slug | urlize)) -}}
+        {{- $name := $data.name | default $slug -}}
+        {{- with $term }}{{ $name = $data.name | default .Title }}{{ end -}}
+        {{- $avatar := "" -}}
+        {{- with $data.image }}{{ with resources.Get . }}{{ $avatar = (.Fill "48x48 center").RelPermalink }}{{ end }}{{ end -}}
+        {{- if $i }}<span class="tm-sep">,</span>{{ end -}}
+        {{- if $term -}}
+          <a class="tm-author" href="{{ $term.RelPermalink }}">
+            {{- with $avatar }}<img src="{{ . }}" alt="" width="20" height="20" loading="lazy">{{ end -}}
+            <span>{{ $name }}</span>
+          </a>
+        {{- else -}}
+          <span class="tm-author">{{ with $avatar }}<img src="{{ . }}" alt="" width="20" height="20" loading="lazy">{{ end }}<span>{{ $name }}</span></span>
+        {{- end -}}
+      {{- end -}}
+    </span>
+  {{- end -}}
+  {{- with .ReadingTime }}<span>{{ T "tmMinRead" . }}</span>{{ end -}}
+  {{- if site.Params.goatcounter.code }}<span class="tm-views" hidden><span data-views-path="{{ $page.RelPermalink }}"></span> {{ T "tmViews" }}</span>{{ end -}}
+</div>

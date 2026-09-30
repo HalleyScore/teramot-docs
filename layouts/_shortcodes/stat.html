@@ -1,0 +1,8 @@
+{{- /* One headline number inside {{< stats >}}; the inner text is an optional caption. */ -}}
+{{- $value := .Get "value" | default "0" -}}
+{{- $label := .Get "label" | default "Metric" -}}
+<div class="tm-stat">
+  <p class="tm-stat-value">{{ $value | markdownify }}</p>
+  <p class="tm-stat-label">{{ $label | markdownify }}</p>
+  {{- with .Inner }}<div class="tm-stat-note">{{ . | markdownify }}</div>{{ end }}
+</div>

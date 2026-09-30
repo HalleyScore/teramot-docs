@@ -1,0 +1,5 @@
+{{- /* Hextra misses mermaid diagrams rendered inside {{< tabs >}}; detect them
+       here, before the theme's scripts partial decides whether to load mermaid.js. */ -}}
+{{- if and (not (.Store.Get "hasMermaid")) (strings.Contains .Content `class="mermaid"`) -}}
+  {{- .Store.Set "hasMermaid" true -}}
+{{- end -}}

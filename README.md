@@ -1,131 +1,166 @@
-# Teramot Engineering Blog
+# Teramot Docs & Engineering
 
-Engineering blog for Teramot, built with [Hugo](https://gohugo.io/) and the
-[Blowfish](https://blowfish.page/) theme. Deploys to
-[engineering.teramot.com](https://engineering.teramot.com) via GitHub Pages.
+Teramot's documentation and engineering blog in one [Hugo](https://gohugo.io/)
+site, built with the [Hextra](https://imfing.github.io/hextra/) theme and
+deployed to [docs.teramot.com](https://docs.teramot.com) via GitHub Pages.
+
+| Area | URL | Source |
+| --- | --- | --- |
+| Architecture | `/architecture/` | `content/architecture/` |
+| API (MCP) | `/api/` | `content/api/` |
+| Compliance | `/compliance/` | `content/compliance/` |
+| Product Updates | `/updates/` | `content/updates/` |
+| System Status | `/status/` | `content/status/` |
+| Engineering Blog | `/blog/` | `content/blog/` |
+
+Docs are available in English (`/`) and Spanish (`/es/`). The blog is English only.
 
 ## Local development
 
 ```sh
-git clone --recurse-submodules <repo-url>
-cd teramot-engineering-blog
+git clone --recurse-submodules git@github.com:HalleyScore/teramot-docs.git
+cd teramot-docs
 hugo server
 ```
 
-Site is served at http://localhost:1313/.
+The site is served at http://localhost:1313/.
 
 ### Prerequisites
 
-Hugo (extended) plus `asciidoctor` and `rouge`, which Hugo shells out to for
-`.adoc` content — not optional if any post uses AsciiDoc, because a missing
-binary fails the build rather than degrading:
+Hugo **extended** (CI pins the version in `.github/workflows/hugo.yml`), plus
+`asciidoctor` and `rouge`, which Hugo shells out to for `.adoc` content. They are
+not optional if any page uses AsciiDoc: a missing binary fails the build.
 
 ```sh
 sudo pacman -S hugo asciidoctor ruby-rouge      # Arch
 sudo apt install hugo asciidoctor ruby-rouge    # Debian/Ubuntu
 ```
 
-Rouge can also be installed per-user, without root, if you already have Ruby:
+Python 3 runs the site checks (no packages needed).
+
+## Writing docs
+
+A docs page is a Markdown file in its section. The path is the URL:
+`content/api/my-page.md` is published at `/api/my-page/`.
 
 ```sh
-gem install --user-install rouge
+hugo new content api/my-page.md
 ```
 
-## Writing a post
+- **Order and sidebar label:** `weight` (lower first) and `linkTitle` in the
+  front matter. Each top-level section has its own sidebar.
+- **Spanish:** add `my-page.es.md` next to it, with the same `weight`. Internal
+  links in Spanish pages point at `/es/...`. A page without a translation is
+  simply missing from the Spanish site, so translate new docs in the same PR.
+- **Components:** GitHub-style alerts (`> [!NOTE]`, `> [!TIP]`, `> [!WARNING]`),
+  ```` ```mermaid ```` diagrams, and Hextra shortcodes such as
+  [tabs](https://imfing.github.io/hextra/docs/guide/shortcodes/tabs/) and
+  [cards](https://imfing.github.io/hextra/docs/guide/shortcodes/cards/).
+- **Images and downloads:** under `static/img/` and `static/files/`, linked from
+  the site root (`/img/...`), or next to the page in a page bundle.
+- **Never rename or move a published page** without keeping its old URL: add
+  the old path to `aliases:` in the front matter. `scripts/legacy-urls.tsv`
+  lists every URL published before the sites merged, and CI fails if one stops
+  resolving.
 
-Markdown and AsciiDoc are both supported; pick per post by extension.
+## Writing a blog post
 
 ```sh
-hugo new content posts/my-post-slug/index.md    # Markdown (Goldmark)
-hugo new content posts/my-post-slug/index.adoc  # AsciiDoc (Asciidoctor)
+hugo new content blog/my-post-slug/index.md    # Markdown
+hugo new content blog/my-post-slug/index.adoc  # AsciiDoc
 ```
 
-Edit the front matter and content, then set `draft: false` to publish. Posts
-live under `content/posts/`.
+Edit the front matter, then set `draft: false` to publish.
+
+- **Authors** are slugs: `authors: [facundo-vivas]`. A new author needs
+  `data/authors/<slug>.json` (name, bio, image, links) and
+  `content/authors/<slug>/_index.md` (profile page at `/blog/authors/<slug>/`).
+  Author photos go in `assets/images/authors/`.
+- **Card image:** put `feature.png` (or `.jpg`/`.webp`) in the post folder. Without
+  one, the card shows a Teramot panel for the post's first `categories` entry.
+- **Date:** posts are ordered by `date`. When two posts share a day, give them a
+  time (`2026-09-11T16:50:39-03:00`).
+- **Shortcodes** for posts: `intro`, `inlinesvg`, `stats`/`stat`, `chart`
+  (Chart.js config) and `timeline`/`timelineItem`, in `layouts/_shortcodes/`.
+- View counts come from GoatCounter (cookieless) on blog pages only; see
+  `config/_default/params.toml`.
 
 ### AsciiDoc notes
 
 Rendering is configured in `config/_default/markup.toml` (`[asciidocExt]`), and
-`asciidoctor` is allowed to run in `config/_default/security.toml` — Hugo
-refuses to exec binaries that are not on that allowlist, and the list replaces
-Hugo's defaults rather than extending them, so it must be kept in sync when
-Hugo is upgraded.
+`asciidoctor` is allowed to run in `config/_default/security.toml`. Hugo refuses
+to exec binaries that are not on that allowlist, and the list replaces Hugo's
+defaults rather than extending them, so keep it in sync when Hugo is upgraded.
 
 - Front matter is still Hugo's (`---` YAML), not an AsciiDoc document header.
   Do not add a `= Title` line; the `title` key already renders one.
-- Heading IDs are configured to match Goldmark's (`#my-heading`), so anchors
-  behave the same across both formats.
-- Shortcodes (`{{< chart >}}`, `{{< intro >}}`, …) work. Hugo substitutes them
-  after Asciidoctor has run, so the HTML they emit is never re-parsed and
-  blank lines inside a shortcode body are safe. Asciidoctor does however wrap
-  a block-level shortcode in its own `<div class="paragraph">`, which adds a
-  stray margin; wrap the call in a passthrough block for markup identical to
-  the Markdown posts:
+- Heading IDs match Goldmark's (`#my-heading`), so anchors behave the same.
+- Shortcodes work. Asciidoctor wraps a block-level shortcode in its own
+  `<div class="paragraph">`; wrap the call in a `++++` passthrough block to
+  avoid the stray margin.
+- Code blocks are highlighted by Rouge instead of Chroma, coloured by a
+  generated block in `assets/css/custom.css`. After upgrading the Hextra
+  submodule, re-run `python3 scripts/gen-rouge-css.py`.
 
-  ```
-  ++++
-  {{< chart >}}
-  ...
-  {{< /chart >}}
-  ++++
-  ```
-- Code blocks are highlighted by Asciidoctor's Rouge rather than Hugo's
-  Chroma, but they are styled to be indistinguishable: Rouge emits the same
-  Pygments token classes, and `assets/css/custom.css` re-points the theme's
-  own Chroma palettes at Rouge's wrapper for both light and dark mode. That
-  file is generated — after upgrading the Blowfish submodule, re-run:
+## Checks
 
-  ```sh
-  python3 scripts/gen-rouge-css.py
-  ```
+```sh
+hugo --gc --minify
+python3 -m unittest discover -s scripts/tests
+python3 scripts/check_site.py public
+```
 
-  `layouts/partials/extend-footer.html` wraps AsciiDoc code blocks in the
-  theme's `.highlight-wrapper` so they also pick up its rounding, shadow,
-  title bar and copy button, which otherwise only reach Markdown via the
-  `render-codeblock.html` hook.
+`check_site.py` fails if any URL in `scripts/legacy-urls.tsv` no longer
+resolves, or if any page links to a file that does not exist. CI runs all three
+on every pull request.
+
+## Layout of the repo
+
+| Path | Purpose |
+| --- | --- |
+| `content/` | Docs, blog posts and landing pages (Markdown/AsciiDoc) |
+| `config/_default/` | Site config, menus (`menus.<lang>.toml`), theme params |
+| `layouts/` | Overrides of the theme: home, blog cards, post meta, shortcodes |
+| `assets/` | CSS (branding), JS, SVGs and author photos processed by Hugo |
+| `static/` | Files served as-is: images, PDFs, icons, `CNAME` |
+| `i18n/` | UI strings per language |
+| `themes/hextra/` | Theme, pinned as a git submodule |
+| `scripts/` | Site checks, favicon and Rouge CSS generators |
+
+Keep theme changes in `layouts/` and `assets/`; never edit the submodule. The
+files copied from Hextra (`layouts/blog/single.html`, `layouts/authors/term.html`)
+say so in their first line: re-sync them when upgrading the theme.
 
 ## Icons and link previews
 
-Blowfish ships its own blowfish-branded `favicon.ico`, `apple-touch-icon.png`,
-`android-chrome-*.png` and `site.webmanifest` in the theme's `static/`, which
-Hugo publishes to the site root. Slack, iMessage and most crawlers do not
-render SVG favicons, so given only an SVG they fall back to `/favicon.ico` and
-pick up the theme's icon.
-
-The Teramot set in `static/` shadows the theme's (project `static/` wins at the
-same path) and is generated from `static/brand/teramot-favicon.svg`:
+The Teramot icon set in `static/` shadows the theme's own (project `static/`
+wins at the same path) and is generated from `static/brand/teramot-favicon.svg`:
 
 ```sh
 ./scripts/gen-favicons.sh    # needs rsvg-convert and ImageMagick 7
 ```
 
-Tab icons are transparent, matching the SVG. App and unfurl icons are opaque,
-because iOS composites a transparent `apple-touch-icon` onto black.
-
-`layouts/partials/favicons.html` declares the whole set. Blowfish renders that
-partial *instead of* its own icon block, so anything omitted there is simply
-not declared. Bump the `$v` cache-buster in it when the mark changes.
+`layouts/_partials/favicons.html` declares the whole set. Bump the `$v`
+cache-buster in it when the mark changes.
 
 ## Deploy
 
-Pushing to `main` triggers `.github/workflows/hugo.yml`, which builds the site
-and publishes it via GitHub Pages.
+Pushing to `main` runs `.github/workflows/hugo.yml`, which builds the site,
+runs the checks and publishes it via GitHub Pages. Pull requests build and
+check only.
 
-## DNS
+The site is always built for `https://docs.teramot.com/`: docs link to root
+paths, so it only works served from a domain root.
 
-`engineering.teramot.com` needs a `CNAME` record pointing at
-`halleyscore.github.io` (GitHub Pages custom domain). This is not managed in
-this repo — set it up in the DNS zone that manages `teramot.com`.
+## DNS and custom domain
 
-Note: with `build_type: workflow` (Actions-based Pages deploy, what this repo
-uses), GitHub does **not** auto-detect the custom domain from `static/CNAME`
-the way it does with branch-based Pages. The domain must also be registered
-explicitly on the repo's Pages config:
+`docs.teramot.com` needs a `CNAME` record pointing at `halleyscore.github.io`.
+DNS is not managed in this repo.
+
+With Actions-based Pages deploys, GitHub does **not** pick the custom domain up
+from `static/CNAME`; register it on the repo once:
 
 ```sh
-gh api -X PUT repos/HalleyScore/teramot-engineering-blog/pages -f "cname=engineering.teramot.com"
-gh api -X PUT repos/HalleyScore/teramot-engineering-blog/pages -F "https_enforced=true"
+gh api -X PUT repos/HalleyScore/teramot-docs/pages -f "cname=docs.teramot.com"
+gh api -X PUT repos/HalleyScore/teramot-docs/pages -F "https_enforced=true"
 ```
-
-(or via Settings → Pages → Custom domain in the GitHub UI). This only needs to
-be done once per repo lifetime — it doesn't reset on redeploys.

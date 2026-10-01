@@ -29,7 +29,7 @@ The web application includes:
 - **Scheduling**: refresh frequency for each project.
 - **Administration**: members, roles, data shares, activity log, and AI usage.
 
-A conversation can be shared with other workspace members. A dashboard is shared with a link that requires signing in and having access to the project.
+A conversation can be shared with other workspace members. A dashboard is shared with a link that only people in the workspace can open, and an admin can limit each dashboard to a minimum role.
 
 ## AI assistants via MCP
 
@@ -39,8 +39,8 @@ Teramot publishes a **[Model Context Protocol](https://modelcontextprotocol.io)*
 |---|---|
 | **Endpoint** | `https://mcp.teramot.com/mcp` |
 | **Transport** | Streamable HTTP |
-| **Authentication** | OAuth 2.1 with PKCE, or a personal key for clients that do not support OAuth |
-| **Supported clients** | Claude (web, desktop, Team, Enterprise, and Claude Code), ChatGPT, GitHub Copilot in VS Code, Gemini, Cursor, and other MCP clients |
+| **Authentication** | OAuth 2.1 with PKCE, or an access key for clients that do not support OAuth |
+| **Supported clients** | Claude (web, desktop, Team, Enterprise, and Claude Code), ChatGPT, GitHub Copilot in VS Code, Gemini, Cursor, v0, Antigravity, and other MCP clients. Setup for each: [Connect an AI assistant](/product/mcp/connect-clients/) |
 
 ### How identity works
 
@@ -54,16 +54,11 @@ OAuth redirects are accepted only to a closed list of destinations: the domains 
 
 ### What you can do via MCP
 
-| Capability | Minimum role |
-|---|---|
-| List workspaces and projects; read project knowledge | Read-only |
-| Explore tables, view schemas, lineage, and findings; query with SQL; download results tables | Read-only |
-| View dashboards | Read-only |
-| Create, edit, and duplicate results tables and dashboards; edit project knowledge | Member |
-| Launch refreshes; correct transformations; manage controls; delete dashboards | Admin |
-| Delete projects and workspaces | Owner |
-
-The complete tool reference and the per-client connection guide are in the [MCP server documentation](/api/intro/).
+An assistant can do exactly what its user's role allows, no more: explore and query tables,
+build results tables and dashboards, refresh sources, and so on. The
+[Tool reference](/product/mcp/tools-reference/) lists every tool with the minimum role it
+needs, and [Roles and permissions](/product/concepts/roles-and-permissions/) what each role
+covers.
 
 ## API
 
@@ -75,7 +70,9 @@ For system-to-system integrations, a user can generate **project API keys**. Eac
 
 ## Export
 
-Results tables can be downloaded as **CSV**. The download uses a temporary link:
+Results tables can be downloaded as **CSV** through a temporary link:
 
-- **Private link** (default): expires after a few minutes and requires signing in with the same account that generated it.
-- **Direct link**: a signed link that also expires after a few minutes.
+- **Private link** (the default, and the one the web application uses): works for 10 minutes and only for the account that requested it.
+- **Public link**: an assistant can ask for one when the file has to reach someone without a Teramot account. It works for 15 minutes for anyone who has it.
+
+How to download one: [Results tables](/product/use-the-app/results-tables/#download).

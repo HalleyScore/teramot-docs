@@ -24,3 +24,9 @@
   {{ $bundle := slice $lib $defaults | resources.Concat "js/chart.bundle.js" | resources.Fingerprint "sha512" }}
   <script src="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"></script>
 {{ end }}
+
+{{/* Opens the tab a #link points into, on pages with {{< tabs >}}. */}}
+{{ if .HasShortcode "tabs" }}
+  {{ $js := resources.Get "js/product-tabs.js" | resources.Minify | resources.Fingerprint "sha512" }}
+  <script defer src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+{{ end }}

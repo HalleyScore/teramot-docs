@@ -65,7 +65,7 @@ sequenceDiagram
 A refresh can be triggered in several ways:
 
 - **Scheduled**, according to the frequency configured in the project.
-- **Manual**, from the application: for the whole project or for specific tables.
+- **Manual**, from the application: a whole source, or only the tables you choose.
 - **Through the API or MCP**, for example from an AI assistant with the necessary permissions.
 
 In each refresh:
@@ -93,6 +93,6 @@ Each project shows:
 
 - The **refresh history**: type, status, and affected tables.
 - The **status of each source** and the time of the last sync.
-- **Classified errors**: permissions, invalid credentials, connectivity, configuration, or internal error. Each one comes with a readable message and suggested actions.
+- **Classified errors**, each with a readable message and how to fix it. The classes are in [Refresh history](/product/use-the-app/refresh/#refresh-history).
 
 If a table fails several times in a row, it stops being retried automatically until its configuration is reviewed. This prevents a persistent error from consuming resources on every run.

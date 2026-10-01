@@ -3,3 +3,8 @@
 /.hugo_build.lock
 .DS_Store
 __pycache__/
+
+# Written by scripts/sync_aleph.py from teramot-aleph, never edited here.
+/content/product/
+/static/product/
+/data/aleph/

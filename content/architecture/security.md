@@ -10,24 +10,20 @@ This page describes how Teramot controls who can access what, and how the platfo
 - Sign-in is delegated to a **managed identity provider** compatible with OpenID Connect, using the authorization code flow with PKCE.
 - On every request, the API validates the signature, issuer, audience, and subject of each token.
 - External assistants authenticate with **OAuth 2.1**. See [Ways to consume data](/architecture/consumption/#ai-assistants-via-mcp).
-- API keys and personal keys for MCP are stored as hashes.
+- API keys and MCP access keys are stored as hashes.
 
 ## Roles and permissions
 
-Permissions are assigned **per workspace**, with four roles in increasing order. Each role includes the permissions of the previous ones.
+Every member of a workspace has one of four roles: **Owner**, **Admin**, **Analyst** and
+**Read only**, each including what the ones below it can do. A person can also hold a role
+in a single project, which takes precedence over their workspace role there; someone
+invited only to a project sees that project and nothing else of the workspace. What each
+role can do, action by action, is in
+[Roles and permissions](/product/concepts/roles-and-permissions/).
 
-| Role | Can |
-|---|---|
-| **Read-only** | View workspaces, projects, sources, tables, results tables, and dashboards. Run read-only queries. Download results tables. |
-| **Member** | In addition: create, edit, and delete results tables; manage sources and files; create and edit dashboards; edit project knowledge. |
-| **Admin** | In addition: invite and manage members; create projects; manage credentials and private connections; launch refreshes and define schedules; manage data shares; correct transformations; view the activity log and AI usage. |
-| **Owner** | In addition: delete projects and the workspace; assign or remove other owners. |
-
-In addition:
-
-- A person can be invited to **a single project**. In that case they see only that project, with no access to the rest of the workspace.
-- Permissions are enforced in the API, which is the only entry point to the data. That is why they apply equally in the web application, in MCP, and in integrations.
-- Invitations are sent by email and are activated when the person signs in with that address.
+Permissions are enforced in the API, which is the only entry point to the data. That is
+why they apply equally in the web application, to an AI assistant via MCP, and in
+integrations.
 
 ### Teramot staff access
 

@@ -29,7 +29,7 @@ La aplicación web incluye:
 - **Programación**: frecuencia de actualización de cada proyecto.
 - **Administración**: miembros, roles, data shares, registro de actividad y uso de IA.
 
-Una conversación se puede compartir con otros miembros del workspace. Un dashboard se comparte con un enlace que exige iniciar sesión y tener acceso al proyecto.
+Una conversación se puede compartir con otros miembros del workspace. Un dashboard se comparte con un enlace que solo pueden abrir las personas del workspace, y un admin puede limitar cada dashboard a un rol mínimo.
 
 ## Asistentes de IA vía MCP
 
@@ -39,8 +39,8 @@ Teramot publica un servidor **[Model Context Protocol](https://modelcontextproto
 |---|---|
 | **Endpoint** | `https://mcp.teramot.com/mcp` |
 | **Transporte** | Streamable HTTP |
-| **Autenticación** | OAuth 2.1 con PKCE, o una clave personal para clientes que no soportan OAuth |
-| **Clientes compatibles** | Claude (web, escritorio, Team, Enterprise y Claude Code), ChatGPT, GitHub Copilot en VS Code, Gemini, Cursor y otros clientes MCP |
+| **Autenticación** | OAuth 2.1 con PKCE, o una access key para clientes que no soportan OAuth |
+| **Clientes compatibles** | Claude (web, escritorio, Team, Enterprise y Claude Code), ChatGPT, GitHub Copilot en VS Code, Gemini, Cursor, v0, Antigravity y otros clientes MCP. Cómo configurar cada uno: [Conectar un asistente de IA](/es/product/mcp/connect-clients/) |
 
 ### Cómo funciona la identidad
 
@@ -54,16 +54,11 @@ Las redirecciones de OAuth se aceptan solo hacia una lista cerrada de destinos: 
 
 ### Qué se puede hacer vía MCP
 
-| Capacidad | Rol mínimo |
-|---|---|
-| Listar workspaces y proyectos; leer el conocimiento del proyecto | Solo lectura |
-| Explorar tablas, ver esquemas, linaje y hallazgos; consultar con SQL; descargar tablas de resultados | Solo lectura |
-| Ver dashboards | Solo lectura |
-| Crear, editar y duplicar tablas de resultados y dashboards; editar el conocimiento del proyecto | Miembro |
-| Lanzar actualizaciones; corregir transformaciones; gestionar controles; eliminar dashboards | Administrador |
-| Eliminar proyectos y workspaces | Owner |
-
-La referencia completa de herramientas y la guía de conexión por cliente están en la [documentación del servidor MCP](/api/intro/).
+Un asistente puede hacer exactamente lo que permite el rol de su usuario, nada más: explorar
+y consultar tablas, armar tablas de resultados y dashboards, actualizar fuentes, etc. La
+[Referencia de herramientas](/es/product/mcp/tools-reference/) lista cada herramienta con el rol mínimo que
+necesita, y [Roles y permisos](/es/product/concepts/roles-and-permissions/) qué cubre cada
+rol.
 
 ## API
 
@@ -75,7 +70,9 @@ Para integraciones sistema a sistema, un usuario puede generar **claves de API d
 
 ## Exportación
 
-Las tablas de resultados se pueden descargar como **CSV**. La descarga se hace con un enlace temporal:
+Las tablas de resultados se pueden descargar como **CSV** con un enlace temporal:
 
-- **Enlace privado** (por defecto): vence a los pocos minutos y exige iniciar sesión con la misma cuenta que lo generó.
-- **Enlace directo**: un enlace firmado que también vence a los pocos minutos.
+- **Enlace privado** (por defecto, y el que usa la aplicación web): funciona durante 10 minutos y solo para la cuenta que lo pidió.
+- **Enlace público**: un asistente lo puede pedir cuando el archivo tiene que llegar a alguien sin cuenta en Teramot. Funciona durante 15 minutos para cualquiera que lo tenga.
+
+Cómo descargarla: [Tablas de resultados](/es/product/use-the-app/results-tables/#descargar).

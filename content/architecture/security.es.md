@@ -10,24 +10,19 @@ Esta página describe cómo se controla quién accede a qué dentro de Teramot, 
 - El inicio de sesión se delega en un **proveedor de identidad administrado** compatible con OpenID Connect, con flujo de código de autorización y PKCE.
 - La API valida en cada pedido la firma, el emisor, la audiencia y el sujeto de cada token.
 - Los asistentes externos se autentican con **OAuth 2.1**. Ver [Formas de consumo](/es/architecture/consumption/#asistentes-de-ia-vía-mcp).
-- Las claves de API y las claves personales para MCP se guardan como hash.
+- Las claves de API y las access keys de MCP se guardan como hash.
 
 ## Roles y permisos
 
-Los permisos se asignan **por workspace**, con cuatro roles en orden creciente. Cada rol incluye los permisos de los anteriores.
+Cada miembro de un workspace tiene uno de cuatro roles: **Owner**, **Admin**, **Analyst** y
+**Read only**, y cada uno incluye lo que pueden hacer los de abajo. Una persona también
+puede tener un rol en un solo proyecto, que tiene prioridad sobre su rol del workspace ahí;
+alguien invitado solo a un proyecto ve ese proyecto y nada más del workspace. Qué puede
+hacer cada rol, acción por acción, está en
+[Roles y permisos](/es/product/concepts/roles-and-permissions/).
 
-| Rol | Puede |
-|---|---|
-| **Solo lectura** | Ver workspaces, proyectos, fuentes, tablas, tablas de resultados y dashboards. Ejecutar consultas de solo lectura. Descargar tablas de resultados. |
-| **Miembro** | Además: crear, editar y eliminar tablas de resultados; gestionar fuentes y archivos; crear y editar dashboards; editar el conocimiento del proyecto. |
-| **Administrador** | Además: invitar y gestionar miembros; crear proyectos; gestionar credenciales y conexiones privadas; lanzar actualizaciones y definir programaciones; gestionar data shares; corregir transformaciones; ver el registro de actividad y el uso de IA. |
-| **Owner** | Además: eliminar proyectos y el workspace; asignar o quitar otros owners. |
-
-Además:
-
-- Una persona puede ser invitada a **un solo proyecto**. En ese caso ve solo ese proyecto, sin acceso al resto del workspace.
-- Los permisos se aplican en la API, que es el único punto de entrada a los datos. Por eso rigen igual en la aplicación web, en MCP y en las integraciones.
-- Las invitaciones se envían por correo y se activan al iniciar sesión con esa dirección.
+Los permisos se aplican en la API, que es el único punto de entrada a los datos. Por eso
+rigen igual en la aplicación web, para un asistente de IA vía MCP y en las integraciones.
 
 ### Acceso del personal de Teramot
 

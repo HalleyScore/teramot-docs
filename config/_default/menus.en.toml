@@ -3,16 +3,16 @@
 # built from the files under content/<section>/ (ordered by `weight`).
 
 [[main]]
+  identifier = "product"
+  name = "Product"
+  pageRef = "/product"
+  weight = 10
+
+[[main]]
   identifier = "architecture"
   name = "Architecture"
   pageRef = "/architecture"
   weight = 20
-
-[[main]]
-  identifier = "api"
-  name = "API"
-  pageRef = "/api"
-  weight = 30
 
 [[main]]
   identifier = "compliance"
@@ -21,9 +21,9 @@
   weight = 40
 
 [[main]]
-  identifier = "updates"
-  name = "Updates"
-  pageRef = "/updates"
+  identifier = "changelog"
+  name = "Changelog"
+  pageRef = "/changelog"
   weight = 50
 
 [[main]]

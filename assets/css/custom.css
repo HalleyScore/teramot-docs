@@ -1006,3 +1006,180 @@ html.dark .content .listingblock pre.rouge {
 /* TextWhitespace */ html.dark pre.rouge .w { color: #6e7681 }
 
 /* END GENERATED: rouge syntax highlighting */
+
+/* -- Product docs (content/product/, synced from teramot-aleph) -- */
+
+/* {{< link-cards >}}: the connector list, one small card per logo and name.
+   Under .content so it outranks the theme's list margins, which would pull the grid
+   up against the rule Hextra draws below an h2. */
+.content .tm-link-cards {
+  margin: 1.5rem 0 2rem;
+}
+
+.content .tm-link-cards ul {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content .tm-link-cards li {
+  margin: 0;
+}
+
+.tm-link-cards a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 0.75rem;
+  background: var(--tm-surface);
+  color: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 160ms ease;
+}
+
+.tm-link-cards a:hover {
+  border-color: var(--tm-blue-soft);
+}
+
+.tm-link-cards img {
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* A #link into a tab scrolls to the tab bar (assets/js/product-tabs.js); keep it
+   clear of the sticky navbar. */
+.content .hextra-scrollbar {
+  scroll-margin-top: 5rem;
+}
+
+/* -- Changelog (layouts/changelog/list.html) -- */
+
+.tm-changelog {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.tm-changelog-head h1 {
+  font-family: var(--tm-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.tm-changelog-head .content {
+  color: var(--tm-muted);
+}
+
+.tm-changelog-timeline {
+  margin-top: 2.5rem;
+}
+
+.tm-release {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--tm-rule);
+  scroll-margin-top: 5rem;
+}
+
+.tm-release-anchor {
+  display: block;
+  scroll-margin-top: 5rem;
+}
+
+.tm-release-aside {
+  color: var(--tm-muted);
+  font-size: 0.875rem;
+}
+
+.tm-release-body h2 {
+  margin: 0 0 0.25rem;
+  font-family: var(--tm-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tm-release-body h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tm-release-range {
+  margin: 0;
+  color: var(--tm-muted);
+  font-size: 0.875rem;
+}
+
+.tm-cl-group {
+  margin-top: 1.25rem;
+}
+
+.tm-cl-group h3,
+.tm-cl-group summary {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.tm-cl-group summary {
+  cursor: pointer;
+}
+
+.tm-cl-count {
+  margin-left: 0.25rem;
+  color: var(--tm-muted);
+}
+
+.tm-cl-cat-breaking {
+  color: #c2410c;
+}
+
+.tm-cl-cat-ux,
+.tm-cl-cat-agent,
+.tm-cl-cat-performance {
+  color: var(--tm-blue);
+}
+
+html.dark .tm-cl-cat-ux,
+html.dark .tm-cl-cat-agent,
+html.dark .tm-cl-cat-performance {
+  color: var(--tm-blue-soft);
+}
+
+.tm-cl-notes {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.tm-cl-notes li {
+  margin: 0.4rem 0;
+  line-height: 1.6;
+}
+
+.tm-cl-version {
+  margin-left: 0.25rem;
+  color: var(--tm-muted);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 640px) {
+  .tm-release {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

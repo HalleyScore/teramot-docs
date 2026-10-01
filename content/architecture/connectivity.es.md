@@ -3,15 +3,16 @@ title: "Conectividad con las fuentes"
 weight: 100
 ---
 
-Teramot ofrece tres formas de llegar a un sistema de origen. La elección depende de dónde esté el sistema y de las políticas de red del cliente.
+Teramot ofrece cuatro formas de llegar a una base de datos. La elección depende de dónde esté el sistema y de las políticas de red del cliente.
 
-| Método | Cuándo usarlo |
-|---|---|
-| **Red privada IPsec** (recomendado) | El sistema está en un centro de datos o en una red privada. Es la opción más segura: el tráfico viaja por una VPN sitio a sitio dedicada y el sistema no necesita exponerse a Internet. |
-| **Túnel SSH** | El sistema está en una red privada que tiene un servidor bastión accesible por SSH. |
-| **Acceso por Internet con lista blanca de IP** | El sistema ya es accesible desde Internet, por ejemplo un servicio en la nube, un SaaS o un warehouse. |
+| Método | Cuándo usarlo | Motores |
+|---|---|---|
+| **Conexión privada (IPsec)** (recomendada para redes privadas) | El sistema está en un centro de datos o en una red privada. El tráfico viaja por una VPN sitio a sitio dedicada y el sistema no necesita estar expuesto a Internet. | PostgreSQL, MySQL, SQL Server, Oracle DB, MongoDB |
+| **Túnel SSH** | El sistema está en una red privada que tiene un servidor bastión accesible por SSH. | PostgreSQL, MySQL, SQL Server, Oracle DB |
+| **Lista blanca de IP** | El sistema está detrás de un firewall que puede admitir las IP de salida de Teramot. | Todas las bases de datos |
+| **Conexión directa** | El sistema ya es accesible desde Internet, como un warehouse en la nube. | Todas las bases de datos |
 
-En todos los casos, Teramot **inicia** la conexión hacia el origen y solo lee datos.
+En todos los casos, Teramot **inicia** la conexión hacia el origen y solo lee datos. Qué métodos ofrece cada motor, y cómo configurar cada uno, está en [Connect your data](/product/connect-data/overview/#how-teramot-reaches-a-database) (en inglés).
 
 ## Red privada IPsec
 
@@ -36,33 +37,11 @@ flowchart LR
 - Para su lado del túnel, Teramot asigna un bloque `/29` del rango `100.64.0.0/10` (RFC 6598), que no choca con las redes privadas habituales.
 - Si hace falta, se puede configurar la **resolución DNS interna** del cliente en cada conexión.
 
-### Qué entrega cada parte
+### Parámetros del túnel
 
-| El cliente entrega | Teramot entrega |
-|---|---|
-| IP pública del equipo VPN (IPv4) | IP pública fija del gateway |
-| Redes internas a las que hay que llegar | Bloque `/29` del lado de Teramot |
-| Identificadores IKE | Clave precompartida generada por Teramot, que se muestra una sola vez |
-| Perfil criptográfico elegido | Parámetros del túnel |
-| Servidores DNS internos (opcional) | |
+El túnel es IKEv2 con una clave precompartida que Teramot genera y muestra una sola vez, y Perfect Forward Secrecy es obligatorio. Hay un perfil moderno (AES-256-GCM, ECP-256) y uno compatible (AES-256, MODP-2048), ambos con SHA-256. No se aceptan IKEv1, 3DES, DES, SHA-1, MD5 ni MODP-1024, y el gateway solo acepta tráfico IKE (UDP 500 y 4500) desde las IP públicas que declaró cada cliente.
 
-### Parámetros criptográficos
-
-| | Perfil moderno | Perfil compatible |
-|---|---|---|
-| Protocolo | IKEv2 | IKEv2 |
-| Cifrado | AES-256-GCM | AES-256 |
-| Integridad / PRF | SHA-256 | SHA-256 |
-| Grupo Diffie-Hellman | ECP-256 | MODP-2048 |
-| Perfect Forward Secrecy | Obligatorio | Obligatorio |
-| Vida de IKE SA / Child SA | 8 h / 1 h | 8 h / 1 h |
-| Autenticación | Clave precompartida | Clave precompartida |
-
-No se aceptan IKEv1, 3DES, DES, SHA-1, MD5 ni MODP-1024. El gateway solo acepta tráfico IKE (UDP 500 y 4500) desde las IP públicas que declaró cada cliente.
-
-### Habilitación
-
-Las conexiones privadas se habilitan por workspace. Una vez habilitadas, un administrador las crea y gestiona desde la aplicación.
+Las conexiones privadas se habilitan por workspace, y un admin las crea desde la aplicación. Las propuestas exactas, los tiempos de vida y los pasos del lado del cliente están en [Private connections](/product/connect-data/private-connections/) (en inglés).
 
 ## Túnel SSH
 
@@ -85,26 +64,14 @@ Las conexiones a bases de datos usan cifrado TLS cuando el motor lo ofrece.
 
 ## Requisitos de red
 
-El firewall del cliente debe permitir el tráfico entrante desde las IP de Teramot hacia el puerto del sistema de origen. Estos son los puertos por defecto, que se pueden cambiar al configurar la fuente:
+El firewall del cliente debe permitir el tráfico entrante desde las IP de salida de Teramot hacia el puerto del sistema de origen. El puerto por defecto de cada motor está en [Databases and warehouses](/product/connect-data/databases/), y los de MongoDB y SAP ECC en [Applications and cloud sources](/product/connect-data/apps-and-cloud/) (en inglés). Además:
 
-| Sistema | Puerto por defecto (TCP) |
-|---|---|
-| PostgreSQL | 5432 |
-| Amazon Redshift | 5439 |
-| MySQL, MariaDB | 3306 |
-| SQL Server, Azure SQL Database | 1433 |
-| Oracle | 1521 |
-| SAP HANA | 30015 |
-| Teradata | 1025 |
-| MongoDB | 27017 |
-| SAP ECC (RFC) | 3300 + número de sistema |
-| Bastión SSH | 22 |
-| Gateway IPsec | UDP 500 y 4500, desde y hacia `32.192.124.113` |
+- Un bastión SSH necesita el TCP 22 (o el puerto configurado) abierto a las IP de Teramot.
+- Una conexión privada necesita UDP 500 y 4500 hacia y desde el gateway IPsec, `32.192.124.113`.
+- Databricks, Snowflake, BigQuery y las aplicaciones SaaS se alcanzan por HTTPS (TCP 443) en los endpoints públicos del proveedor.
 
-Databricks, Snowflake, BigQuery y las aplicaciones SaaS se alcanzan por HTTPS (TCP 443) en los endpoints públicos de cada proveedor.
-
-Para preparar el usuario y los permisos en cada sistema, ver [Preparar las fuentes](/es/architecture/source-setup/).
+Para preparar el usuario y los permisos en cada sistema, ver [Prepare your sources](/product/connect-data/prepare-sources/) (en inglés).
 
 ## Aplicaciones SaaS
 
-Las aplicaciones SaaS se conectan por sus APIs públicas, con OAuth o con tokens de acceso. No requieren configuración de red.
+Las aplicaciones SaaS se conectan a través de sus API públicas, con las credenciales que pide cada una (ver [Applications and cloud sources](/product/connect-data/apps-and-cloud/), en inglés). No requieren configuración de red.

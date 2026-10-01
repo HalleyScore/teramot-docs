@@ -5,19 +5,9 @@ weight: 120
 
 ## Refresh frequency
 
-Each project has a configurable refresh schedule:
-
-| Option | Examples |
-|---|---|
-| **Daily** | Every day at 07:00 |
-| **Weekly** | Mondays at 06:00 |
-| **Monthly** | On day 1 of each month |
-| **Every N hours** | Every 1 to 23 hours |
-| **Cron expression** | Any custom schedule, with a maximum of one run per hour |
-
-The time zone is set in the schedule. You can also schedule a one-time refresh for a specific date and time, or launch a manual refresh at any moment.
-
-Some options, such as incremental loading and cron expressions, depend on your plan.
+Each project has one refresh schedule, which refreshes all its sources, and any source can
+also be refreshed by hand. The schedule options, and which plan includes each one, are in
+[Refresh your data](/product/use-the-app/refresh/).
 
 > [!TIP]
 > **Choosing the frequency**

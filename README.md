@@ -46,8 +46,8 @@ The sync adapts aleph's Markdown to this site: relative links become `/product/.
 URLs, a `tabs` block becomes Hextra tabs (one per heading, with an anchor so a link
 to the heading opens its tab; `assets/js/product-tabs.js`), a `cards` block becomes
 `{{< link-cards >}}`, and a paragraph opening with **Where:** becomes a quote. Each
-aleph folder needs a sidebar title in `SECTIONS`; a new folder fails the sync until
-it has one.
+aleph folder gets its sidebar title from `SECTIONS`; a new folder still publishes,
+titled after its directory, and the run shows a warning to add it.
 
 The MCP pages (`/product/mcp/`) replaced the hand-written `/api/` section: `ALIASES` in
 the sync keeps each old `/api/...` URL redirecting to its page, and

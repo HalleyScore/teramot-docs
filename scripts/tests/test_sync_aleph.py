@@ -126,10 +126,13 @@ class SyncAlephTest(unittest.TestCase):
         self.assertFalse((sync_aleph.CONTENT / "embed.go").exists())
         self.assertFalse(any(p.name.startswith(".") for p in sync_aleph.CONTENT.rglob("*")))
 
-    def test_a_folder_without_a_title_fails(self):
-        write(self.aleph, "public-docs/billing/plans.md", "---\ntitle: Plans\n---\n")
-        with self.assertRaises(SystemExit):
+    def test_a_folder_without_a_title_still_publishes(self):
+        write(self.aleph, "public-docs/data-billing/plans.md", "---\ntitle: Plans\n---\n")
+        with mock.patch("sys.stderr") as stderr:
             sync_aleph.sync_docs(self.aleph / "public-docs")
+        section = (sync_aleph.CONTENT / "data-billing/_index.md").read_text()
+        self.assertEqual(section, '---\ntitle: "Data billing"\nweight: 100\n---\n')
+        self.assertIn("::warning::", "".join(c.args[0] for c in stderr.write.call_args_list))
 
     def test_release_notes_are_copied(self):
         notes = self.aleph / "release-notes.json"

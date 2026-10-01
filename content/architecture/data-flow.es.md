@@ -65,7 +65,7 @@ sequenceDiagram
 Una actualización puede dispararse de varias formas:
 
 - **Programada**, según la frecuencia configurada en el proyecto.
-- **Manual**, desde la aplicación: de todo el proyecto o de tablas puntuales.
+- **Manual**, desde la aplicación: una fuente completa, o solo las tablas que elijas.
 - **Por API o MCP**, por ejemplo desde un asistente de IA con los permisos necesarios.
 
 En cada actualización:
@@ -93,6 +93,6 @@ Cada proyecto muestra:
 
 - El **historial de actualizaciones**: tipo, estado y tablas afectadas.
 - El **estado de cada fuente** y la hora de la última sincronización.
-- Los **errores clasificados**: permisos, credenciales inválidas, conectividad, configuración o error interno. Cada uno trae un mensaje legible y acciones sugeridas.
+- Los **errores clasificados**, cada uno con un mensaje legible y cómo resolverlo. Las clases están en [Refresh history](/product/use-the-app/refresh/#refresh-history) (en inglés).
 
 Si una tabla falla varias veces seguidas, deja de reintentarse automáticamente hasta que se revise su configuración. Así se evita que un error persistente consuma recursos en cada ejecución.

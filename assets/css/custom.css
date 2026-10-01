@@ -1056,10 +1056,10 @@ html.dark .content .listingblock pre.rouge {
   object-fit: contain;
 }
 
-/* A tab's anchor sits above its content; keep it clear of the sticky navbar. */
-.tm-tab-anchor {
-  display: block;
-  scroll-margin-top: 6rem;
+/* A #link into a tab scrolls to the tab bar (assets/js/product-tabs.js); keep it
+   clear of the sticky navbar. */
+.content .hextra-scrollbar {
+  scroll-margin-top: 5rem;
 }
 
 /* -- Changelog (layouts/changelog/list.html) -- */

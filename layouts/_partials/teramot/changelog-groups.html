@@ -1,0 +1,20 @@
+{{- /* A release's (or a month's) notes grouped by category, in the order the app's
+       What's New shows them. A note without the page's language falls back to English. */ -}}
+{{- $notes := .notes -}}
+{{- $lang := .lang -}}
+{{- $folded := .folded -}}
+{{- range .categories -}}
+  {{- $category := . -}}
+  {{- $group := where $notes "category" $category -}}
+  {{- with $group -}}
+    {{- $heading := printf `<span class="tm-cl-cat tm-cl-cat-%s">%s</span>` $category (T (printf "tmChangelogCat_%s" $category)) -}}
+    {{- $list := partial "teramot/changelog-notes.html" (dict "notes" . "lang" $lang) -}}
+    <section class="tm-cl-group">
+      {{- if in $folded $category }}
+        <details><summary>{{ $heading | safeHTML }} <span class="tm-cl-count">{{ len . }}</span></summary>{{ $list }}</details>
+      {{- else }}
+        <h3>{{ $heading | safeHTML }}</h3>{{ $list }}
+      {{- end }}
+    </section>
+  {{- end -}}
+{{- end -}}

@@ -64,6 +64,6 @@ In practice, Teramot:
 > [!NOTE]
 > **Related documentation**
 >
-> - [MCP server reference](/api/intro/): how to connect AI assistants to Teramot.
+> - [MCP server reference](/product/mcp/overview/): how to connect AI assistants to Teramot.
 > - [Security and confidentiality commitments](/compliance/Transparency/security-commitments/).
 > - [Compliance](/compliance/about/): SOC 2 and security policies.

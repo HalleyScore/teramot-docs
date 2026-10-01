@@ -6,10 +6,11 @@ deployed to [docs.teramot.com](https://docs.teramot.com) via GitHub Pages.
 
 | Area | URL | Source |
 | --- | --- | --- |
+| Product | `/product/` | teramot-aleph `public-docs/`, synced (see below) |
 | Architecture | `/architecture/` | `content/architecture/` |
-| API (MCP) | `/api/` | `content/api/` |
 | Compliance | `/compliance/` | `content/compliance/` |
 | Product Updates | `/updates/` | `content/updates/` |
+| Changelog | `/changelog/` | teramot-aleph release notes, synced (see below) |
 | System Status | `/status/` | `content/status/` |
 | Engineering Blog | `/blog/` | `content/blog/` |
 
@@ -24,6 +25,41 @@ hugo server
 ```
 
 The site is served at http://localhost:1313/.
+
+`/product/` and `/changelog/` are empty until you sync them from a teramot-aleph
+checkout next to this repo (`--aleph <path>` for another location):
+
+```sh
+python3 scripts/sync_aleph.py
+```
+
+## Product docs and changelog (from teramot-aleph)
+
+The pages under `/product/` are written in teramot-aleph's `public-docs/`, where CI
+checks each one against the code; the changelog is the release notes its release cut
+writes (`frontend/public/release-notes.json`), in English and Spanish.
+`scripts/sync_aleph.py` copies both in before every build, into gitignored paths
+(`content/product/`, `static/product/`, `data/aleph/`): never edit them here, and
+fix a page in aleph instead.
+
+The sync adapts aleph's Markdown to this site: relative links become `/product/...`
+URLs, a `tabs` block becomes Hextra tabs (one per heading, with an anchor so a link
+to the heading opens its tab; `assets/js/product-tabs.js`), a `cards` block becomes
+`{{< link-cards >}}`, and a paragraph opening with **Where:** becomes a quote. Each
+aleph folder needs a sidebar title in `SECTIONS`; a new folder fails the sync until
+it has one.
+
+The MCP pages (`/product/mcp/`) replaced the hand-written `/api/` section: `ALIASES` in
+the sync keeps each old `/api/...` URL redirecting to its page, and
+`static/es/api/` does the same for the Spanish URLs, since the product docs are
+English-only for now.
+
+CI publishes aleph's latest `vX.Y.Z` tag, which is what prd runs. aleph's Build &
+Deploy dispatches `hugo.yml` with the tag after each prd rollout, and a manual run
+(Actions → Run workflow) takes any ref in `aleph_ref`. aleph is private, so CI reads
+it with the `ALEPH_READ_TOKEN` secret (a fine-grained token with Contents: Read-only
+on teramot-aleph); without it the build fails rather than publish a site with no
+product docs.
 
 ### Prerequisites
 
@@ -41,10 +77,10 @@ Python 3 runs the site checks (no packages needed).
 ## Writing docs
 
 A docs page is a Markdown file in its section. The path is the URL:
-`content/api/my-page.md` is published at `/api/my-page/`.
+`content/architecture/my-page.md` is published at `/architecture/my-page/`.
 
 ```sh
-hugo new content api/my-page.md
+hugo new content architecture/my-page.md
 ```
 
 - **Order and sidebar label:** `weight` (lower first) and `linkTitle` in the
@@ -105,6 +141,7 @@ defaults rather than extending them, so keep it in sync when Hugo is upgraded.
 ## Checks
 
 ```sh
+python3 scripts/sync_aleph.py
 hugo --gc --minify
 python3 -m unittest discover -s scripts/tests
 python3 scripts/check_site.py public
@@ -125,7 +162,7 @@ on every pull request.
 | `static/` | Files served as-is: images, PDFs, icons, `CNAME` |
 | `i18n/` | UI strings per language |
 | `themes/hextra/` | Theme, pinned as a git submodule |
-| `scripts/` | Site checks, favicon and Rouge CSS generators |
+| `scripts/` | Site checks, the teramot-aleph sync, favicon and Rouge CSS generators |
 
 Keep theme changes in `layouts/` and `assets/`; never edit the submodule. The
 files copied from Hextra (`layouts/blog/single.html`, `layouts/authors/term.html`)

@@ -68,11 +68,17 @@ jobs:
             echo "::error::ALEPH_READ_TOKEN is not set; the product docs cannot be read from teramot-aleph"
             exit 1
           fi
+          # Listing aleph's tags proves the token can read the repo, before the checkout
+          # below fails on the same grant with a less telling message.
+          if ! tags=$(git ls-remote --tags --refs --sort=-v:refname \
+                        "https://x-access-token:${TOKEN}@github.com/HalleyScore/teramot-aleph.git" 'v*'); then
+            echo "::error title=teramot-aleph not readable::ALEPH_READ_TOKEN cannot read HalleyScore/teramot-aleph; grant it 'Contents: Read-only' on that repo (and check it has not expired)."
+            exit 1
+          fi
           if [ -z "$REF" ]; then
             # Release tags only (vX.Y.Z): a pre-release tag never reaches the site.
-            REF=$(git ls-remote --tags --refs --sort=-v:refname \
-                    "https://x-access-token:${TOKEN}@github.com/HalleyScore/teramot-aleph.git" 'v*' \
-                  | sed 's|.*refs/tags/||' | grep -m1 -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true)
+            REF=$(grep -m1 -oE 'refs/tags/v[0-9]+\.[0-9]+\.[0-9]+$' <<<"$tags" || true)
+            REF=${REF#refs/tags/}
             [ -n "$REF" ] || { echo "::error::no release tag found in teramot-aleph"; exit 1; }
           fi
           echo "ref=$REF" >> "$GITHUB_OUTPUT"

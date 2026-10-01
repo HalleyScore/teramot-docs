@@ -1,7 +1,7 @@
 ---
 title: "When Can Software Honestly Say Done?"
-date: 2026-10-01
-draft: true
+date: 2026-10-13T09:00:00-03:00
+draft: false
 authors:
   - valentin-torassa
 tags:

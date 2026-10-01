@@ -40,7 +40,7 @@ Teramot publica un servidor **[Model Context Protocol](https://modelcontextproto
 | **Endpoint** | `https://mcp.teramot.com/mcp` |
 | **Transporte** | Streamable HTTP |
 | **Autenticación** | OAuth 2.1 con PKCE, o una access key para clientes que no soportan OAuth |
-| **Clientes compatibles** | Claude (web, escritorio, Team, Enterprise y Claude Code), ChatGPT, GitHub Copilot en VS Code, Gemini, Cursor, v0, Antigravity y otros clientes MCP. Cómo configurar cada uno: [Connect an AI assistant](/product/mcp/connect-clients/) (en inglés) |
+| **Clientes compatibles** | Claude (web, escritorio, Team, Enterprise y Claude Code), ChatGPT, GitHub Copilot en VS Code, Gemini, Cursor, v0, Antigravity y otros clientes MCP. Cómo configurar cada uno: [Conectar un asistente de IA](/es/product/mcp/connect-clients/) |
 
 ### Cómo funciona la identidad
 
@@ -56,9 +56,9 @@ Las redirecciones de OAuth se aceptan solo hacia una lista cerrada de destinos: 
 
 Un asistente puede hacer exactamente lo que permite el rol de su usuario, nada más: explorar
 y consultar tablas, armar tablas de resultados y dashboards, actualizar fuentes, etc. La
-[Tool reference](/product/mcp/tools-reference/) lista cada herramienta con el rol mínimo que
-necesita, y [Roles and permissions](/product/concepts/roles-and-permissions/) qué cubre cada
-rol (ambas en inglés).
+[Referencia de herramientas](/es/product/mcp/tools-reference/) lista cada herramienta con el rol mínimo que
+necesita, y [Roles y permisos](/es/product/concepts/roles-and-permissions/) qué cubre cada
+rol.
 
 ## API
 
@@ -75,4 +75,4 @@ Las tablas de resultados se pueden descargar como **CSV** con un enlace temporal
 - **Enlace privado** (por defecto, y el que usa la aplicación web): funciona durante 10 minutos y solo para la cuenta que lo pidió.
 - **Enlace público**: un asistente lo puede pedir cuando el archivo tiene que llegar a alguien sin cuenta en Teramot. Funciona durante 15 minutos para cualquiera que lo tenga.
 
-Cómo descargarla: [Results tables](/product/use-the-app/results-tables/#download) (en inglés).
+Cómo descargarla: [Tablas de resultados](/es/product/use-the-app/results-tables/#descargar).

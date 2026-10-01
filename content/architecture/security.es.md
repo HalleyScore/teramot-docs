@@ -19,7 +19,7 @@ Cada miembro de un workspace tiene uno de cuatro roles: **Owner**, **Admin**, **
 puede tener un rol en un solo proyecto, que tiene prioridad sobre su rol del workspace ahí;
 alguien invitado solo a un proyecto ve ese proyecto y nada más del workspace. Qué puede
 hacer cada rol, acción por acción, está en
-[Roles and permissions](/product/concepts/roles-and-permissions/) (en inglés).
+[Roles y permisos](/es/product/concepts/roles-and-permissions/).
 
 Los permisos se aplican en la API, que es el único punto de entrada a los datos. Por eso
 rigen igual en la aplicación web, para un asistente de IA vía MCP y en las integraciones.

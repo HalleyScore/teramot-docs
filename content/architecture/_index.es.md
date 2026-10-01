@@ -43,7 +43,7 @@ En la práctica, Teramot:
 | **Dashboard** | Una visualización construida sobre tablas de resultados. |
 | **Conocimiento del proyecto** | Documentación de negocio del proyecto (definiciones, reglas, glosario) que usan los agentes para responder con contexto. |
 
-En la aplicación, las tablas raw, procesadas y de resultados aparecen como **Source tables**, **Cleaned & interpreted** y **Results**; ver [How your data is organized](/product/concepts/data-model/) (en inglés).
+En la aplicación, las tablas raw, procesadas y de resultados aparecen como **Source tables**, **Cleaned & interpreted** y **Results**; ver [Cómo se organizan tus datos](/es/product/concepts/data-model/).
 
 ## Cómo leer esta sección
 
@@ -58,7 +58,7 @@ En la aplicación, las tablas raw, procesadas y de resultados aparecen como **So
 | Cómo se consultan los datos | [Formas de consumo](/es/architecture/consumption/) |
 | Autenticación, roles, cifrado y auditoría | [Seguridad y control de acceso](/es/architecture/security/) |
 | Cómo conectar sistemas que están en una red privada | [Conectividad con las fuentes](/es/architecture/connectivity/) |
-| Qué usuario y permisos crear en cada sistema de origen | [Prepare your sources](/product/connect-data/prepare-sources/) (en inglés) |
+| Qué usuario y permisos crear en cada sistema de origen | [Preparar tus fuentes](/es/product/connect-data/prepare-sources/) |
 | Frecuencias de actualización y carga incremental | [Actualización e incremental](/es/architecture/refresh/) |
 | Cuánto tiempo se guardan los datos y cómo se borran | [Retención y borrado](/es/architecture/retention/) |
 | Qué sistemas se pueden conectar | [Catálogo de conectores](/es/architecture/connectors/) |
@@ -66,6 +66,6 @@ En la aplicación, las tablas raw, procesadas y de resultados aparecen como **So
 > [!NOTE]
 > **Documentación relacionada**
 >
-> - [Referencia del servidor MCP](/product/mcp/overview/): cómo conectar asistentes de IA a Teramot.
+> - [Referencia del servidor MCP](/es/product/mcp/overview/): cómo conectar asistentes de IA a Teramot.
 > - [Compromisos de seguridad y confidencialidad](/compliance/Transparency/security-commitments/).
 > - [Compliance](/compliance/about/): SOC 2 y políticas de seguridad.

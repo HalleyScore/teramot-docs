@@ -1,0 +1,6 @@
+{{- /* A product-docs section (content/product/<folder>/, written by scripts/sync_aleph.py)
+       has no page of its own: its sidebar entry and breadcrumb land on its first page,
+       in sidebar order, instead of an empty one. */ -}}
+{{- with index .Pages.ByWeight 0 -}}
+<!doctype html><html lang="{{ site.Language.Lang }}"><head><title>{{ .Title }}</title><link rel="canonical" href="{{ .Permalink }}"><meta name="robots" content="noindex"><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={{ .RelPermalink }}"></head></html>
+{{- end -}}

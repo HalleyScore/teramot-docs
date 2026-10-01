@@ -2,11 +2,10 @@
 # Same structure as menus.en.toml. The engineering blog is English-only, so
 # its entries point at the English blog.
 
-# The product docs are English-only for now, so the entry points at the English pages.
 [[main]]
   identifier = "product"
   name = "Producto"
-  url = "/product/"
+  pageRef = "/product"
   weight = 10
 
 [[main]]

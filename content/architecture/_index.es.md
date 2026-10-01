@@ -43,6 +43,8 @@ En la práctica, Teramot:
 | **Dashboard** | Una visualización construida sobre tablas de resultados. |
 | **Conocimiento del proyecto** | Documentación de negocio del proyecto (definiciones, reglas, glosario) que usan los agentes para responder con contexto. |
 
+En la aplicación, las tablas raw, procesadas y de resultados aparecen como **Source tables**, **Cleaned & interpreted** y **Results**; ver [How your data is organized](/product/concepts/data-model/) (en inglés).
+
 ## Cómo leer esta sección
 
 | Si necesita saber… | Vaya a |
@@ -56,7 +58,7 @@ En la práctica, Teramot:
 | Cómo se consultan los datos | [Formas de consumo](/es/architecture/consumption/) |
 | Autenticación, roles, cifrado y auditoría | [Seguridad y control de acceso](/es/architecture/security/) |
 | Cómo conectar sistemas que están en una red privada | [Conectividad con las fuentes](/es/architecture/connectivity/) |
-| Qué usuario y permisos crear en cada sistema de origen | [Preparar las fuentes](/es/architecture/source-setup/) |
+| Qué usuario y permisos crear en cada sistema de origen | [Prepare your sources](/product/connect-data/prepare-sources/) (en inglés) |
 | Frecuencias de actualización y carga incremental | [Actualización e incremental](/es/architecture/refresh/) |
 | Cuánto tiempo se guardan los datos y cómo se borran | [Retención y borrado](/es/architecture/retention/) |
 | Qué sistemas se pueden conectar | [Catálogo de conectores](/es/architecture/connectors/) |

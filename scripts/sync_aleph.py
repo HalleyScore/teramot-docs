@@ -28,8 +28,9 @@ DATA = ROOT / "data" / "aleph" / "release_notes.json"
 URL_BASE = "/product"
 IMAGES = {".svg", ".png", ".jpg", ".jpeg", ".gif", ".webp"}
 
-# Sidebar title and order of each public-docs/ folder. A folder missing here fails
-# the sync rather than showing up under its directory name.
+# Sidebar title and order of each public-docs/ folder. A folder missing here still
+# publishes, titled after its directory and listed last, with a warning to add it:
+# an aleph release must never keep the docs from deploying over a sidebar label.
 SECTIONS = {
     "concepts": ("Concepts", 10),
     "connect-data": ("Connect your data", 20),
@@ -45,6 +46,7 @@ ALIASES = {
     "mcp/authentication.md": ["/api/authentication/"],
     "mcp/connect-clients.md": ["/api/connect-clients/"],
     "mcp/tools-reference.md": ["/api/tools-reference/"],
+    "connect-data/prepare-sources.md": ["/architecture/source-setup/", "/getting-started/connect-your-data/"],
 }
 
 MARKER = re.compile(r"^\[//\]: # \((.+)\)$")
@@ -215,9 +217,11 @@ def sync_docs(src):
     if not (CONTENT / "_index.md").exists():
         fail(f"{src} has no index.md")
     for d in sorted(dirs):
+        title, weight = SECTIONS.get(d, (d.replace("-", " ").capitalize(), 100))
         if d not in SECTIONS:
-            fail(f"public-docs/{d}/ has no sidebar title: add it to SECTIONS in {__file__}")
-        title, weight = SECTIONS[d]
+            # The ::warning:: prefix makes GitHub Actions show it on the run's summary.
+            print(f"::warning::public-docs/{d}/ has no sidebar title; add it to SECTIONS "
+                  f"in scripts/sync_aleph.py (shown as \"{title}\" meanwhile)", file=sys.stderr)
         (CONTENT / d / "_index.md").write_text(
             front_matter({"title": title, "sidebar_position": weight}, f"{d}/_index.md"))
 

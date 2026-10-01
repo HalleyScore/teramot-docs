@@ -5,19 +5,10 @@ weight: 120
 
 ## Frecuencia de actualización
 
-Cada proyecto tiene una programación de actualización configurable:
-
-| Opción | Ejemplos |
-|---|---|
-| **Diaria** | Todos los días a las 07:00 |
-| **Semanal** | Los lunes a las 06:00 |
-| **Mensual** | El día 1 de cada mes |
-| **Cada N horas** | Cada 1 a 23 horas |
-| **Expresión cron** | Cualquier programación personalizada, con un máximo de una ejecución por hora |
-
-La zona horaria se define en la programación. También se puede programar una actualización única para una fecha y hora, o lanzar una actualización manual en cualquier momento.
-
-Algunas opciones, como la carga incremental y las expresiones cron, dependen del plan contratado.
+Cada proyecto tiene una programación de actualización, que actualiza todas sus fuentes, y
+cualquier fuente también se puede actualizar a mano. Las opciones de programación, y qué
+plan incluye cada una, están en [Refresh your data](/product/use-the-app/refresh/) (en
+inglés).
 
 > [!TIP]
 > **Elegir la frecuencia**

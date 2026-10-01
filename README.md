@@ -49,10 +49,11 @@ to the heading opens its tab; `assets/js/product-tabs.js`), a `cards` block beco
 aleph folder gets its sidebar title from `SECTIONS`; a new folder still publishes,
 titled after its directory, and the run shows a warning to add it.
 
+Every aleph page has its Spanish translation next to it (`page.es.md`), checked in
+aleph like the English one; the sync publishes it at `/es/product/...`.
+
 The MCP pages (`/product/mcp/`) replaced the hand-written `/api/` section: `ALIASES` in
-the sync keeps each old `/api/...` URL redirecting to its page, and
-`static/es/api/` does the same for the Spanish URLs, since the product docs are
-English-only for now.
+the sync keeps each old `/api/...` URL, in both languages, redirecting to its page.
 
 CI publishes aleph's latest `vX.Y.Z` tag, which is what prd runs. aleph's Build &
 Deploy dispatches `hugo.yml` with the tag after each prd rollout, and a manual run

@@ -8,7 +8,6 @@ hero:
   buttons:
     - label: "Guías del producto"
       url: "/product/"
-      lang: "en"
     - label: "Arquitectura"
       url: "/architecture/"
       secondary: true
@@ -21,20 +20,17 @@ docs:
   title: "Documentación"
   lead: "Guías y referencia para usar la plataforma Teramot."
   cards:
-    # The product docs are English-only for now.
     - title: "Guías del producto"
-      text: "Cómo usar Teramot: conectar tus datos, armar tablas de resultados y dashboards, administrar miembros y planes, y resolver problemas. En inglés."
+      text: "Cómo usar Teramot: conectar tus datos, armar tablas de resultados y dashboards, administrar miembros y planes, y resolver problemas."
       url: "/product/"
-      lang: "en"
       icon: "book-open"
     - title: "Arquitectura"
       text: "Cómo funciona Teramot por dentro: qué hace la plataforma, por dónde pasan los datos, qué transformaciones se aplican, dónde se guardan y quién puede acceder a ellos."
       url: "/architecture/"
       icon: "cube"
     - title: "Asistentes de IA (MCP)"
-      text: "Conectá Claude, ChatGPT, Copilot u otro asistente a Teramot, y las herramientas que puede usar sobre tus datos. En inglés."
+      text: "Conectá Claude, ChatGPT, Copilot u otro asistente a Teramot, y las herramientas que puede usar sobre tus datos."
       url: "/product/mcp/overview/"
-      lang: "en"
       icon: "code"
     - title: "Compliance"
       text: "Toda la documentación de cumplimiento: ISO 27001, SOC 2, GDPR y más. Estándares de seguridad, detalles de auditoría y buenas prácticas."

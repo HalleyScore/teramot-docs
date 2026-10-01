@@ -7,8 +7,7 @@ weight: 120
 
 Cada proyecto tiene una programación de actualización, que actualiza todas sus fuentes, y
 cualquier fuente también se puede actualizar a mano. Las opciones de programación, y qué
-plan incluye cada una, están en [Refresh your data](/product/use-the-app/refresh/) (en
-inglés).
+plan incluye cada una, están en [Actualizá tus datos](/es/product/use-the-app/refresh/).
 
 > [!TIP]
 > **Elegir la frecuencia**

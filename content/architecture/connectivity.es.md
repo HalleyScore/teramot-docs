@@ -12,7 +12,7 @@ Teramot ofrece cuatro formas de llegar a una base de datos. La elección depende
 | **Lista blanca de IP** | El sistema está detrás de un firewall que puede admitir las IP de salida de Teramot. | Todas las bases de datos |
 | **Conexión directa** | El sistema ya es accesible desde Internet, como un warehouse en la nube. | Todas las bases de datos |
 
-En todos los casos, Teramot **inicia** la conexión hacia el origen y solo lee datos. Qué métodos ofrece cada motor, y cómo configurar cada uno, está en [Connect your data](/product/connect-data/overview/#how-teramot-reaches-a-database) (en inglés).
+En todos los casos, Teramot **inicia** la conexión hacia el origen y solo lee datos. Qué métodos ofrece cada motor, y cómo configurar cada uno, está en [Conectá tus datos](/es/product/connect-data/overview/#cómo-llega-teramot-a-una-base-de-datos).
 
 ## Red privada IPsec
 
@@ -41,7 +41,7 @@ flowchart LR
 
 El túnel es IKEv2 con una clave precompartida que Teramot genera y muestra una sola vez, y Perfect Forward Secrecy es obligatorio. Hay un perfil moderno (AES-256-GCM, ECP-256) y uno compatible (AES-256, MODP-2048), ambos con SHA-256. No se aceptan IKEv1, 3DES, DES, SHA-1, MD5 ni MODP-1024, y el gateway solo acepta tráfico IKE (UDP 500 y 4500) desde las IP públicas que declaró cada cliente.
 
-Las conexiones privadas se habilitan por workspace, y un admin las crea desde la aplicación. Las propuestas exactas, los tiempos de vida y los pasos del lado del cliente están en [Private connections](/product/connect-data/private-connections/) (en inglés).
+Las conexiones privadas se habilitan por workspace, y un admin las crea desde la aplicación. Las propuestas exactas, los tiempos de vida y los pasos del lado del cliente están en [Conexiones privadas](/es/product/connect-data/private-connections/).
 
 ## Túnel SSH
 
@@ -64,14 +64,14 @@ Las conexiones a bases de datos usan cifrado TLS cuando el motor lo ofrece.
 
 ## Requisitos de red
 
-El firewall del cliente debe permitir el tráfico entrante desde las IP de salida de Teramot hacia el puerto del sistema de origen. El puerto por defecto de cada motor está en [Databases and warehouses](/product/connect-data/databases/), y los de MongoDB y SAP ECC en [Applications and cloud sources](/product/connect-data/apps-and-cloud/) (en inglés). Además:
+El firewall del cliente debe permitir el tráfico entrante desde las IP de salida de Teramot hacia el puerto del sistema de origen. El puerto por defecto de cada motor está en [Bases de datos y warehouses](/es/product/connect-data/databases/), y los de MongoDB y SAP ECC en [Aplicaciones y fuentes en la nube](/es/product/connect-data/apps-and-cloud/). Además:
 
 - Un bastión SSH necesita el TCP 22 (o el puerto configurado) abierto a las IP de Teramot.
 - Una conexión privada necesita UDP 500 y 4500 hacia y desde el gateway IPsec, `32.192.124.113`.
 - Databricks, Snowflake, BigQuery y las aplicaciones SaaS se alcanzan por HTTPS (TCP 443) en los endpoints públicos del proveedor.
 
-Para preparar el usuario y los permisos en cada sistema, ver [Prepare your sources](/product/connect-data/prepare-sources/) (en inglés).
+Para preparar el usuario y los permisos en cada sistema, ver [Preparar tus fuentes](/es/product/connect-data/prepare-sources/).
 
 ## Aplicaciones SaaS
 
-Las aplicaciones SaaS se conectan a través de sus API públicas, con las credenciales que pide cada una (ver [Applications and cloud sources](/product/connect-data/apps-and-cloud/), en inglés). No requieren configuración de red.
+Las aplicaciones SaaS se conectan a través de sus API públicas, con las credenciales que pide cada una (ver [Aplicaciones y fuentes en la nube](/es/product/connect-data/apps-and-cloud/)). No requieren configuración de red.

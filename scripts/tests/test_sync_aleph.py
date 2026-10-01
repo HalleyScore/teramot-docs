@@ -113,13 +113,29 @@ class SyncAlephTest(unittest.TestCase):
         root = self.synced("_index.md")
         self.assertIn("cascade:\n  type: docs\n", root)
         section = (sync_aleph.CONTENT / "connect-data/_index.md").read_text()
-        self.assertEqual(section, '---\ntitle: "Connect your data"\nweight: 20\n---\n')
+        self.assertEqual(section, '---\ntitle: "Connect your data"\nweight: 20\nlayout: first-page\n---\n')
 
     def test_a_retired_url_redirects_to_its_page(self):
         write(self.aleph, "public-docs/mcp/overview.md", "---\ntitle: Overview\n---\n")
         out = self.synced("mcp/overview.md")
         self.assertIn('aliases: ["/api/intro/"]', out)
         self.assertIn('aliases: ["/api/"]', (sync_aleph.CONTENT / "mcp/_index.md").read_text())
+
+    def test_a_translation_is_published_under_es(self):
+        write(self.aleph, "public-docs/index.es.md", "---\ntitle: Documentación\ntranslation_of: abc\n---\n\nHola.\n")
+        write(self.aleph, "public-docs/connect-data/overview.es.md",
+              "---\ntitle: Conectá tus datos\ntranslation_of: abc\n---\n\n"
+              "**Dónde:** **Fuentes**.\n\nVer [bases](./databases.es.md#cómo-conectar).\n")
+        out = self.synced("connect-data/overview.es.md")
+        self.assertNotIn("translation_of", out)
+        self.assertIn("> **Dónde:** **Fuentes**.", out)
+        self.assertIn("[bases](/es/product/connect-data/databases/#cómo-conectar)", out)
+        self.assertIn("cascade:", (sync_aleph.CONTENT / "_index.es.md").read_text())
+        self.assertEqual((sync_aleph.CONTENT / "connect-data/_index.es.md").read_text(),
+                         '---\ntitle: "Conectar tus datos"\nweight: 20\nlayout: first-page\n---\n')
+
+    def test_slugs_keep_accents(self):
+        self.assertEqual(sync_aleph.slug("Cómo llega Teramot"), "cómo-llega-teramot")
 
     def test_only_pages_and_images_are_copied(self):
         sync_aleph.sync_docs(self.aleph / "public-docs")
@@ -131,7 +147,7 @@ class SyncAlephTest(unittest.TestCase):
         with mock.patch("sys.stderr") as stderr:
             sync_aleph.sync_docs(self.aleph / "public-docs")
         section = (sync_aleph.CONTENT / "data-billing/_index.md").read_text()
-        self.assertEqual(section, '---\ntitle: "Data billing"\nweight: 100\n---\n')
+        self.assertEqual(section, '---\ntitle: "Data billing"\nweight: 100\nlayout: first-page\n---\n')
         self.assertIn("::warning::", "".join(c.args[0] for c in stderr.write.call_args_list))
 
     def test_release_notes_are_copied(self):

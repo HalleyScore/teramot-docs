@@ -4,7 +4,8 @@
 teramot-aleph is the source of truth: its CI checks every page of public-docs/
 against the code, so what this writes is gitignored here and never edited by hand.
 
-  public-docs/**/*.md                  -> content/product/   (adapted for Hugo)
+  public-docs/**/*.md                  -> content/product/   (adapted for Hugo; each
+                                          page.es.md is its Spanish translation, at /es/)
   public-docs/**/<images>              -> static/product/
   frontend/public/release-notes.json   -> data/aleph/release_notes.json (/changelog/)
 
@@ -32,10 +33,10 @@ IMAGES = {".svg", ".png", ".jpg", ".jpeg", ".gif", ".webp"}
 # publishes, titled after its directory and listed last, with a warning to add it:
 # an aleph release must never keep the docs from deploying over a sidebar label.
 SECTIONS = {
-    "concepts": ("Concepts", 10),
-    "connect-data": ("Connect your data", 20),
-    "use-the-app": ("Use the app", 30),
-    "mcp": ("AI assistants", 40),
+    "concepts": ("Concepts", "Conceptos", 10),
+    "connect-data": ("Connect your data", "Conectar tus datos", 20),
+    "use-the-app": ("Use the app", "Usar la app", 30),
+    "mcp": ("AI assistants", "Asistentes de IA", 40),
 }
 
 # URLs this site published before the pages came from aleph, kept alive as redirects
@@ -60,16 +61,24 @@ def fail(msg):
 
 
 def slug(heading):
-    """The anchor Hugo gives a heading, as aleph's public-docs-check.sh computes it."""
-    return re.sub(r"[^a-z0-9 _-]", "", heading.lower()).replace(" ", "-")
+    """The anchor Hugo gives a heading, as aleph's public-docs-check.sh computes it:
+    letters and digits of any script, lower-cased, spaces to hyphens, the rest dropped."""
+    return "".join(c if c.isalnum() or c in "_-" else "-" if c == " " else ""
+                   for c in heading.lower())
+
+
+def is_es(rel):
+    return rel.endswith(".es.md")
 
 
 def page_url(rel):
-    """public-docs/ path of a page -> its URL here: one directory per page."""
-    path = rel[: -len(".md")]
+    """public-docs/ path of a page -> its URL here: one directory per page, a
+    translation (page.es.md) under /es/."""
+    base = f"/es{URL_BASE}" if is_es(rel) else URL_BASE
+    path = rel[: -len(".es.md")] if is_es(rel) else rel[: -len(".md")]
     path = path[: -len("index")] if path == "index" or path.endswith("/index") else path
     path = path.strip("/")
-    return f"{URL_BASE}/{path}/" if path else f"{URL_BASE}/"
+    return f"{base}/{path}/" if path else f"{base}/"
 
 
 def split_front_matter(text, rel):
@@ -85,7 +94,7 @@ def split_front_matter(text, rel):
 
 
 def front_matter(meta, dest=None):
-    """aleph's keys -> Hugo's. covers: and search_weight: only mean something in aleph."""
+    """aleph's keys -> Hugo's. covers:, search_weight: and translation_of: only mean something in aleph."""
     out = {"title": meta["title"]}
     if meta.get("description"):
         out["description"] = meta["description"]
@@ -93,8 +102,8 @@ def front_matter(meta, dest=None):
         out["weight"] = int(meta["sidebar_position"])
     if meta.get("sidebar_label"):
         out["linkTitle"] = meta["sidebar_label"]
-    if dest in ALIASES:
-        out["aliases"] = ALIASES[dest]
+    if dest and dest.replace(".es.md", ".md") in ALIASES:
+        out["aliases"] = ALIASES[dest.replace(".es.md", ".md")]
     # json.dumps writes a double-quoted YAML scalar, safe for any title.
     return "---\n" + "".join(f"{k}: {json.dumps(v, ensure_ascii=False)}\n" for k, v in out.items()) + "---\n"
 
@@ -179,7 +188,7 @@ def convert_body(body, rel):
                 continue
             # A paragraph opening with **Where:** says where the page's feature is; the
             # site sets it apart as a quote.
-            if line.startswith("**Where:**"):
+            if line.startswith(("**Where:**", "**Dónde:**")):
                 where = True
             elif not line.strip():
                 where = False
@@ -194,7 +203,7 @@ def convert_body(body, rel):
 def sync_docs(src):
     for target in (CONTENT, STATIC):
         shutil.rmtree(target, ignore_errors=True)
-    dirs = set()
+    dirs = {}  # folder -> languages it has pages in
     for path in sorted(src.rglob("*")):
         rel = path.relative_to(src).as_posix()
         if path.is_dir() or any(p.startswith(".") for p in rel.split("/")):
@@ -204,26 +213,30 @@ def sync_docs(src):
             shutil.copyfile(path, STATIC / rel)
         elif path.suffix == ".md":
             meta, body = split_front_matter(path.read_text(), rel)
-            name = "_index.md" if path.name == "index.md" else path.name
+            name = {"index.md": "_index.md", "index.es.md": "_index.es.md"}.get(path.name, path.name)
             dest = CONTENT / pathlib.PurePosixPath(rel).parent / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             fm = front_matter(meta, dest.relative_to(CONTENT).as_posix())
-            if rel == "index.md":
+            if rel in ("index.md", "index.es.md"):
                 # The section root: every page under it is a docs page with its own sidebar.
                 fm = fm[:-4] + "cascade:\n  type: docs\n---\n"
             dest.write_text(fm + "\n" + convert_body(body, rel))
             if "/" in rel:
-                dirs.add(rel.split("/")[0])
+                dirs.setdefault(rel.split("/")[0], set()).add("es" if is_es(rel) else "en")
     if not (CONTENT / "_index.md").exists():
         fail(f"{src} has no index.md")
-    for d in sorted(dirs):
-        title, weight = SECTIONS.get(d, (d.replace("-", " ").capitalize(), 100))
+    for d, langs in sorted(dirs.items()):
+        fallback = d.replace("-", " ").capitalize()
+        title, spanish, weight = SECTIONS.get(d, (fallback, fallback, 100))
         if d not in SECTIONS:
             # The ::warning:: prefix makes GitHub Actions show it on the run's summary.
             print(f"::warning::public-docs/{d}/ has no sidebar title; add it to SECTIONS "
                   f"in scripts/sync_aleph.py (shown as \"{title}\" meanwhile)", file=sys.stderr)
-        (CONTENT / d / "_index.md").write_text(
-            front_matter({"title": title, "sidebar_position": weight}, f"{d}/_index.md"))
+        for lang, name, text in (("en", "_index.md", title), ("es", "_index.es.md", spanish)):
+            if lang in langs:
+                # layouts/docs/first-page.html: the section opens on its first page.
+                fm = front_matter({"title": text, "sidebar_position": weight}, f"{d}/{name}")
+                (CONTENT / d / name).write_text(fm[:-4] + "layout: first-page\n---\n")
 
 
 def sync_release_notes(src):

@@ -10,9 +10,8 @@
   <nav class="tm-footer-columns" aria-label="Footer">
     <div>
       <p class="tm-footer-title">{{ T "tmFooterDocs" }}</p>
-      {{- /* The product docs are English-only for now. */}}
-      <a href="{{ "/product/" | relURL }}">{{ T "tmProduct" }}</a>
-      <a href="{{ "/product/mcp/overview/" | relURL }}">{{ T "tmApiReference" }}</a>
+      <a href="{{ "/product/" | relLangURL }}">{{ T "tmProduct" }}</a>
+      <a href="{{ "/product/mcp/overview/" | relLangURL }}">{{ T "tmApiReference" }}</a>
       <a href="{{ "/architecture/" | relLangURL }}">{{ T "tmArchitecture" }}</a>
       <a href="{{ "/compliance/about/" | relLangURL }}">{{ T "tmCompliance" }}</a>
     </div>

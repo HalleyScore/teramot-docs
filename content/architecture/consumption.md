@@ -63,7 +63,7 @@ OAuth redirects are accepted only to a closed list of destinations: the domains 
 | Launch refreshes; correct transformations; manage controls; delete dashboards | Admin |
 | Delete projects and workspaces | Owner |
 
-The complete tool reference and the per-client connection guide are in the [MCP server documentation](/api/intro/).
+The complete tool reference and the per-client connection guide are in the [MCP server documentation](/product/mcp/overview/).
 
 ## API
 

@@ -63,7 +63,7 @@ Las redirecciones de OAuth se aceptan solo hacia una lista cerrada de destinos: 
 | Lanzar actualizaciones; corregir transformaciones; gestionar controles; eliminar dashboards | Administrador |
 | Eliminar proyectos y workspaces | Owner |
 
-La referencia completa de herramientas y la guía de conexión por cliente están en la [documentación del servidor MCP](/api/intro/).
+La referencia completa de herramientas y la guía de conexión por cliente están en la [documentación del servidor MCP](/product/mcp/overview/).
 
 ## API
 

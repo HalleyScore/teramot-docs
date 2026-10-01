@@ -24,7 +24,8 @@
         </div>
         <div class="tm-card-grid">
           {{- range .cards }}
-            <a class="tm-card" href="{{ .url | relLangURL }}">
+            {{- $url := cond (isset . "lang") (.url | relURL) (.url | relLangURL) }}
+            <a class="tm-card" href="{{ $url }}"{{ with .lang }} hreflang="{{ . }}"{{ end }}>
               <span class="tm-card-icon">{{ partial "utils/icon.html" (dict "name" (.icon | default "book-open") "attributes" "height=22") }}</span>
               <span class="tm-card-title">{{ .title }}</span>
               <span class="tm-card-text">{{ .text }}</span>

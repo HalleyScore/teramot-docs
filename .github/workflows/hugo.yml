@@ -7,7 +7,14 @@ on:
   # site before it reaches main, where the next push deploys it.
   pull_request:
     branches: ["main"]
+  # teramot-aleph's Build & Deploy dispatches this after each prd rollout, with the tag
+  # it shipped, so the product docs and the changelog describe the version running.
   workflow_dispatch:
+    inputs:
+      aleph_ref:
+        description: "teramot-aleph ref to publish. Blank: its latest release tag."
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -47,6 +54,45 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+
+      # content/product/ and the changelog come from teramot-aleph (scripts/sync_aleph.py).
+      # prd serves aleph's latest release, so a push here publishes that tag too.
+      - name: Resolve teramot-aleph ref
+        id: aleph
+        env:
+          REF: ${{ inputs.aleph_ref }}
+          TOKEN: ${{ secrets.ALEPH_READ_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "$TOKEN" ]; then
+            echo "::error::ALEPH_READ_TOKEN is not set; the product docs cannot be read from teramot-aleph"
+            exit 1
+          fi
+          if [ -z "$REF" ]; then
+            # Release tags only (vX.Y.Z): a pre-release tag never reaches the site.
+            REF=$(git ls-remote --tags --refs --sort=-v:refname \
+                    "https://x-access-token:${TOKEN}@github.com/HalleyScore/teramot-aleph.git" 'v*' \
+                  | sed 's|.*refs/tags/||' | grep -m1 -E '^v[0-9]+\.[0-9]+\.[0-9]+$' || true)
+            [ -n "$REF" ] || { echo "::error::no release tag found in teramot-aleph"; exit 1; }
+          fi
+          echo "ref=$REF" >> "$GITHUB_OUTPUT"
+          echo "Publishing teramot-aleph $REF"
+
+      - name: Checkout teramot-aleph docs
+        uses: actions/checkout@v7
+        with:
+          repository: HalleyScore/teramot-aleph
+          ref: ${{ steps.aleph.outputs.ref }}
+          token: ${{ secrets.ALEPH_READ_TOKEN }}
+          path: .aleph
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /public-docs/
+            /frontend/public/release-notes.json
+
+      - name: Sync product docs and release notes
+        run: python3 scripts/sync_aleph.py --aleph .aleph
 
       - name: Setup Pages
         if: github.event_name != 'pull_request'

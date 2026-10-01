@@ -64,6 +64,6 @@ En la práctica, Teramot:
 > [!NOTE]
 > **Documentación relacionada**
 >
-> - [Referencia del servidor MCP](/api/intro/): cómo conectar asistentes de IA a Teramot.
+> - [Referencia del servidor MCP](/product/mcp/overview/): cómo conectar asistentes de IA a Teramot.
 > - [Compromisos de seguridad y confidencialidad](/compliance/Transparency/security-commitments/).
 > - [Compliance](/compliance/about/): SOC 2 y políticas de seguridad.

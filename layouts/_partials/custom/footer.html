@@ -10,13 +10,14 @@
   <nav class="tm-footer-columns" aria-label="Footer">
     <div>
       <p class="tm-footer-title">{{ T "tmFooterDocs" }}</p>
+      <a href="{{ "/product/" | relLangURL }}">{{ T "tmProduct" }}</a>
+      <a href="{{ "/product/mcp/overview/" | relLangURL }}">{{ T "tmApiReference" }}</a>
       <a href="{{ "/architecture/" | relLangURL }}">{{ T "tmArchitecture" }}</a>
-      <a href="{{ "/api/intro/" | relLangURL }}">{{ T "tmApiReference" }}</a>
       <a href="{{ "/compliance/about/" | relLangURL }}">{{ T "tmCompliance" }}</a>
     </div>
     <div>
       <p class="tm-footer-title">{{ T "tmFooterResources" }}</p>
-      <a href="{{ "/updates/" | relLangURL }}">{{ T "tmProductUpdates" }}</a>
+      <a href="{{ "/changelog/" | relLangURL }}">{{ T "tmChangelog" }}</a>
       {{- /* The blog is English-only. */}}
       <a href="{{ "/blog/" | relURL }}">{{ T "tmEngineeringBlog" }}</a>
       <a href="https://status.teramot.com/">{{ T "tmSystemStatus" }}</a>

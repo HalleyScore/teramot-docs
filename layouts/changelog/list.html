@@ -1,0 +1,76 @@
+{{- /*
+  The changelog, from data/aleph/release_notes.json, which scripts/sync_aleph.py copies
+  from teramot-aleph: the same announced entries the app's "What's New?" shows, written
+  during each release cut, in English and Spanish.
+
+  Releases from the newest one's last 30 days show one by one; older ones fold into a
+  block per month, whose fixes and internal changes stay collapsed since they are the
+  bulk of a month. Measured from the newest release rather than today, so a rebuild
+  without a new release renders the same page.
+*/ -}}
+{{ define "main" }}
+  {{- $lang := .Language.Lang -}}
+  {{- $releases := slice -}}
+  {{- with hugo.Data.aleph -}}
+    {{- range .release_notes.releases -}}
+      {{- $notes := where .notes "en" "ne" nil -}}
+      {{- if $notes }}{{ $releases = $releases | append (merge . (dict "notes" $notes)) }}{{ end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $releases = sort $releases "date" "desc" -}}
+  {{- $categories := slice "breaking" "ux" "agent" "performance" "other" "security" "fix" "internal" -}}
+
+  <main id="content" class="tm-changelog">
+    <header class="tm-changelog-head">
+      <h1>{{ .Title }}</h1>
+      <div class="content">{{ .Content }}</div>
+    </header>
+
+    {{- if not $releases }}
+      <p>{{ T "tmChangelogEmpty" }}</p>
+    {{- else }}
+      {{- $cutoff := (time.AsTime (index $releases 0).date).AddDate 0 0 -30 -}}
+      {{- $recent := slice -}}
+      {{- $older := slice -}}
+      {{- range $releases -}}
+        {{- if (time.AsTime .date).Before $cutoff }}{{ $older = $older | append . }}{{ else }}{{ $recent = $recent | append . }}{{ end -}}
+      {{- end -}}
+
+      <div class="tm-changelog-timeline">
+        {{- range $recent }}
+          {{- $id := replace .version "." "-" }}
+          <article class="tm-release" id="{{ $id }}">
+            <div class="tm-release-aside">
+              <time datetime="{{ .date }}">{{ time.Format ":date_medium" (time.AsTime .date) }}</time>
+            </div>
+            <div class="tm-release-body">
+              <h2><a href="#{{ $id }}">{{ .version }}</a></h2>
+              {{ partial "teramot/changelog-groups.html" (dict "notes" .notes "lang" $lang "categories" $categories "folded" slice) }}
+            </div>
+          </article>
+        {{- end }}
+
+        {{- $months := slice -}}
+        {{- range $older }}{{ $months = $months | append (substr .date 0 7) }}{{ end -}}
+        {{- range $months | uniq }}
+          {{- $key := . }}
+          {{- $inMonth := where $older "date" "like" (printf "^%s" $key) }}
+          {{- $notes := slice }}
+          {{- range $inMonth }}{{ $v := .version }}{{ range .notes }}{{ $notes = $notes | append (merge . (dict "version" $v)) }}{{ end }}{{ end }}
+          <article class="tm-release" id="{{ $key }}">
+            {{- /* Anchors for the releases the month folds in, so /changelog/#v4-2-0 still lands. */ -}}
+            {{- range $inMonth }}<span id="{{ replace .version "." "-" }}" class="tm-release-anchor"></span>{{ end }}
+            <div class="tm-release-aside">
+              <span>{{ T "tmChangelogReleases" (len $inMonth) }}</span>
+            </div>
+            <div class="tm-release-body">
+              <h2><a href="#{{ $key }}">{{ time.Format "January 2006" (time.AsTime (printf "%s-01" $key)) }}</a></h2>
+              <p class="tm-release-range">{{ (index (last 1 $inMonth) 0).version }} – {{ (index $inMonth 0).version }}</p>
+              {{ partial "teramot/changelog-groups.html" (dict "notes" $notes "lang" $lang "categories" $categories "folded" (slice "fix" "internal")) }}
+            </div>
+          </article>
+        {{- end }}
+      </div>
+    {{- end }}
+  </main>
+{{- end -}}

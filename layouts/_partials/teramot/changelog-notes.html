@@ -1,0 +1,7 @@
+{{- $lang := .lang -}}
+<ul class="tm-cl-notes">
+  {{- range .notes }}
+    {{- $copy := index . $lang | default .en }}
+    <li><strong>{{ $copy.title }}.</strong> {{ $copy.body }}{{ with .version }} <span class="tm-cl-version">{{ . }}</span>{{ end }}</li>
+  {{- end }}
+</ul>

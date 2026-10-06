@@ -42,7 +42,7 @@ Access to data always goes through the Teramot API, which:
 2. Verifies that the user has the required role in that project.
 3. Parses each SQL query before running it. It only accepts **a single read-only statement**, and rejects it if it references databases from another project.
 
-A project can read tables from another project only through an explicit **data share**, created by an admin and with an optional expiration.
+A project can read tables from another project only through an explicit **data share**, created by an admin of the project that shares.
 
 ## Encryption
 

@@ -60,16 +60,6 @@ jobs:
 
       # content/product/ and the changelog come from teramot-aleph (scripts/sync_aleph.py).
       # prd serves aleph's latest release, so a push here publishes that tag too.
-      # TEMPORARY: diagnose why ALEPH_READ_TOKEN cannot read teramot-aleph. Remove once fixed.
-      - name: Debug ALEPH_READ_TOKEN
-        env:
-          TOKEN: ${{ secrets.ALEPH_READ_TOKEN }}
-        run: |
-          echo "length: ${#TOKEN}"
-          echo "sha256 prefix: $(printf %s "$TOKEN" | sha256sum | cut -c1-12)"
-          curl -s -H "Authorization: Bearer $TOKEN" https://api.github.com/repos/HalleyScore/teramot-aleph \
-            | jq '{full_name, message}'
-
       - name: Resolve teramot-aleph ref
         id: aleph
         env:
@@ -82,8 +72,10 @@ jobs:
             exit 1
           fi
           # Listing aleph's tags proves the token can read the repo, before the checkout
-          # below fails on the same grant with a less telling message.
-          if ! tags=$(git ls-remote --tags --refs --sort=-v:refname \
+          # below fails on the same grant with a less telling message. It runs outside
+          # this repo's checkout, whose git config sends GITHUB_TOKEN as an auth header
+          # that overrides the token in the URL and cannot see teramot-aleph.
+          if ! tags=$(git -C "$RUNNER_TEMP" ls-remote --tags --refs --sort=-v:refname \
                         "https://x-access-token:${TOKEN}@github.com/HalleyScore/teramot-aleph.git" 'v*'); then
             echo "::error title=teramot-aleph not readable::ALEPH_READ_TOKEN cannot read HalleyScore/teramot-aleph; grant it 'Contents: Read-only' on that repo (and check it has not expired)."
             exit 1

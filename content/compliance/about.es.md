@@ -12,13 +12,13 @@ weight: 10
 
 ### Resumen ejecutivo
 
-- **SOC 2 Tipo I** – *Ya aprobado* con una firma auditora de EE. UU. Teramot cuenta con su primer informe SOC 2, cubriendo el criterio de Seguridad. Diciembre 2025.  
+- **SOC 2 Tipo II** – *Informe emitido en agosto 2026* por **Sentry Assurance** (EE. UU.). Cubre los criterios de Seguridad (Common Criteria) durante un período de observación de seis meses, **del 16 de diciembre de 2025 al 15 de junio de 2026**, y concluye que los controles operaron efectivamente durante todo el período, **sin excepciones**.  
 
 <div style="text-align: center; margin: 1rem 0">
   <img src="/img/compliance/soc2-logo.png" alt="SOC 2" height="90" style="object-fit: contain" />
 </div>
 
-- **SOC 2 Tipo II** – Actualmente nos encontramos en el *período de observación* necesario para obtener el informe SOC 2 Tipo II.  
+- **SOC 2 Tipo I** – *Completado* en diciembre 2025 con la misma firma auditora: el primer informe SOC 2 de Teramot, sobre el criterio de Seguridad.  
 - **ISO 27001** – Documentación y evidencias en curso (*Vanta sync in progress*).  
 - **Monitoreo de cumplimiento** – impulsado por **Vanta**, nuestro facilitador de compliance: monitoreamos de forma continua la **superficie de ataque**, la **postura de infraestructura** y **vulnerabilidades** para su remediación oportuna.  
 - **Pentest reciente** – realizado por **Faraday Sec (Argentina)**. Se identificaron **15 vulnerabilidades** y ya fueron **remediadas**. 
@@ -76,8 +76,8 @@ weight: 10
 
 | Marco / Reporte | Estado | Auditor | Período | Próxima revisión |
 | --- | --- | --- | --- | --- |
-| **SOC 2 Tipo I** | Completado | Firma auditora de EE. UU. | Período de auditoría completado | Informe disponible bajo NDA a solicitud |
-| **SOC 2 Tipo II** | Período de observación en curso | Firma auditora de EE. UU. | Período de observación | Informe estimado tras finalizar el período de observación |
+| **SOC 2 Tipo II** | Completado, sin excepciones (agosto 2026) | Sentry Assurance (EE. UU.) | 16 dic 2025 – 15 jun 2026 | Informe disponible bajo NDA a solicitud |
+| **SOC 2 Tipo I** | Completado (diciembre 2025) | Sentry Assurance (EE. UU.) | Punto en el tiempo | Informe disponible bajo NDA a solicitud |
 | **ISO 27001** | Documentación & evidencias en curso | — | Continuo | Objetivo 2026 |
 | **Privacidad local** | Ley 25.326 (AR), Criterios de Privacidad SOC 2 | — | Continuo | Revisión anual Q1 2026 |
 
@@ -146,13 +146,14 @@ weight: 10
 | Fecha | Autor | Rol | Notas |
 | --- | --- | --- | --- |
 | Oct 2025 | Valentín Torassa Colombero | Analista de Ciberseguridad & Cumplimiento | Publicación inicial del Paquete de Cumplimiento y Seguridad de Teramot |
+| Oct 2026 | Valentín Torassa Colombero | Analista de Ciberseguridad & Cumplimiento | Informe SOC 2 Tipo II emitido (agosto 2026, Sentry Assurance, sin excepciones) |
 
 ---
 
 ### Acceso al informe SOC 2
 
-Si tu organización cliente necesita acceder al informe final de SOC 2 de Teramot, podés solicitarlo escribiendo a **security@teramot.com** (sujeto a NDA).
+Si tu organización necesita el informe SOC 2 Tipo II de Teramot, podés solicitarlo escribiendo a **security@teramot.com** (sujeto a NDA).
 
 ---
 
-<p align="center"><b>Teramot – Halley LLC • Rosario / Miami • Octubre 2025 — Versión 1.0</b></p>
+<p align="center"><b>Teramot – Halley LLC • Rosario / Miami • Octubre 2026 — Versión 1.1</b></p>

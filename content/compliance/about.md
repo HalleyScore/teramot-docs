@@ -12,13 +12,13 @@ weight: 10
 
 ### Executive Summary
 
-- **SOC 2 Type I audit** – *Successfully completed* with a U.S. auditing firm. Teramot has obtained its first SOC 2 report, covering the Security criteria. December 2025.
+- **SOC 2 Type II report** – *Issued August 2026* by **Sentry Assurance** (U.S.). It covers the Security criteria (Common Criteria) over a six-month observation period, **16 December 2025 – 15 June 2026**, and found the controls operating effectively throughout, with **no exceptions**.
 
 <div style="text-align: center; margin: 1rem 0">
   <img src="/img/compliance/soc2-new.png" alt="SOC 2" height="90" style="object-fit: contain" />
 </div>
 
-- **SOC 2 Type II audit** – *Observation period in progress* as part of the path to our SOC 2 Type II report.  
+- **SOC 2 Type I report** – *Completed* in December 2025 with the same auditor: Teramot's first SOC 2 report, on the Security criteria.  
 - **ISO 27001 documentation & evidence** – currently underway (*Vanta sync in progress*).  
 - **Compliance monitoring** – supported by **Vanta**, our continuous compliance facilitator. Vanta continuously monitors our **attack surface**, **infrastructure posture**, and **vulnerabilities**, enabling timely remediation and patching.  
 - **Recent Pentest** – performed by **Faraday Sec (Argentina)**. **15 vulnerabilities** were identified and **fully remediated**. 
@@ -77,8 +77,8 @@ weight: 10
 
 | Framework / Report | Status | Auditor | Period | Next Review |
 | --- | --- | --- | --- | --- |
-| **SOC 2 Type I** | Completed | U.S. Audit Firm | Completed audit period | Report available under NDA upon request |
-| **SOC 2 Type II** | Observation period in progress | U.S. Audit Firm | Observation period | Report expected after observation period completion |
+| **SOC 2 Type II** | Completed, no exceptions (August 2026) | Sentry Assurance (U.S.) | 16 Dec 2025 – 15 Jun 2026 | Report available under NDA upon request |
+| **SOC 2 Type I** | Completed (December 2025) | Sentry Assurance (U.S.) | Point in time | Report available under NDA upon request |
 | **ISO 27001** | Documentation & evidence in progress | — | Continuous | Target 2026 |
 | **Local Privacy Laws** | Law 25.326 (Argentina), SOC 2 Privacy Criteria | — | Ongoing | Annual Review Q1 2026 |
 
@@ -147,13 +147,14 @@ weight: 10
 | Date | Author | Role | Notes |
 | --- | --- | --- | --- |
 | Oct 2025 | Valentín Torassa Colombero | Cybersecurity & Compliance Analyst | Initial release of the Teramot Compliance & Security Pack |
+| Oct 2026 | Valentín Torassa Colombero | Cybersecurity & Compliance Analyst | SOC 2 Type II report issued (August 2026, Sentry Assurance, no exceptions) |
 
 ---
 
 ### SOC 2 Report Access
 
-If your organization needs access to Teramot’s final SOC 2 report, you can request it by emailing **security@teramot.com** (subject to NDA).
+If your organization needs Teramot’s SOC 2 Type II report, you can request it by emailing **security@teramot.com** (subject to NDA).
 
 ---
 
-<p align="center"><b>Teramot – Halley LLC • Rosario / Miami • October 2025 — Version 1.0</b></p>
+<p align="center"><b>Teramot – Halley LLC • Rosario / Miami • October 2026 — Version 1.1</b></p>

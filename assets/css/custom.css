@@ -54,24 +54,7 @@ html:not(.dark) .tm-only-dark {
   display: none !important;
 }
 
-/* Tailwind's preflight (img { height: auto; max-width: 100% }) overrides HTML
-   width/height attributes. Honour the sizes the logo rows in
-   compliance/about use. */
-.content img[height="70"] {
-  height: 70px;
-  width: auto;
-}
-
-.content img[height="90"] {
-  height: 90px;
-  width: auto;
-}
-
-.content img[width="200"] {
-  width: 200px;
-  height: auto;
-}
-
+/* Sized images sit inline, without Tailwind's block margins. */
 .content img[height],
 .content img[width] {
   display: inline-block;
@@ -1352,4 +1335,767 @@ html.dark .tm-cl-cat-performance {
     grid-template-columns: 1fr;
     gap: 0.5rem;
   }
+}
+
+/* -- Trust center (content/compliance/about) -- */
+
+.tm-trust-hero {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  margin: 1.5rem 0 2.5rem;
+  padding: 2.25rem 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--tm-blue) 15%, var(--tm-rule));
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(145, 223, 200, 0.45), transparent 30%),
+    radial-gradient(circle at 8% 95%, rgba(90, 109, 243, 0.14), transparent 38%),
+    linear-gradient(135deg, #f2f3ff 0%, #fafaf7 55%, #effaf6 100%);
+}
+
+html.dark .tm-trust-hero {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(145, 223, 200, 0.14), transparent 32%),
+    radial-gradient(circle at 8% 95%, rgba(90, 109, 243, 0.22), transparent 40%),
+    linear-gradient(135deg, #121833 0%, #0b0f14 60%, #0d1f1b 100%);
+}
+
+@media (min-width: 900px) {
+  .tm-trust-hero {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding: 2.75rem 2.5rem;
+  }
+}
+
+.tm-trust-hero .tm-eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.tm-trust-title {
+  max-width: 24ch;
+  margin: 0;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.tm-trust-lead {
+  max-width: 62ch;
+  margin: 1rem 0 0;
+  color: var(--tm-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.tm-trust-hero .tm-hero-actions {
+  justify-content: flex-start;
+  margin-top: 1.75rem;
+}
+
+.tm-trust-emblem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  justify-self: center;
+  text-align: center;
+}
+
+.tm-trust-emblem img {
+  width: 150px;
+  height: 150px;
+  margin: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 18px 40px -18px rgba(37, 61, 229, 0.55);
+}
+
+.tm-trust-emblem span {
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.tm-trust-emblem small {
+  display: block;
+  color: var(--tm-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* The hero's four stats carry long labels: four across only once the content
+   column is ~830px (1440px viewports). Narrower, 106px boxes broke words. */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+  .tm-trust-hero + .tm-stats-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tm-seals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.tm-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.8rem 0.3rem 0.35rem;
+  border: 1px solid var(--tm-rule-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tm-surface) 80%, transparent);
+  color: var(--tm-ink);
+  font-size: 0.84rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.tm-seal-dot {
+  display: inline-flex;
+  width: 1.4rem;
+  height: 1.4rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--tm-mint);
+  color: #0b3d2e;
+}
+
+.tm-seal-pending .tm-seal-dot {
+  background: color-mix(in srgb, var(--tm-blue) 14%, transparent);
+  color: var(--tm-blue);
+}
+
+html.dark .tm-seal-pending .tm-seal-dot {
+  color: var(--tm-blue-soft);
+}
+
+/* Certifications */
+
+.tm-certs {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+@media (min-width: 768px) {
+  .tm-certs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tm-cert-featured {
+    grid-column: 1 / -1;
+  }
+}
+
+.tm-cert {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1rem;
+  background: var(--tm-surface);
+}
+
+.tm-cert-featured {
+  border-color: color-mix(in srgb, var(--tm-mint) 75%, var(--tm-rule));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--tm-mint) 18%, var(--tm-surface)) 0%, var(--tm-surface) 65%);
+}
+
+.tm-cert-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.tm-cert-name {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.tm-cert-text {
+  margin: 0;
+  color: var(--tm-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tm-cert-text strong {
+  color: var(--tm-ink);
+}
+
+.tm-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.tm-status-done {
+  background: color-mix(in srgb, var(--tm-mint) 50%, transparent);
+  color: #0e5a43;
+}
+
+html.dark .tm-status-done {
+  background: color-mix(in srgb, var(--tm-mint) 16%, transparent);
+  color: var(--tm-mint);
+}
+
+.tm-status-progress {
+  background: color-mix(in srgb, var(--tm-blue) 12%, transparent);
+  color: var(--tm-blue);
+}
+
+html.dark .tm-status-progress {
+  color: var(--tm-blue-soft);
+}
+
+.tm-facts {
+  display: grid;
+  gap: 0.9rem 1.25rem;
+  margin: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr));
+}
+
+.tm-facts dt {
+  color: var(--tm-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.tm-facts dd {
+  margin: 0.2rem 0 0;
+  color: var(--tm-ink);
+  font-size: 0.93rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+/* The Type II observation window, month by month. */
+
+.tm-window {
+  margin: 0.25rem 0 0;
+}
+
+.tm-window-months {
+  display: grid;
+  gap: 3px;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.tm-window-month {
+  height: 0.65rem;
+  border-radius: 3px;
+  background: var(--tm-rule);
+}
+
+.tm-window-month.is-obs {
+  background: var(--tm-blue);
+}
+
+.tm-window-month.is-start {
+  background: linear-gradient(90deg, var(--tm-rule) 50%, var(--tm-blue) 50%);
+}
+
+.tm-window-month.is-end {
+  background: linear-gradient(90deg, var(--tm-blue) 50%, var(--tm-rule) 50%);
+}
+
+.tm-window-month.is-report {
+  background: var(--tm-mint);
+}
+
+html.dark .tm-window-month.is-obs {
+  background: var(--tm-blue-soft);
+}
+
+html.dark .tm-window-month.is-start {
+  background: linear-gradient(90deg, var(--tm-rule) 50%, var(--tm-blue-soft) 50%);
+}
+
+html.dark .tm-window-month.is-end {
+  background: linear-gradient(90deg, var(--tm-blue-soft) 50%, var(--tm-rule) 50%);
+}
+
+.tm-window-labels {
+  display: grid;
+  gap: 3px;
+  margin-top: 0.4rem;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  color: var(--tm-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tm-window-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin-top: 0.6rem;
+  color: var(--tm-muted);
+  font-size: 0.8rem;
+}
+
+.tm-window-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-right: 0.4rem;
+  border-radius: 2px;
+  background: var(--tm-blue);
+  vertical-align: -0.05rem;
+}
+
+.tm-window-legend span + span::before {
+  background: var(--tm-mint);
+}
+
+/* SOC 2 Common Criteria, CC1–CC9 */
+
+.tm-cc-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+}
+
+.tm-cc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 0.9rem;
+  background: var(--tm-surface);
+}
+
+.tm-cc-code {
+  color: var(--tm-blue);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+html.dark .tm-cc-code {
+  color: var(--tm-mint);
+}
+
+.tm-cc-name {
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.tm-cc-text {
+  margin: 0;
+  color: var(--tm-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.tm-cc a {
+  margin-top: auto;
+  padding-top: 0.35rem;
+  color: var(--tm-blue);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+html.dark .tm-cc a {
+  color: var(--tm-blue-soft);
+}
+
+.tm-cc a:hover {
+  text-decoration: underline;
+}
+
+/* Defense in depth: concentric layers, the customer's data at the core. */
+
+.tm-layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.tm-layer {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1rem;
+  background: var(--tm-surface);
+}
+
+.tm-layer:nth-child(2) { background: color-mix(in srgb, var(--tm-blue) 3%, var(--tm-surface)); }
+.tm-layer:nth-child(3) { background: color-mix(in srgb, var(--tm-blue) 5%, var(--tm-surface)); }
+.tm-layer:nth-child(4) { background: color-mix(in srgb, var(--tm-blue) 7%, var(--tm-surface)); }
+.tm-layer:nth-child(5) { background: color-mix(in srgb, var(--tm-blue) 9%, var(--tm-surface)); }
+
+@media (min-width: 768px) {
+  .tm-layer {
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .tm-layer:nth-child(2) { margin-inline: 0.9rem; }
+  .tm-layer:nth-child(3) { margin-inline: 1.8rem; }
+  .tm-layer:nth-child(4) { margin-inline: 2.7rem; }
+  .tm-layer:nth-child(5) { margin-inline: 3.6rem; }
+  .tm-layer:nth-child(6) { margin-inline: 4.5rem; }
+}
+
+.tm-layer-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tm-layer-icon {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.7rem;
+  background: color-mix(in srgb, var(--tm-blue) 12%, transparent);
+  color: var(--tm-blue);
+}
+
+html.dark .tm-layer-icon {
+  color: var(--tm-blue-soft);
+}
+
+.tm-layer-name {
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tm-layer-name small {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--tm-muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.tm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tm-chip {
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--tm-rule-strong);
+  border-radius: 999px;
+  background: var(--tm-surface);
+  color: var(--tm-ink);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.tm-layer-core {
+  border-color: color-mix(in srgb, var(--tm-mint) 80%, transparent);
+  background: color-mix(in srgb, var(--tm-mint) 24%, var(--tm-surface)) !important;
+}
+
+html.dark .tm-layer-core {
+  background: color-mix(in srgb, var(--tm-mint) 10%, var(--tm-surface)) !important;
+}
+
+.tm-layer-core .tm-layer-icon {
+  background: var(--tm-mint);
+  color: #0b3d2e;
+}
+
+/* Numbered process steps (SSDLC, incident response). The box is a size
+   container so the columns follow the space the steps get, not the viewport. */
+
+.tm-flow-box {
+  margin: 1.5rem 0 2rem;
+  container-type: inline-size;
+}
+
+.tm-flow {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  counter-reset: tm-step;
+}
+
+@container (min-width: 32rem) {
+  .tm-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 44rem) {
+  .tm-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@container (min-width: 48rem) {
+  .tm-flow-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.tm-flow > li {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--tm-rule);
+  border-top: 3px solid var(--tm-blue);
+  border-radius: 0.9rem;
+  background: var(--tm-surface);
+  counter-increment: tm-step;
+}
+
+html.dark .tm-flow > li {
+  border-top-color: var(--tm-blue-soft);
+}
+
+.tm-flow > li::before {
+  content: counter(tm-step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--tm-blue);
+  font-family: var(--tm-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+html.dark .tm-flow > li::before {
+  color: var(--tm-mint);
+}
+
+.tm-flow-title {
+  display: block;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.tm-flow-text {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--tm-muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* Report request. */
+
+.tm-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(145, 223, 200, 0.35), transparent 40%),
+    linear-gradient(135deg, var(--tm-blue) 0%, #1a2bb0 100%);
+  color: #fff;
+}
+
+.tm-cta-title {
+  margin: 0;
+  font-family: var(--tm-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.tm-cta-text {
+  max-width: 54ch;
+  margin: 0.4rem 0 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.55;
+}
+
+.tm-cta .tm-button {
+  border-color: #fff;
+  background: #fff;
+  color: var(--tm-blue);
+}
+
+.tm-cta .tm-button:hover {
+  border-color: var(--tm-mint);
+  background: var(--tm-mint);
+  color: var(--tm-ink);
+}
+
+html.dark .tm-cta .tm-button:hover {
+  color: #0b0f14;
+}
+
+/* Remediation deadlines, one colour per severity. */
+
+.tm-sla-grid {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .tm-sla-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.tm-sla {
+  position: relative;
+  overflow: hidden;
+  padding: 1.15rem 1.25rem 1.2rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 1rem;
+  background: var(--tm-surface);
+}
+
+.tm-sla::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--tm-sla);
+}
+
+.tm-sla-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--tm-ink);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.tm-sla-level::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--tm-sla);
+}
+
+.tm-sla-days {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--tm-ink);
+  font-family: var(--tm-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.tm-sla-unit {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--tm-muted);
+  font-size: 0.82rem;
+}
+
+.tm-sla-critical { --tm-sla: #e5484d; }
+.tm-sla-high { --tm-sla: #f76b15; }
+.tm-sla-medium { --tm-sla: #f5b400; }
+.tm-sla-low { --tm-sla: var(--tm-mint); }
+
+/* The document cards reuse the home page's .tm-card, three to a row. */
+
+.tm-card-grid-3 {
+  margin: 1.5rem 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+}
+
+.tm-card-grid-3 .tm-card {
+  padding: 1.25rem;
+}
+
+/* Logo strip of the tools behind the controls. */
+
+.tm-logos {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+}
+
+.tm-logos figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.85rem 0.5rem 0.6rem;
+  border: 1px solid var(--tm-rule);
+  border-radius: 0.9rem;
+  background: #fff;
+}
+
+.tm-logos img {
+  width: auto;
+  max-width: 100%;
+  height: 42px;
+  margin: 0;
+  object-fit: contain;
+}
+
+.tm-logos figcaption {
+  color: #536071;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.content .tm-trust-meta {
+  margin-top: 3rem;
+  color: var(--tm-muted);
+  font-size: 0.85rem;
+  text-align: center;
 }

@@ -1,0 +1,77 @@
+<svg id="fig-loop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" role="img" aria-label="The model proposes, Teramot measures the proposal against the real data, and a fixed rule decides: it ships, goes back with the engine&#x27;s error and the measured numbers, or, when the tries run out, a safe default ships." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-loop text{font-family:inherit}
+#fig-loop .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-loop .s{fill:currentColor;font-size:13px}
+#fig-loop .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-loop .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-loop .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-loop .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-loop .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-loop .mk{fill:var(--tm-model,#c2410c)}
+#fig-loop .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-loop .b{font-weight:700}
+#fig-loop .w{fill:#fff}
+#fig-loop .base{fill:var(--tm-surface)}
+#fig-loop .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-loop .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-loop .codefill{fill:var(--tm-blue)}
+#fig-loop .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-loop .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-loop .well{fill:currentColor;fill-opacity:.05}
+#fig-loop .dot{fill:var(--tm-model,#c2410c)}
+#fig-loop .sq{fill:var(--tm-blue)}
+#fig-loop .pp{fill:currentColor}
+#fig-loop .ppm{fill:var(--tm-muted)}
+#fig-loop .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-loop .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-loop .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-loop .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-loop .dash{stroke-dasharray:5 5}
+#fig-loop .ah{fill:var(--tm-muted)}
+#fig-loop .warn{fill:var(--tm-warn,#b45309)}
+#fig-loop .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-loop .good{fill:var(--tm-good,#15803d)}
+#fig-loop .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-loop .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-loop .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-loop .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-loop .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-loop-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <path class="ln dash" d="M608 50V22H88V46" marker-end="url(#fig-loop-ah)"/>
+  <text class="m" x="318" y="14" text-anchor="middle">the engine&#x27;s error and the measured numbers</text>
+  <circle class="sq" cx="486" cy="10" r="4.5"/>
+  <circle class="sq" cx="499" cy="10" r="4.5"/>
+  <circle class="box" cx="512" cy="10" r="4.5"/>
+  <circle class="box" cx="525" cy="10" r="4.5"/>
+  <text class="m" x="540" y="14" style="font-size:11.5px">a fixed number of tries</text>
+  <rect class="base" x="0" y="48" width="176" height="120" rx="12"/><rect class="model" x="0" y="48" width="176" height="120" rx="12"/>
+  <text class="t" x="18" y="80" style="font-size:16px">The model</text>
+  <text class="s b mk" x="18" y="100">proposes</text>
+  <text class="s" x="18" y="128">SQL · a type fix</text>
+  <text class="s" x="18" y="148">a pull plan · prose</text>
+  <path class="ln" d="M180 108H236" marker-end="url(#fig-loop-ah)"/>
+  <rect class="base" x="240" y="48" width="200" height="120" rx="12"/><rect class="code" x="240" y="48" width="200" height="120" rx="12"/>
+  <text class="t" x="258" y="80" style="font-size:16px">Teramot</text>
+  <text class="s b bk" x="258" y="100">measures it</text>
+  <text class="s" x="258" y="128">dry run · EXPLAIN · COUNT</text>
+  <text class="s" x="258" y="148">parse · probe a join</text>
+  <path class="base" d="M290 213V249A50 7 0 0 0 390 249V213"/><path class="box" d="M290 213V249A50 7 0 0 0 390 249V213"/>
+  <ellipse class="base" cx="340" cy="213" rx="50" ry="7"/><ellipse class="box" cx="340" cy="213" rx="50" ry="7"/>
+  <text class="t" x="340" y="240" text-anchor="middle" style="font-size:13.5px">the real data</text>
+  <path class="ln" d="M322 171V202" marker-end="url(#fig-loop-ah)"/>
+  <text class="m" x="314" y="191" text-anchor="end">runs</text>
+  <path class="ln" d="M358 202V171" marker-end="url(#fig-loop-ah)"/>
+  <text class="m" x="366" y="191">numbers</text>
+  <path class="ln" d="M444 108L492 66" marker-end="url(#fig-loop-ah)"/>
+  <path class="ln" d="M444 108L492 108" marker-end="url(#fig-loop-ah)"/>
+  <path class="ln" d="M444 108L492 150" marker-end="url(#fig-loop-ah)"/>
+  <rect class="base" x="496" y="50" width="224" height="32" rx="16"/><rect class="box" x="496" y="50" width="224" height="32" rx="16" stroke-dasharray="5 4"/>
+  <text class="s" x="514" y="71">fails → sent back</text>
+  <rect class="codefill" x="496" y="92" width="224" height="32" rx="16"/>
+  <text class="s b w" x="514" y="113">passes → it ships</text>
+  <rect class="base" x="496" y="134" width="224" height="32" rx="16"/><rect class="box" x="496" y="134" width="224" height="32" rx="16"/>
+  <text class="s" x="514" y="155">out of tries → safe default</text>
+</svg>

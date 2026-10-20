@@ -1,0 +1,105 @@
+<svg id="fig-lanes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 848" width="100%" role="img" aria-label="One question from Claude through Teramot&#x27;s MCP server: the model only writes the SQL and the answer; authorization, read-only parsing, project scope, limits, error translation, fingerprinting and business rules are Teramot code, and the model never holds credentials or physical table names." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-lanes text{font-family:inherit}
+#fig-lanes .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-lanes .s{fill:currentColor;font-size:13px}
+#fig-lanes .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-lanes .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-lanes .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-lanes .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-lanes .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-lanes .mk{fill:var(--tm-model,#c2410c)}
+#fig-lanes .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-lanes .b{font-weight:700}
+#fig-lanes .w{fill:#fff}
+#fig-lanes .base{fill:var(--tm-surface)}
+#fig-lanes .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-lanes .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-lanes .codefill{fill:var(--tm-blue)}
+#fig-lanes .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-lanes .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-lanes .well{fill:currentColor;fill-opacity:.05}
+#fig-lanes .dot{fill:var(--tm-model,#c2410c)}
+#fig-lanes .sq{fill:var(--tm-blue)}
+#fig-lanes .pp{fill:currentColor}
+#fig-lanes .ppm{fill:var(--tm-muted)}
+#fig-lanes .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-lanes .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-lanes .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-lanes .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-lanes .dash{stroke-dasharray:5 5}
+#fig-lanes .ah{fill:var(--tm-muted)}
+#fig-lanes .warn{fill:var(--tm-warn,#b45309)}
+#fig-lanes .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-lanes .good{fill:var(--tm-good,#15803d)}
+#fig-lanes .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-lanes .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-lanes .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-lanes .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-lanes .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-lanes-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <path class="life" d="M90 58V770"/>
+  <path class="life" d="M270 58V770"/>
+  <path class="life" d="M450 58V770"/>
+  <path class="life" d="M630 58V770"/>
+  <rect class="base" x="8" y="0" width="164" height="56" rx="12"/><rect class="model" x="8" y="0" width="164" height="56" rx="12"/>
+  <text class="t" x="90" y="25" text-anchor="middle" style="font-size:14.5px">Claude</text>
+  <text class="m" x="90" y="44" text-anchor="middle" style="font-size:12px">or any MCP client</text>
+  <rect class="base" x="188" y="0" width="164" height="56" rx="12"/><rect class="code" x="188" y="0" width="164" height="56" rx="12"/>
+  <text class="t" x="270" y="25" text-anchor="middle" style="font-size:14.5px">MCP server</text>
+  <text class="m" x="270" y="44" text-anchor="middle" style="font-size:12px">no model calls</text>
+  <rect class="base" x="368" y="0" width="164" height="56" rx="12"/><rect class="code" x="368" y="0" width="164" height="56" rx="12"/>
+  <text class="t" x="450" y="25" text-anchor="middle" style="font-size:14.5px">Teramot backend</text>
+  <text class="m" x="450" y="44" text-anchor="middle" style="font-size:12px">checks every request</text>
+  <rect class="base" x="548" y="0" width="164" height="56" rx="12"/><rect class="box" x="548" y="0" width="164" height="56" rx="12"/>
+  <text class="t" x="630" y="25" text-anchor="middle" style="font-size:14.5px">Your warehouse</text>
+  <text class="m" x="630" y="44" text-anchor="middle" style="font-size:12px">Athena, read-only</text>
+  <path class="ln" d="M93 90H267" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="180" y="83" text-anchor="middle" style="font-size:12.5px">sign in as you (OAuth)</text>
+  <path class="ln" d="M93 120H267" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="180" y="113" text-anchor="middle" style="font-size:12.5px">explore_tables</text>
+  <path class="ln" d="M273 150H447" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="360" y="143" text-anchor="middle" style="font-size:12.5px">authorize, pick project</text>
+  <path class="ln dash" d="M447 180H273" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="360" y="173" text-anchor="middle" style="font-size:12.5px">tables, as aliases</text>
+  <path class="ln dash" d="M267 210H93" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="180" y="203" text-anchor="middle" style="font-size:12.5px">tables + business rules</text>
+  <rect class="base" x="4" y="226" width="172" height="32" rx="10"/><rect class="model" x="4" y="226" width="172" height="32" rx="10"/>
+  <text class="s b mk" x="90" y="246" text-anchor="middle" style="font-size:12.5px">writes the SQL</text>
+  <path class="ln" d="M93 286H267" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="180" y="279" text-anchor="middle" style="font-size:12.5px">query_data(sql)</text>
+  <rect class="base" x="184" y="298" width="172" height="52" rx="10"/><rect class="code" x="184" y="298" width="172" height="52" rx="10"/>
+  <text class="s" x="270" y="318" text-anchor="middle" style="font-size:12.5px">SELECT * refused</text>
+  <text class="s" x="270" y="338" text-anchor="middle" style="font-size:12.5px">≤ 500 rows · 45 s</text>
+  <path class="ln" d="M273 378H447" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="360" y="371" text-anchor="middle" style="font-size:12.5px">the query</text>
+  <rect class="base" x="364" y="390" width="172" height="92" rx="10"/><rect class="code" x="364" y="390" width="172" height="92" rx="10"/>
+  <text class="s" x="450" y="410" text-anchor="middle" style="font-size:12.5px">one read-only statement</text>
+  <text class="s" x="450" y="430" text-anchor="middle" style="font-size:12.5px">project scope, on the AST</text>
+  <text class="s" x="450" y="450" text-anchor="middle" style="font-size:12.5px">quota checked</text>
+  <text class="s" x="450" y="470" text-anchor="middle" style="font-size:12.5px">engine errors → fixes</text>
+  <path class="ln" d="M453 512H627" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="540" y="505" text-anchor="middle" style="font-size:12.5px">read-only SELECT</text>
+  <path class="ln dash" d="M627 540H453" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="540" y="533" text-anchor="middle" style="font-size:12.5px">rows</text>
+  <rect class="base" x="364" y="552" width="172" height="32" rx="10"/><rect class="code" x="364" y="552" width="172" height="32" rx="10"/>
+  <text class="s" x="450" y="572" text-anchor="middle" style="font-size:12.5px">fingerprint the path</text>
+  <path class="ln dash" d="M447 610H273" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="360" y="603" text-anchor="middle" style="font-size:12.5px">rows, 100 a page</text>
+  <rect class="base" x="184" y="622" width="172" height="52" rx="10"/><rect class="code" x="184" y="622" width="172" height="52" rx="10"/>
+  <text class="s" x="270" y="642" text-anchor="middle" style="font-size:12.5px">physical names hidden</text>
+  <text class="s" x="270" y="662" text-anchor="middle" style="font-size:12.5px">business rules appended</text>
+  <path class="ln dash" d="M267 702H93" marker-end="url(#fig-lanes-ah)"/>
+  <text class="s" x="180" y="695" text-anchor="middle" style="font-size:12.5px">rows + business rules</text>
+  <rect class="base" x="4" y="714" width="172" height="32" rx="10"/><rect class="model" x="4" y="714" width="172" height="32" rx="10"/>
+  <text class="s b mk" x="90" y="734" text-anchor="middle" style="font-size:12.5px">answers</text>
+  <text class="cap" x="90" y="800" text-anchor="middle">NEVER HOLDS</text>
+  <text class="cap" x="270" y="800" text-anchor="middle">MODEL CALLS</text>
+  <text class="cap" x="450" y="800" text-anchor="middle">WRITES ALLOWED</text>
+  <text class="s" x="90" y="820" text-anchor="middle" style="font-size:12.5px">credentials or</text>
+  <text class="s" x="90" y="837" text-anchor="middle" style="font-size:12.5px">physical table names</text>
+  <text class="t bk" x="270" y="832" text-anchor="middle" style="font-size:30px">0</text>
+  <text class="t bk" x="450" y="832" text-anchor="middle" style="font-size:30px">0</text>
+</svg>

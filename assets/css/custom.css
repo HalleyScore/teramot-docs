@@ -4,7 +4,9 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.ttf") format("truetype");
+  /* Root path: the compiled stylesheet is served from /css/compiled/, where
+     ../fonts/ resolved to /css/fonts/ and 404'd. The file is static/fonts/. */
+  src: url("/fonts/Manrope-VariableFont_wght.ttf") format("truetype");
   font-style: normal;
   font-weight: 200 800;
   font-display: swap;

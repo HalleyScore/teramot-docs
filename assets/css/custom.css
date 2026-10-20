@@ -1598,6 +1598,11 @@ html.dark .tm-status-progress {
   line-height: 1.45;
 }
 
+/* A range such as CC1–CC9 that should not break at its dash. */
+.tm-nowrap {
+  white-space: nowrap;
+}
+
 /* The Type II observation window, month by month. */
 
 .tm-window {

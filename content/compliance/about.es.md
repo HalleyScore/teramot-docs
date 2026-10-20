@@ -44,7 +44,7 @@ weight: 10
     <p class="tm-cert-text">Un auditor independiente evaluó los controles de Teramot contra los Trust Services Criteria de AICPA para <strong>Seguridad</strong> durante seis meses, y concluyó que <strong>funcionaron de forma efectiva todo el período, sin excepciones</strong>. Un informe Tipo II cubre cómo operaron los controles a lo largo del tiempo, no solo cómo fueron diseñados.</p>
     <dl class="tm-facts">
       <div><dt>Auditor</dt><dd>Sentry Assurance (EE. UU.)</dd></div>
-      <div><dt>Criterios</dt><dd>Seguridad · Common Criteria CC1–CC9</dd></div>
+      <div><dt>Criterios</dt><dd>Seguridad · Common Criteria <span class="tm-nowrap">CC1–CC9</span></dd></div>
       <div><dt>Período de observación</dt><dd>16 dic 2025 – 15 jun 2026</dd></div>
       <div><dt>Acceso</dt><dd>Bajo NDA, a pedido</dd></div>
     </dl>
@@ -200,7 +200,7 @@ Cuando algo pasa, el [Plan de Respuesta a Incidentes](/es/compliance/Policies/in
 
 <div class="tm-flow-box not-prose">
 <ol class="tm-flow tm-flow-5">
-  <li><span class="tm-flow-title">Detectar</span><span class="tm-flow-text">Alertas del monitoreo de arriba, o un reporte a security@teramot.com.</span></li>
+  <li><span class="tm-flow-title">Detectar</span><span class="tm-flow-text">Alertas del monitoreo de arriba, o un reporte a security<wbr>@teramot.com.</span></li>
   <li><span class="tm-flow-title">Clasificar</span><span class="tm-flow-text">Cada incidente recibe una severidad de P0 a P3, que fija su urgencia.</span></li>
   <li><span class="tm-flow-title">Contener y corregir</span><span class="tm-flow-text">Ciberseguridad y DevOps aíslan la causa y la corrigen.</span></li>
   <li><span class="tm-flow-title">Notificar</span><span class="tm-flow-text">Los clientes afectados reciben aviso dentro de las 72 horas de confirmado.</span></li>

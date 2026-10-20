@@ -1,0 +1,98 @@
+<svg id="fig-where" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 372" width="100%" role="img" aria-label="Six places the loop runs, each with what the model proposes, how Teramot checks it and the gate that decides. For join keys the model has been removed entirely." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-where text{font-family:inherit}
+#fig-where .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-where .s{fill:currentColor;font-size:13px}
+#fig-where .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-where .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-where .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-where .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-where .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-where .mk{fill:var(--tm-model,#c2410c)}
+#fig-where .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-where .b{font-weight:700}
+#fig-where .w{fill:#fff}
+#fig-where .base{fill:var(--tm-surface)}
+#fig-where .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-where .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-where .codefill{fill:var(--tm-blue)}
+#fig-where .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-where .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-where .well{fill:currentColor;fill-opacity:.05}
+#fig-where .dot{fill:var(--tm-model,#c2410c)}
+#fig-where .sq{fill:var(--tm-blue)}
+#fig-where .pp{fill:currentColor}
+#fig-where .ppm{fill:var(--tm-muted)}
+#fig-where .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-where .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-where .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-where .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-where .dash{stroke-dasharray:5 5}
+#fig-where .ah{fill:var(--tm-muted)}
+#fig-where .warn{fill:var(--tm-warn,#b45309)}
+#fig-where .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-where .good{fill:var(--tm-good,#15803d)}
+#fig-where .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-where .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-where .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-where .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-where .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-where-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="12">WHERE THE LOOP RUNS</text>
+  <rect class="base" x="0" y="24" width="352" height="108" rx="12"/><rect class="box" x="0" y="24" width="352" height="108" rx="12"/>
+  <text class="t" x="18" y="54" style="font-size:14.5px">Cleaning a table</text>
+  <text class="cap" x="334" y="53" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="capm" x="18" y="78">MODEL</text>
+  <text class="s" x="74" y="78">writes the cleaning SELECT</text>
+  <text class="capb" x="18" y="98">CHECK</text>
+  <text class="s" x="74" y="98">a run on 100k rows</text>
+  <text class="cap" x="18" y="118">GATE</text>
+  <text class="s b" x="74" y="118">no rows dropped, no keys reshaped</text>
+  <rect class="base" x="368" y="24" width="352" height="108" rx="12"/><rect class="box" x="368" y="24" width="352" height="108" rx="12"/>
+  <text class="t" x="386" y="54" style="font-size:14.5px">Reconciling types</text>
+  <text class="cap" x="702" y="53" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="capm" x="386" y="78">MODEL</text>
+  <text class="s" x="442" y="78">proposes type fixes</text>
+  <text class="capb" x="386" y="98">CHECK</text>
+  <text class="s" x="442" y="98">converts both sides</text>
+  <text class="cap" x="386" y="118">GATE</text>
+  <text class="s b" x="442" y="118">lossless · ≥ 90% overlap</text>
+  <rect class="base" x="0" y="144" width="352" height="108" rx="12"/><rect class="box" x="0" y="144" width="352" height="108" rx="12"/>
+  <text class="t" x="18" y="174" style="font-size:14.5px">Finding join keys</text>
+  <text class="cap" x="334" y="173" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="capm" x="18" y="198">MODEL</text>
+  <text class="s mk" x="74" y="198" font-style="italic">none since August 2026</text>
+  <text class="capb" x="18" y="218">CHECK</text>
+  <text class="s" x="74" y="218">value index, one verifying join</text>
+  <text class="cap" x="18" y="238">GATE</text>
+  <text class="s b" x="74" y="238">≥ 95% hit · ≥ 90% contained · unique</text>
+  <rect class="base" x="368" y="144" width="352" height="108" rx="12"/><rect class="box" x="368" y="144" width="352" height="108" rx="12"/>
+  <text class="t" x="386" y="174" style="font-size:14.5px">Building a results table</text>
+  <text class="cap" x="702" y="173" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="capm" x="386" y="198">MODEL</text>
+  <text class="s" x="442" y="198">writes the SQL</text>
+  <text class="capb" x="386" y="218">CHECK</text>
+  <text class="s" x="442" y="218">parse, scope, 20-row test run</text>
+  <text class="cap" x="386" y="238">GATE</text>
+  <text class="s b" x="442" y="238">one read-only SELECT · keys &lt; 75% null</text>
+  <rect class="base" x="0" y="264" width="352" height="108" rx="12"/><rect class="box" x="0" y="264" width="352" height="108" rx="12"/>
+  <text class="t" x="18" y="294" style="font-size:14.5px">Pulling a slice</text>
+  <text class="cap" x="334" y="293" text-anchor="end" style="font-size:10px">BEACON</text>
+  <text class="capm" x="18" y="318">MODEL</text>
+  <text class="s" x="74" y="318">picks tables and filters</text>
+  <text class="capb" x="18" y="338">CHECK</text>
+  <text class="s" x="74" y="338">bind params, COUNT first</text>
+  <text class="cap" x="18" y="358">GATE</text>
+  <text class="s b" x="74" y="358">≤ 50M rows and ≤ 2 GiB</text>
+  <rect class="base" x="368" y="264" width="352" height="108" rx="12"/><rect class="box" x="368" y="264" width="352" height="108" rx="12"/>
+  <text class="t" x="386" y="294" style="font-size:14.5px">Writing the report</text>
+  <text class="cap" x="702" y="293" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="capm" x="386" y="318">MODEL</text>
+  <text class="s" x="442" y="318">writes the prose</text>
+  <text class="capb" x="386" y="338">CHECK</text>
+  <text class="s" x="442" y="338">numbers and names vs the facts</text>
+  <text class="cap" x="386" y="358">GATE</text>
+  <text class="s b" x="442" y="358">invented → template render</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg id="fig-incidents" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 274" width="100%" role="img" aria-label="Four failures on real data, each now stopped by a mechanism: 12.6M rows pulled for a two-row answer; three tables empty for 40 days; about 77% of LLM-proposed join keys failing; 1.1 million tonnes served as zero for two months." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-incidents text{font-family:inherit}
+#fig-incidents .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-incidents .s{fill:currentColor;font-size:13px}
+#fig-incidents .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-incidents .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-incidents .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-incidents .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-incidents .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-incidents .mk{fill:var(--tm-model,#c2410c)}
+#fig-incidents .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-incidents .b{font-weight:700}
+#fig-incidents .w{fill:#fff}
+#fig-incidents .base{fill:var(--tm-surface)}
+#fig-incidents .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-incidents .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-incidents .codefill{fill:var(--tm-blue)}
+#fig-incidents .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-incidents .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-incidents .well{fill:currentColor;fill-opacity:.05}
+#fig-incidents .dot{fill:var(--tm-model,#c2410c)}
+#fig-incidents .sq{fill:var(--tm-blue)}
+#fig-incidents .pp{fill:currentColor}
+#fig-incidents .ppm{fill:var(--tm-muted)}
+#fig-incidents .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-incidents .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-incidents .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-incidents .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-incidents .dash{stroke-dasharray:5 5}
+#fig-incidents .ah{fill:var(--tm-muted)}
+#fig-incidents .warn{fill:var(--tm-warn,#b45309)}
+#fig-incidents .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-incidents .good{fill:var(--tm-good,#15803d)}
+#fig-incidents .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-incidents .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-incidents .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-incidents .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-incidents .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-incidents-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <rect class="base" x="0" y="0" width="352" height="130" rx="12"/><rect class="box" x="0" y="0" width="352" height="130" rx="12"/>
+  <text class="t bad" x="18" y="42" style="font-size:28px">12.6M rows</text>
+  <text class="cap" x="334" y="24" text-anchor="end" style="font-size:10px">BEACON</text>
+  <text class="s" x="18" y="66" style="font-size:12.5px">pulled for a question about one case.</text>
+  <text class="s" x="18" y="84" style="font-size:12.5px">The answer used 2.</text>
+  <path class="rule" d="M18 98H334"/>
+  <text class="capb" x="18" y="118">NOW</text>
+  <text class="s b bk" x="54" y="118" style="font-size:12.5px">filter by the keys the answer needs</text>
+  <rect class="base" x="368" y="0" width="352" height="130" rx="12"/><rect class="box" x="368" y="0" width="352" height="130" rx="12"/>
+  <text class="t bad" x="386" y="42" style="font-size:28px">40 days</text>
+  <text class="cap" x="702" y="24" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="s" x="386" y="66" style="font-size:12.5px">three tables at 0 rows while bronze</text>
+  <text class="s" x="386" y="84" style="font-size:12.5px">held 8.6M, after a type change.</text>
+  <path class="rule" d="M386 98H702"/>
+  <text class="capb" x="386" y="118">NOW</text>
+  <text class="s b bk" x="422" y="118" style="font-size:12.5px">EXPLAIN before any destructive write</text>
+  <rect class="base" x="0" y="144" width="352" height="130" rx="12"/><rect class="box" x="0" y="144" width="352" height="130" rx="12"/>
+  <text class="t bad" x="18" y="186" style="font-size:28px">about 77%</text>
+  <text class="cap" x="334" y="168" text-anchor="end" style="font-size:10px">PLATFORM</text>
+  <text class="s" x="18" y="210" style="font-size:12.5px">of the join keys an LLM detector</text>
+  <text class="s" x="18" y="228" style="font-size:12.5px">stored failed when measured.</text>
+  <path class="rule" d="M18 242H334"/>
+  <text class="capb" x="18" y="262">NOW</text>
+  <text class="s b bk" x="54" y="262" style="font-size:12.5px">a value index and a verifying join</text>
+  <rect class="base" x="368" y="144" width="352" height="130" rx="12"/><rect class="box" x="368" y="144" width="352" height="130" rx="12"/>
+  <text class="t bad" x="386" y="186" style="font-size:28px">1.1M tonnes</text>
+  <text class="cap" x="702" y="168" text-anchor="end" style="font-size:10px">A CLIENT</text>
+  <text class="s" x="386" y="210" style="font-size:12.5px">served as zero for two months: an</text>
+  <text class="s" x="386" y="228" style="font-size:12.5px">instruction named the wrong join key.</text>
+  <path class="rule" d="M386 242H702"/>
+  <text class="capb" x="386" y="262">NOW</text>
+  <text class="s b bk" x="422" y="262" style="font-size:12.5px">a 0% join reads as broken</text>
+</svg>

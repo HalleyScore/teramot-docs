@@ -25,6 +25,11 @@
   --tm-rule: rgba(11, 15, 20, 0.1);
   --tm-rule-strong: rgba(11, 15, 20, 0.17);
   --tm-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --tm-blue-ink: #253de5;
+  --tm-model: #c2410c;
+  --tm-warn: #b45309;
+  --tm-bad: #b91c1c;
+  --tm-good: #15803d;
 }
 
 html.dark {
@@ -37,6 +42,11 @@ html.dark {
   --tm-muted: #a5afbf;
   --tm-rule: rgba(248, 250, 252, 0.12);
   --tm-rule-strong: rgba(248, 250, 252, 0.2);
+  --tm-blue-ink: #8b9bff;
+  --tm-model: #fb923c;
+  --tm-warn: #fbbf24;
+  --tm-bad: #f87171;
+  --tm-good: #4ade80;
 }
 
 h1,

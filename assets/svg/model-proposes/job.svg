@@ -1,0 +1,106 @@
+<svg id="fig-job" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 456" width="100%" role="img" aria-label="Seven jobs a data team does. In software as a service a person does six of them and nobody does the seventh; in Teramot each job is a mechanism, and a person steps in on two, only to decide." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-job text{font-family:inherit}
+#fig-job .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-job .s{fill:currentColor;font-size:13px}
+#fig-job .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-job .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-job .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-job .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-job .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-job .mk{fill:var(--tm-model,#c2410c)}
+#fig-job .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-job .b{font-weight:700}
+#fig-job .w{fill:#fff}
+#fig-job .base{fill:var(--tm-surface)}
+#fig-job .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-job .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-job .codefill{fill:var(--tm-blue)}
+#fig-job .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-job .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-job .well{fill:currentColor;fill-opacity:.05}
+#fig-job .dot{fill:var(--tm-model,#c2410c)}
+#fig-job .sq{fill:var(--tm-blue)}
+#fig-job .pp{fill:currentColor}
+#fig-job .ppm{fill:var(--tm-muted)}
+#fig-job .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-job .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-job .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-job .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-job .dash{stroke-dasharray:5 5}
+#fig-job .ah{fill:var(--tm-muted)}
+#fig-job .warn{fill:var(--tm-warn,#b45309)}
+#fig-job .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-job .good{fill:var(--tm-good,#15803d)}
+#fig-job .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-job .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-job .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-job .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-job .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-job-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="22">THE JOB</text>
+  <text class="t" x="212" y="22" style="font-size:14.5px">Software as a service</text>
+  <text class="m" x="212" y="41" style="font-size:12px">your team does the job</text>
+  <text class="t bk" x="424" y="22" style="font-size:14.5px">Service as a software</text>
+  <text class="m" x="424" y="41" style="font-size:12px">the job gets done, you decide</text>
+  <path class="rule" d="M0 60H720"/>
+  <text class="s b" x="0" y="90" style="font-size:13.5px">Load the sources</text>
+  <circle class="ppm" cx="221" cy="81" r="3.6"/><path class="ppm" d="M214.5 92a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="90">data engineer</text>
+  <rect class="base" x="424" y="68" width="296" height="36" rx="10"/><rect class="code" x="424" y="68" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="91" style="font-size:12.5px">17 source types, MERGE on the key</text>
+  <path class="rule" d="M0 110H720"/>
+  <text class="s b" x="0" y="140" style="font-size:13.5px">Clean every table</text>
+  <circle class="ppm" cx="221" cy="131" r="3.6"/><path class="ppm" d="M214.5 142a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="140">data engineer</text>
+  <rect class="base" x="424" y="118" width="296" height="36" rx="10"/><rect class="code" x="424" y="118" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="141" style="font-size:12.5px">cleaning agent inside the loop</text>
+  <path class="rule" d="M0 160H720"/>
+  <text class="s b" x="0" y="190" style="font-size:13.5px">Work out the joins</text>
+  <circle class="ppm" cx="221" cy="181" r="3.6"/><path class="ppm" d="M214.5 192a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="190">analyst</text>
+  <rect class="base" x="424" y="168" width="296" height="36" rx="10"/><rect class="code" x="424" y="168" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="191" style="font-size:12.5px">value index + a verifying join</text>
+  <path class="rule" d="M0 210H720"/>
+  <text class="s b" x="0" y="240" style="font-size:13.5px">Survive a schema change</text>
+  <circle class="ppm" cx="221" cy="231" r="3.6"/><path class="ppm" d="M214.5 242a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="240">on-call engineer</text>
+  <rect class="base" x="424" y="218" width="296" height="36" rx="10"/><rect class="code" x="424" y="218" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="241" style="font-size:12.5px">re-audit, write gate, repair</text>
+  <circle class="pp" cx="620.3" cy="233" r="3.6"/><path class="pp" d="M613.8 244a6.5 6.5 0 0 1 13 0z"/>
+  <text class="s b" x="706" y="241" text-anchor="end" style="font-size:12px">you approve</text>
+  <path class="rule" d="M0 260H720"/>
+  <text class="s b" x="0" y="290" style="font-size:13.5px">Answer a question</text>
+  <circle class="ppm" cx="221" cy="281" r="3.6"/><path class="ppm" d="M214.5 292a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="290">analyst</text>
+  <rect class="base" x="424" y="268" width="296" height="36" rx="10"/><rect class="code" x="424" y="268" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="291" style="font-size:12.5px">any model, through checked tools</text>
+  <path class="rule" d="M0 310H720"/>
+  <text class="s b" x="0" y="340" style="font-size:13.5px">Catch a drifting answer</text>
+  <circle class="box" cx="221" cy="335" r="6" stroke-dasharray="2 2"/>
+  <text class="m" x="236" y="340">nobody, usually</text>
+  <rect class="base" x="424" y="318" width="296" height="36" rx="10"/><rect class="code" x="424" y="318" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="341" style="font-size:12.5px">re-ask, compare the path</text>
+  <circle class="pp" cx="640.4" cy="333" r="3.6"/><path class="pp" d="M633.9 344a6.5 6.5 0 0 1 13 0z"/>
+  <text class="s b" x="706" y="341" text-anchor="end" style="font-size:12px">you pick</text>
+  <path class="rule" d="M0 360H720"/>
+  <text class="s b" x="0" y="390" style="font-size:13.5px">Report</text>
+  <circle class="ppm" cx="221" cy="381" r="3.6"/><path class="ppm" d="M214.5 392a6.5 6.5 0 0 1 13 0z"/>
+  <text class="m" x="236" y="390">analyst</text>
+  <rect class="base" x="424" y="368" width="296" height="36" rx="10"/><rect class="code" x="424" y="368" width="296" height="36" rx="10" style="stroke-width:1.25"/>
+  <text class="s" x="438" y="391" style="font-size:12.5px">dashboards, alerts, Studio</text>
+  <path class="rule" d="M0 410H720"/>
+  <text class="cap" x="0" y="442">A PERSON IN THE LOOP</text>
+  <circle class="ppm" cx="221" cy="433" r="3.6"/><path class="ppm" d="M214.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="ppm" cx="241" cy="433" r="3.6"/><path class="ppm" d="M234.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="ppm" cx="261" cy="433" r="3.6"/><path class="ppm" d="M254.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="ppm" cx="281" cy="433" r="3.6"/><path class="ppm" d="M274.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="ppm" cx="301" cy="433" r="3.6"/><path class="ppm" d="M294.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="ppm" cx="321" cy="433" r="3.6"/><path class="ppm" d="M314.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <text class="t" x="342" y="443" style="font-size:14px">6 of 7</text>
+  <circle class="pp" cx="433" cy="433" r="3.6"/><path class="pp" d="M426.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <circle class="pp" cx="453" cy="433" r="3.6"/><path class="pp" d="M446.5 444a6.5 6.5 0 0 1 13 0z"/>
+  <text class="t bk" x="474" y="443" style="font-size:14px">2 of 7, to decide</text>
+</svg>

@@ -1,0 +1,97 @@
+<svg id="fig-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 518" width="100%" role="img" aria-label="Two runs of the same confirmed question. The number moved and cannot say why; the fingerprinted path shows the orders-to-regions join fell from 98% to 67% match, so the verdict is degraded. Fixed rules, no model, decide the verdict." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-path text{font-family:inherit}
+#fig-path .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-path .s{fill:currentColor;font-size:13px}
+#fig-path .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-path .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-path .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-path .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-path .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-path .mk{fill:var(--tm-model,#c2410c)}
+#fig-path .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-path .b{font-weight:700}
+#fig-path .w{fill:#fff}
+#fig-path .base{fill:var(--tm-surface)}
+#fig-path .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-path .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-path .codefill{fill:var(--tm-blue)}
+#fig-path .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-path .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-path .well{fill:currentColor;fill-opacity:.05}
+#fig-path .dot{fill:var(--tm-model,#c2410c)}
+#fig-path .sq{fill:var(--tm-blue)}
+#fig-path .pp{fill:currentColor}
+#fig-path .ppm{fill:var(--tm-muted)}
+#fig-path .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-path .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-path .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-path .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-path .dash{stroke-dasharray:5 5}
+#fig-path .ah{fill:var(--tm-muted)}
+#fig-path .warn{fill:var(--tm-warn,#b45309)}
+#fig-path .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-path .good{fill:var(--tm-good,#15803d)}
+#fig-path .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-path .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-path .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-path .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-path .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-path-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="14">A CONFIRMED QUESTION</text>
+  <text class="m" x="720" y="14" text-anchor="end" style="font-size:11.5px">illustrative example</text>
+  <text class="t" x="0" y="40" style="font-size:17px">&quot;Revenue by region, last month&quot;</text>
+  <rect class="base" x="0" y="58" width="300" height="210" rx="12"/><rect class="box" x="0" y="58" width="300" height="210" rx="12"/>
+  <text class="cap" x="18" y="84">BASELINE · CONFIRMED</text>
+  <text class="t" x="18" y="124" style="font-size:30px">$4.21M</text>
+  <text class="cap" x="18" y="160">THE PATH</text>
+  <rect class="base" x="18" y="172" width="94" height="34" rx="8"/><rect class="box" x="18" y="172" width="94" height="34" rx="8"/>
+  <text class="s" x="65" y="194" text-anchor="middle">orders</text>
+  <rect class="base" x="188" y="172" width="94" height="34" rx="8"/><rect class="box" x="188" y="172" width="94" height="34" rx="8"/>
+  <text class="s" x="235" y="194" text-anchor="middle">regions</text>
+  <path class="lnb" d="M114 189H186"/>
+  <text class="s b bk" x="150" y="182" text-anchor="middle" style="font-size:12px">98% match</text>
+  <text class="m" x="18" y="232" style="font-size:12px">amount, region_id</text>
+  <text class="m" x="18" y="250" style="font-size:12px">about 10⁶ rows read</text>
+  <rect class="base" x="420" y="58" width="300" height="210" rx="12"/><rect class="box" x="420" y="58" width="300" height="210" rx="12"/>
+  <text class="cap" x="438" y="84">RE-ASK · FRESH READ</text>
+  <text class="t" x="438" y="124" style="font-size:30px">$3.02M</text>
+  <text class="cap" x="438" y="160">THE PATH</text>
+  <rect class="base" x="438" y="172" width="94" height="34" rx="8"/><rect class="box" x="438" y="172" width="94" height="34" rx="8"/>
+  <text class="s" x="485" y="194" text-anchor="middle">orders</text>
+  <rect class="base" x="608" y="172" width="94" height="34" rx="8"/><rect class="box" x="608" y="172" width="94" height="34" rx="8"/>
+  <text class="s" x="655" y="194" text-anchor="middle">regions</text>
+  <path class="warnln" d="M534 189H606"/>
+  <text class="s b warn" x="570" y="182" text-anchor="middle" style="font-size:12px">67% match</text>
+  <text class="m" x="438" y="232" style="font-size:12px">amount, region_id</text>
+  <text class="m" x="438" y="250" style="font-size:12px">about 10⁶ rows read</text>
+  <text class="m" x="360" y="106" text-anchor="middle" style="font-size:12px">a bad month,</text>
+  <text class="m" x="360" y="123" text-anchor="middle" style="font-size:12px">or a broken join?</text>
+  <text class="s b" x="360" y="146" text-anchor="middle" style="font-size:12px">can&#x27;t tell</text>
+  <path class="ln" d="M302 189H418" marker-end="url(#fig-path-ah)"/>
+  <text class="m" x="360" y="181" text-anchor="middle" style="font-size:11.5px">compared</text>
+  <rect class="warnc" x="312" y="204" width="96" height="22" rx="11"/>
+  <text class="capb warn" x="360" y="219" text-anchor="middle" style="font-size:10.5px">DEGRADED</text>
+  <text class="m" x="360" y="290" text-anchor="middle" style="font-size:12px">A fingerprint keeps tables, joins with their match rate, columns and row magnitude. Never a value.</text>
+  <text class="cap" x="0" y="326">THE RULES · NO MODEL</text>
+  <path class="rule" d="M0 363H720"/>
+  <text class="s" x="0" y="354">a join&#x27;s match rate falls but stays above 0</text>
+  <rect class="warnc" x="580" y="338" width="140" height="22" rx="11"/>
+  <text class="capb warn" x="650" y="353" text-anchor="middle" style="font-size:10.5px">DEGRADED</text>
+  <path class="rule" d="M0 391H720"/>
+  <text class="s" x="0" y="382">a join is gone, or its match rate hits 0</text>
+  <rect class="badc" x="580" y="366" width="140" height="22" rx="11"/>
+  <text class="capb bad" x="650" y="381" text-anchor="middle" style="font-size:10.5px">BROKEN</text>
+  <path class="rule" d="M0 419H720"/>
+  <text class="s" x="0" y="410">rows read move by 2+ orders of magnitude</text>
+  <rect class="badc" x="580" y="394" width="140" height="22" rx="11"/>
+  <text class="capb bad" x="650" y="409" text-anchor="middle" style="font-size:10.5px">BROKEN</text>
+  <path class="rule" d="M0 447H720"/>
+  <text class="s" x="0" y="438">a join could not be measured</text>
+  <rect class="mutedc" x="580" y="422" width="140" height="22" rx="11"/>
+  <text class="capb cap" x="650" y="437" text-anchor="middle" style="font-size:10.5px">INCONCLUSIVE</text>
+  <text class="t" x="0" y="486" style="font-size:16px">Index = 100 × (G + ½ D) ÷ (G + D + B)</text>
+  <text class="m" x="0" y="507" style="font-size:12px">Green, degraded, broken. Inconclusive counts in neither part.</text>
+</svg>

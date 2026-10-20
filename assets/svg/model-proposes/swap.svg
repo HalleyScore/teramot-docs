@@ -1,0 +1,62 @@
+<svg id="fig-swap" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 296" width="100%" role="img" aria-label="Teramot Beacon with two models behind the same layer: Claude Sonnet 5 answered 100% of the funnel benchmark, GPT-6 Luna 95.2%, equal on the assistant A/B, at about one twenty-fifth of the list price. Switching is one environment variable." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-swap text{font-family:inherit}
+#fig-swap .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-swap .s{fill:currentColor;font-size:13px}
+#fig-swap .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-swap .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-swap .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-swap .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-swap .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-swap .mk{fill:var(--tm-model,#c2410c)}
+#fig-swap .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-swap .b{font-weight:700}
+#fig-swap .w{fill:#fff}
+#fig-swap .base{fill:var(--tm-surface)}
+#fig-swap .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-swap .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-swap .codefill{fill:var(--tm-blue)}
+#fig-swap .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-swap .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-swap .well{fill:currentColor;fill-opacity:.05}
+#fig-swap .dot{fill:var(--tm-model,#c2410c)}
+#fig-swap .sq{fill:var(--tm-blue)}
+#fig-swap .pp{fill:currentColor}
+#fig-swap .ppm{fill:var(--tm-muted)}
+#fig-swap .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-swap .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-swap .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-swap .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-swap .dash{stroke-dasharray:5 5}
+#fig-swap .ah{fill:var(--tm-muted)}
+#fig-swap .warn{fill:var(--tm-warn,#b45309)}
+#fig-swap .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-swap .good{fill:var(--tm-good,#15803d)}
+#fig-swap .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-swap .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-swap .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-swap .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-swap .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-swap-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="12">TERAMOT BEACON · SAME LAYER, TWO MODELS · 28 SEP 2026</text>
+  <text class="t" x="0" y="48" style="font-size:14px">Answers correct, funnel benchmark</text>
+  <text class="s" x="176" y="74" text-anchor="end">Claude Sonnet 5</text>
+  <rect class="dot" x="190" y="60" width="440" height="20" rx="5"/>
+  <text class="s b" x="640" y="75">100%</text>
+  <text class="s" x="176" y="102" text-anchor="end">GPT-6 Luna</text>
+  <rect class="dot" x="190" y="88" width="418.88" height="20" rx="5"/>
+  <text class="s b" x="618.88" y="103">95.2%</text>
+  <text class="t" x="0" y="140" style="font-size:14px">Assistant A/B</text>
+  <text class="s b" x="190" y="140">equal</text>
+  <text class="t" x="0" y="180" style="font-size:14px">List price per question</text>
+  <text class="s" x="176" y="206" text-anchor="end">Claude Sonnet 5</text>
+  <rect class="dot" x="190" y="192" width="440" height="20" rx="5"/>
+  <text class="s b" x="640" y="207">about 25×</text>
+  <text class="s" x="176" y="234" text-anchor="end">GPT-6 Luna</text>
+  <rect class="dot" x="190" y="220" width="17.6" height="20" rx="5"/>
+  <text class="s b" x="217.6" y="235">1×</text>
+  <path class="rule" d="M0 260H720"/>
+  <text class="s" x="0" y="286">Switching is one line, <tspan class="mono b">TERAMOT_MODEL</tspan>. The checks around the model stay the same.</text>
+</svg>

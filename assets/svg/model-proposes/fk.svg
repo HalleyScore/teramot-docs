@@ -1,0 +1,154 @@
+<svg id="fig-fk" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 302" width="100%" role="img" aria-label="About 77 of every 100 join keys the LLM detector stored in production failed validation. Measured inference turned 6 proposed edges into 1 accepted edge and 9 reported defects." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-fk text{font-family:inherit}
+#fig-fk .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-fk .s{fill:currentColor;font-size:13px}
+#fig-fk .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-fk .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-fk .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-fk .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-fk .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-fk .mk{fill:var(--tm-model,#c2410c)}
+#fig-fk .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-fk .b{font-weight:700}
+#fig-fk .w{fill:#fff}
+#fig-fk .base{fill:var(--tm-surface)}
+#fig-fk .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-fk .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-fk .codefill{fill:var(--tm-blue)}
+#fig-fk .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-fk .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-fk .well{fill:currentColor;fill-opacity:.05}
+#fig-fk .dot{fill:var(--tm-model,#c2410c)}
+#fig-fk .sq{fill:var(--tm-blue)}
+#fig-fk .pp{fill:currentColor}
+#fig-fk .ppm{fill:var(--tm-muted)}
+#fig-fk .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-fk .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-fk .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-fk .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-fk .dash{stroke-dasharray:5 5}
+#fig-fk .ah{fill:var(--tm-muted)}
+#fig-fk .warn{fill:var(--tm-warn,#b45309)}
+#fig-fk .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-fk .good{fill:var(--tm-good,#15803d)}
+#fig-fk .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-fk .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-fk .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-fk .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-fk .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-fk-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="12">EVERY 100 JOIN KEYS THE LLM DETECTOR STORED IN PRODUCTION</text>
+  <rect class="bad" x="0" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="26" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="51" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="76" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="101" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="126" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="151" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="175" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="200" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="225" y="176" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="25" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="50" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="75" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="100" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="125" y="201" width="21" height="21" rx="4"/>
+  <rect class="bad" x="150" y="201" width="21" height="21" rx="4"/>
+  <rect class="sq" x="175" y="201" width="21" height="21" rx="4"/>
+  <rect class="sq" x="200" y="201" width="21" height="21" rx="4"/>
+  <rect class="sq" x="225" y="201" width="21" height="21" rx="4"/>
+  <rect class="sq" x="0" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="25" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="50" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="75" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="100" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="125" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="150" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="175" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="200" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="225" y="226" width="21" height="21" rx="4"/>
+  <rect class="sq" x="0" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="25" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="50" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="75" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="100" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="125" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="150" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="175" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="200" y="251" width="21" height="21" rx="4"/>
+  <rect class="sq" x="225" y="251" width="21" height="21" rx="4"/>
+  <rect class="bad" x="0" y="284" width="11" height="11" rx="2.5"/>
+  <text class="m" x="18" y="294">failed validation</text>
+  <rect class="sq" x="138" y="284" width="11" height="11" rx="2.5"/>
+  <text class="m" x="156" y="294">passed</text>
+  <text class="t bad" x="300" y="78" style="font-size:44px">about 77%</text>
+  <text class="s" x="300" y="106">failed when the values were measured.</text>
+  <path class="rule" d="M300 140H720"/>
+  <text class="t" x="300" y="196" style="font-size:38px">6 → 1 + 9</text>
+  <text class="s" x="300" y="224">measured instead of guessed, on the dev benchmark:</text>
+  <text class="s" x="300" y="242">6 proposed edges, 1 accepted, 9 defects reported.</text>
+</svg>

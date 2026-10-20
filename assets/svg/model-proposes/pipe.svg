@@ -1,0 +1,82 @@
+<svg id="fig-pipe" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 332" width="100%" role="img" aria-label="Top: a model with a connection string runs any SQL it writes against your data, with no record of how. Bottom: the same model behind Teramot&#x27;s layer of typed tools, checks and a warehouse kept by the check loop, with each query&#x27;s path recorded and compared." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-pipe text{font-family:inherit}
+#fig-pipe .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-pipe .s{fill:currentColor;font-size:13px}
+#fig-pipe .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-pipe .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-pipe .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-pipe .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-pipe .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-pipe .mk{fill:var(--tm-model,#c2410c)}
+#fig-pipe .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-pipe .b{font-weight:700}
+#fig-pipe .w{fill:#fff}
+#fig-pipe .base{fill:var(--tm-surface)}
+#fig-pipe .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-pipe .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-pipe .codefill{fill:var(--tm-blue)}
+#fig-pipe .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-pipe .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-pipe .well{fill:currentColor;fill-opacity:.05}
+#fig-pipe .dot{fill:var(--tm-model,#c2410c)}
+#fig-pipe .sq{fill:var(--tm-blue)}
+#fig-pipe .pp{fill:currentColor}
+#fig-pipe .ppm{fill:var(--tm-muted)}
+#fig-pipe .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-pipe .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-pipe .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-pipe .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-pipe .dash{stroke-dasharray:5 5}
+#fig-pipe .ah{fill:var(--tm-muted)}
+#fig-pipe .warn{fill:var(--tm-warn,#b45309)}
+#fig-pipe .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-pipe .good{fill:var(--tm-good,#15803d)}
+#fig-pipe .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-pipe .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-pipe .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-pipe .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-pipe .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-pipe-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="12">A PIPE</text>
+  <rect class="base" x="0" y="26" width="112" height="60" rx="12"/><rect class="model" x="0" y="26" width="112" height="60" rx="12"/>
+  <text class="t" x="56" y="52" text-anchor="middle">Claude</text>
+  <text class="m" x="56" y="71" text-anchor="middle" style="font-size:11.5px">or any model</text>
+  <path class="base" d="M608 29V83A56 7 0 0 0 720 83V29"/><path class="box" d="M608 29V83A56 7 0 0 0 720 83V29"/>
+  <ellipse class="base" cx="664" cy="29" rx="56" ry="7"/><ellipse class="box" cx="664" cy="29" rx="56" ry="7"/>
+  <text class="t" x="664" y="65" text-anchor="middle" style="font-size:13.5px">Your data</text>
+  <path class="ln" d="M116 56H602" marker-end="url(#fig-pipe-ah)"/>
+  <text class="mono" x="360" y="47" text-anchor="middle" style="font-size:13px">execute_sql( anything )</text>
+  <text class="m" x="360" y="76" text-anchor="middle" style="font-size:12px">whatever the role allows, and no record of how</text>
+  <path class="rule" d="M0 112H720"/>
+  <text class="cap" x="0" y="138">TERAMOT</text>
+  <rect class="base" x="0" y="198" width="112" height="60" rx="12"/><rect class="model" x="0" y="198" width="112" height="60" rx="12"/>
+  <text class="t" x="56" y="224" text-anchor="middle">Claude</text>
+  <text class="m" x="56" y="243" text-anchor="middle" style="font-size:11.5px">or any model</text>
+  <rect class="region" x="136" y="152" width="448" height="176" rx="18"/>
+  <text class="capb" x="152" y="174">THE LAYER</text>
+  <rect class="base" x="152" y="188" width="128" height="80" rx="10"/><rect class="code" x="152" y="188" width="128" height="80" rx="10"/>
+  <text class="t" x="216" y="216" text-anchor="middle" style="font-size:14px">MCP server</text>
+  <text class="m" x="216" y="236" text-anchor="middle" style="font-size:11.5px">60 tools</text>
+  <text class="m" x="216" y="252" text-anchor="middle" style="font-size:11.5px">0 model calls</text>
+  <path class="ln" d="M282 228H294" marker-end="url(#fig-pipe-ah)"/>
+  <rect class="base" x="296" y="188" width="128" height="80" rx="10"/><rect class="code" x="296" y="188" width="128" height="80" rx="10"/>
+  <text class="t" x="360" y="216" text-anchor="middle" style="font-size:14px">Checks</text>
+  <text class="m" x="360" y="236" text-anchor="middle" style="font-size:11.5px">read-only</text>
+  <text class="m" x="360" y="252" text-anchor="middle" style="font-size:11.5px">scoped, capped</text>
+  <path class="ln" d="M426 228H438" marker-end="url(#fig-pipe-ah)"/>
+  <rect class="base" x="440" y="188" width="128" height="80" rx="10"/><rect class="code" x="440" y="188" width="128" height="80" rx="10"/>
+  <text class="t" x="504" y="216" text-anchor="middle" style="font-size:14px">Warehouse</text>
+  <text class="m" x="504" y="236" text-anchor="middle" style="font-size:11.5px">kept up to date</text>
+  <text class="m" x="504" y="252" text-anchor="middle" style="font-size:11.5px">by the loop</text>
+  <rect class="base" x="152" y="282" width="416" height="32" rx="16"/><rect class="box" x="152" y="282" width="416" height="32" rx="16" stroke-dasharray="4 4"/>
+  <text class="s" x="360" y="303" text-anchor="middle" style="font-size:12.5px">each query&#x27;s path, recorded and compared</text>
+  <path class="ln" d="M114 228H148" marker-end="url(#fig-pipe-ah)"/>
+  <path class="base" d="M608 199V257A56 7 0 0 0 720 257V199"/><path class="box" d="M608 199V257A56 7 0 0 0 720 257V199"/>
+  <ellipse class="base" cx="664" cy="199" rx="56" ry="7"/><ellipse class="box" cx="664" cy="199" rx="56" ry="7"/>
+  <text class="t" x="664" y="232" text-anchor="middle" style="font-size:13.5px">Your sources</text>
+  <text class="m" x="664" y="250" text-anchor="middle" style="font-size:11.5px">17 types</text>
+  <path class="ln" d="M606 228H570" marker-end="url(#fig-pipe-ah)"/>
+</svg>

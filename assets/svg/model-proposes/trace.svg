@@ -1,0 +1,77 @@
+<svg id="fig-trace" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 334" width="100%" role="img" aria-label="Three tries at one cleaning query: a LIMIT is refused because it drops rows, a CAST on the account number is refused because the key changes value, and NULLIF(TRIM(...)) passes. With the rule only in the prompt, the production model reshaped a key in 4 of 14 calibration cases." style="font-family:inherit;font-size:14px;color:inherit">
+  <defs>
+    <style>#fig-trace text{font-family:inherit}
+#fig-trace .t{fill:currentColor;font-weight:800;font-size:15px;font-family:var(--tm-display,Manrope,ui-sans-serif,system-ui,sans-serif);letter-spacing:-.01em}
+#fig-trace .s{fill:currentColor;font-size:13px}
+#fig-trace .m{fill:var(--tm-muted);font-size:12.5px}
+#fig-trace .mono{fill:currentColor;font-size:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+#fig-trace .cap{fill:var(--tm-muted);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-trace .capm{fill:var(--tm-model,#c2410c);font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-trace .capb{fill:var(--tm-blue-ink,var(--tm-blue));font-size:10.5px;font-weight:700;letter-spacing:.09em}
+#fig-trace .mk{fill:var(--tm-model,#c2410c)}
+#fig-trace .bk{fill:var(--tm-blue-ink,var(--tm-blue))}
+#fig-trace .b{font-weight:700}
+#fig-trace .w{fill:#fff}
+#fig-trace .base{fill:var(--tm-surface)}
+#fig-trace .box{fill:currentColor;fill-opacity:.035;stroke:var(--tm-rule-strong);stroke-width:1.25}
+#fig-trace .code{fill:var(--tm-blue);fill-opacity:.07;stroke:var(--tm-blue);stroke-width:1.75}
+#fig-trace .codefill{fill:var(--tm-blue)}
+#fig-trace .model{fill:var(--tm-model,#c2410c);fill-opacity:.1;stroke:var(--tm-model,#c2410c);stroke-width:1.75}
+#fig-trace .region{fill:var(--tm-blue);fill-opacity:.045;stroke:var(--tm-blue);stroke-opacity:.4;stroke-width:1.25;stroke-dasharray:6 5}
+#fig-trace .well{fill:currentColor;fill-opacity:.05}
+#fig-trace .dot{fill:var(--tm-model,#c2410c)}
+#fig-trace .sq{fill:var(--tm-blue)}
+#fig-trace .pp{fill:currentColor}
+#fig-trace .ppm{fill:var(--tm-muted)}
+#fig-trace .ln{stroke:var(--tm-muted);stroke-width:1.6;fill:none;stroke-linecap:round}
+#fig-trace .lnb{stroke:var(--tm-blue);stroke-width:2.25;fill:none;stroke-linecap:round}
+#fig-trace .life{stroke:var(--tm-rule-strong);stroke-width:1.25;stroke-dasharray:3 5;fill:none}
+#fig-trace .rule{stroke:var(--tm-rule);stroke-width:1;fill:none}
+#fig-trace .dash{stroke-dasharray:5 5}
+#fig-trace .ah{fill:var(--tm-muted)}
+#fig-trace .warn{fill:var(--tm-warn,#b45309)}
+#fig-trace .bad{fill:var(--tm-bad,#b91c1c)}
+#fig-trace .good{fill:var(--tm-good,#15803d)}
+#fig-trace .warnc{fill:var(--tm-warn,#b45309);fill-opacity:.13;stroke:var(--tm-warn,#b45309);stroke-width:1.25}
+#fig-trace .badc{fill:var(--tm-bad,#b91c1c);fill-opacity:.13;stroke:var(--tm-bad,#b91c1c);stroke-width:1.25}
+#fig-trace .goodc{fill:var(--tm-good,#15803d);fill-opacity:.13;stroke:var(--tm-good,#15803d);stroke-width:1.25}
+#fig-trace .mutedc{fill:var(--tm-muted);fill-opacity:.1;stroke:var(--tm-muted);stroke-width:1.25}
+#fig-trace .warnln{stroke:var(--tm-warn,#b45309);stroke-width:2.25;fill:none;stroke-dasharray:5 4}
+</style>
+    <marker id="fig-trace-ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path class="ah" d="M0 .5L10 5L0 9.5z"/></marker>
+  </defs>
+  <text class="cap" x="0" y="12">ONE CLEANING QUERY, THREE TRIES</text>
+  <text class="m" x="720" y="12" text-anchor="end" style="font-size:11.5px">illustrative trace · real rules</text>
+  <rect class="base" x="0" y="45" width="60" height="26" rx="13"/><rect class="box" x="0" y="45" width="60" height="26" rx="13"/>
+  <text class="cap" x="30" y="62" text-anchor="middle">TRY 1</text>
+  <rect class="well" x="76" y="28" width="380" height="60" rx="8"/>
+  <text class="mono" x="92" y="53">SELECT customer_id, account_no, name</text>
+  <text class="mono" x="92" y="73">FROM customers LIMIT 20</text>
+  <rect class="badc" x="474" y="35" width="92" height="22" rx="11"/>
+  <text class="capb bad" x="520" y="50" text-anchor="middle" style="font-size:10.5px">REFUSED</text>
+  <text class="s" x="474" y="77" style="font-size:12.5px">LIMIT drops rows</text>
+  <path class="ln dash" d="M30 73V125" marker-end="url(#fig-trace-ah)"/>
+  <text class="m" x="42" y="104" style="font-size:11.5px">sent back with the reason</text>
+  <rect class="base" x="0" y="127" width="60" height="26" rx="13"/><rect class="box" x="0" y="127" width="60" height="26" rx="13"/>
+  <text class="cap" x="30" y="144" text-anchor="middle">TRY 2</text>
+  <rect class="well" x="76" y="110" width="380" height="60" rx="8"/>
+  <text class="mono" x="92" y="135">SELECT customer_id,</text>
+  <text class="mono" x="92" y="155">  CAST(account_no AS DOUBLE) AS account_no</text>
+  <rect class="badc" x="474" y="117" width="92" height="22" rx="11"/>
+  <text class="capb bad" x="520" y="132" text-anchor="middle" style="font-size:10.5px">REFUSED</text>
+  <text class="s" x="474" y="159" style="font-size:12.5px">a key column changes value</text>
+  <path class="ln dash" d="M30 155V207" marker-end="url(#fig-trace-ah)"/>
+  <text class="m" x="42" y="186" style="font-size:11.5px">sent back with the reason</text>
+  <rect class="base" x="0" y="209" width="60" height="26" rx="13"/><rect class="box" x="0" y="209" width="60" height="26" rx="13"/>
+  <text class="cap" x="30" y="226" text-anchor="middle">TRY 3</text>
+  <rect class="well" x="76" y="192" width="380" height="60" rx="8"/>
+  <text class="mono" x="92" y="217">SELECT customer_id,</text>
+  <text class="mono" x="92" y="237">  NULLIF(TRIM(account_no), &#x27;&#x27;) AS account_no</text>
+  <rect class="goodc" x="474" y="199" width="92" height="22" rx="11"/>
+  <text class="capb good" x="520" y="214" text-anchor="middle" style="font-size:10.5px">PASSES</text>
+  <text class="s b" x="474" y="241" style="font-size:12.5px">every row kept, key intact</text>
+  <path class="rule" d="M0 278H720"/>
+  <text class="t mk" x="0" y="318" style="font-size:26px">4 of 14</text>
+  <text class="s" x="110" y="305">calibration cases where the production model reshaped a key</text>
+  <text class="s" x="110" y="323">despite the rule in its prompt. The guard makes it never.</text>
+</svg>

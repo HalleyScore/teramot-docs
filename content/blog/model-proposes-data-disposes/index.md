@@ -1,6 +1,6 @@
 ---
 title: "The Model Proposes, the Data Disposes"
-date: 2026-10-22T09:00:00-03:00
+date: 2026-10-20T18:45:00-03:00
 draft: false
 authors:
   - valentin-torassa

@@ -1,6 +1,9 @@
 {{- /* A product-docs section (content/product/<folder>/, written by scripts/sync_aleph.py)
-       has no page of its own: its sidebar entry and breadcrumb land on its first page,
-       in sidebar order, instead of an empty one. */ -}}
+       has no page of its own: its sidebar entry and breadcrumb link to its first page,
+       in sidebar order (see _partials/teramot/nav-link.html). This page only catches
+       direct visits: location.replace leaves no history entry, so Back still works, and
+       color-scheme keeps the blank page dark on dark systems. */ -}}
+{{- $url := partial "teramot/nav-link" . -}}
 {{- with index .Pages.ByWeight 0 -}}
-<!doctype html><html lang="{{ site.Language.Lang }}"><head><title>{{ .Title }}</title><link rel="canonical" href="{{ .Permalink }}"><meta name="robots" content="noindex"><meta charset="utf-8"><meta http-equiv="refresh" content="0; url={{ .RelPermalink }}"></head></html>
+<!doctype html><html lang="{{ site.Language.Lang }}"><head><title>{{ .Title }}</title><link rel="canonical" href="{{ $url | absURL }}"><meta name="robots" content="noindex"><meta charset="utf-8"><meta name="color-scheme" content="light dark"><script>location.replace({{ $url }} + location.hash)</script><meta http-equiv="refresh" content="0; url={{ $url }}"></head></html>
 {{- end -}}

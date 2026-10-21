@@ -1,0 +1,12 @@
+{{- /*
+  The URL a sidebar entry or breadcrumb links to. A section with `layout: first-page`
+  (layouts/docs/first-page.html) is only a redirect to its first page, so link to
+  that page directly and skip a blank page and a second navigation.
+*/ -}}
+{{- $link := .RelPermalink -}}
+{{- if and .IsSection (eq .Layout "first-page") -}}
+  {{- with index .Pages.ByWeight 0 -}}
+    {{- $link = partial "teramot/nav-link" . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $link -}}
